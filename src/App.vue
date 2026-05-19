@@ -5,6 +5,7 @@ import SajuForm from './components/SajuForm.vue'
 import SajuResult from './components/SajuResult.vue'
 import HistoryList from './components/HistoryList.vue'
 import { computeSaju } from './saju'
+import { currentLang, toggleLang, t } from './i18n.js'
 
 const STORAGE_KEY = 'petlife_history'
 const DARK_KEY = 'petlife_dark'
@@ -80,6 +81,7 @@ function reset() {
     <header class="header">
       <span class="logo" @click="reset" style="cursor:pointer">🐾 PetLife</span>
       <button class="dark-toggle" @click="toggleDark" :title="isDark ? '라이트 모드' : '다크 모드'">{{ isDark ? '☀️' : '🌙' }}</button>
+      <button class="lang-toggle" @click="toggleLang">{{ currentLang === 'ko' ? 'EN' : '한' }}</button>
       <button v-if="history.length && !result" class="history-toggle" @click="showHistory = !showHistory">
         {{ showHistory ? '닫기' : '기록 ' + history.length }}
       </button>
@@ -185,6 +187,26 @@ body {
   font-weight: 700;
   color: var(--primary);
   letter-spacing: -0.02em;
+}
+
+.lang-toggle {
+  margin-left: 6px;
+  background: var(--primary-light);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  color: var(--primary);
+}
+.lang-toggle:hover {
+  transform: scale(1.1);
 }
 
 .history-toggle {

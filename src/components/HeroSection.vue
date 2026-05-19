@@ -1,18 +1,17 @@
 <template>
   <section class="hero">
     <div class="hero-emoji">🐶</div>
-    <h1 class="hero-title">우리 댕댕이 · 냥이의 사주는?</h1>
-    <p class="hero-desc">
-      반려동물의 생년월일시로 알아보는 특별한 사주!
-      강아지와 고양이 모두 분석해드려요
-    </p>
+    <h1 class="hero-title">{{ t('heroTitle') }}</h1>
+    <p class="hero-desc">{{ t('heroDesc') }}</p>
     <div class="badges">
-      <span class="badge">강아지 · 고양이</span>
-      <span class="badge">사주 분석</span>
-      <span class="badge">무료</span>
+      <span class="badge" v-for="b in t('badges')" :key="b">{{ b }}</span>
     </div>
   </section>
 </template>
+
+<script setup>
+import { t } from '../i18n.js'
+</script>
 
 <style scoped>
 .hero {
