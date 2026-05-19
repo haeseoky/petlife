@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import CompatSection from './CompatSection.vue'
 
 const props = defineProps({
   result: { type: Object, required: true }
@@ -143,6 +144,9 @@ async function copyToClipboard(text) {
       <p class="luck-compat">{{ compatibility }}</p>
       <p class="luck-msg">{{ todayLuckMsg }}</p>
     </div>
+
+    <!-- 반려동물 궁합 -->
+    <CompatSection :myResult="result" />
 
     <!-- 맞춤 팁 -->
     <div class="tips-card">

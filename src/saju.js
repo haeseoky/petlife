@@ -240,6 +240,78 @@ function getMainElement(distribution) {
   return main
 }
 
+// 궁합 총점 계산 (0~100)
+function computeCompatScore(saju1, saju2) {
+  let score = 50 // base
+
+  // 1) 주오행 상생/상극 (±15)
+  const el1 = saju1.mainElement
+  const el2 = saju2.mainElement
+  const generating = { '木': '火', '火': '土', '土': '金', '金': '水', '水': '木' }
+  if (el1 === el2) score += 8
+  else if (generating[el1] === el2 || generating[el2] === el1) score += 15
+  else score -= 5
+
+  // 2) 일주 천간 합 (±10)
+  const gan1 = saju1.ilju[0]
+  const gan2 = saju2.ilju[0]
+  const ganPairs = [['갑','기'],['을','경'],['병','신'],['정','임'],['무','계']]
+  const isGanPair = ganPairs.some(([a, b]) => (gan1 === a && gan2 === b) || (gan1 === b && gan2 === a))
+  if (isGanPair) score += 10
+
+  // 3) 띠 삼합/육합 (±10)
+  const sanhap = [['쥐','용','원숭이'],['소','뱀','닭'],['호랑이','말','개'],['토끼','양','돼지']]
+  const yukhap = [['쥐','소'],['호랑이','토끼'],['용','뱀'],['말','양'],['원숭이','닭'],['개','돼지']]
+  const a1 = saju1.yearAnimal, a2 = saju2.yearAnimal
+  if (sanhap.some(g => g.includes(a1) && g.includes(a2))) score += 10
+  else if (yukhap.some(([a, b]) => (a1 === a && a2 === b) || (a1 === b && a2 === a))) score += 7
+
+  // 4) 부족한 오행 보완 (±10)
+  const m1 = saju1.missing, m2 = saju2.missing
+  const complement = m1.some(e => !m2.includes(e)) || m2.some(e => !m1.includes(e))
+  if (m1.length === 0 && m2.length === 0) score += 5
+  else if (complement) score += 8
+
+  return Math.max(20, Math.min(98, score))
+}
+
+export function computeCompat(saju1, saju2) {
+  const el1 = saju1.mainElement
+  const el2 = saju2.mainElement
+  const relation = getCompatibility(el1, el2)
+  const score = computeCompatScore(saju1, saju2)
+
+  const labels = score >= 90 ? '천생연분 💕'
+    : score >= 75 ? '환상의 짝 ✨'
+    : score >= 60 ? '좋은 친구 👋'
+    : score >= 45 ? '서로 다른 매력 🌀'
+    : '특별한 인연 🌟'
+
+  // 궁합 팁 생성
+  const tips = []
+  if (saju1.petType !== saju2.petType) {
+    tips.push('강아지와 고양이의 만남! 서로의 다름을 존중해주세요.')
+  }
+  if (saju1.mainElement === saju2.mainElement) {
+    tips.push('같은 오행 기운을 공유해 서로를 깊이 이해할 수 있어요.')
+  }
+  const combinedMissing = [...new Set([...saju1.missing, ...saju2.missing])]
+  if (combinedMissing.length > 0) {
+    const missingNames = combinedMissing.map(e => ELEMENT_NAMES[e]).join(', ')
+    tips.push(`함께 부족한 오행(${missingNames})을 보완하는 활동을 해보세요!`)
+  }
+  if (saju1.yearAnimal === saju2.yearAnimal) {
+    tips.push(`둘 다 ${saju1.yearAnimal}띠! 성향이 비슷해 금방 친해질 수 있어요.`)
+  }
+  if (score >= 75) {
+    tips.push('함께 산책하거나 놀이 시간을 공유하면 유대감이 더욱 깊어질 거예요.')
+  } else if (score < 50) {
+    tips.push('처음엔 서로 경계할 수 있어요. 천천히, 각자의 페이스에 맞춰 만나게 해주세요.')
+  }
+
+  return { score, label: labels, relation, tips, el1, el2 }
+}
+
 export function computeSaju(year, month, day, hour, petType = 'dog') {
   const yearGanIdx = (year - 4) % 10
   const yearJiIdx = (year - 4) % 12
