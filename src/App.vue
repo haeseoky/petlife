@@ -1,28 +1,72 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import HeroSection from './components/HeroSection.vue'
 import SajuForm from './components/SajuForm.vue'
 import SajuResult from './components/SajuResult.vue'
+import HistoryList from './components/HistoryList.vue'
 import { computeSaju } from './saju'
 
+const STORAGE_KEY = 'petlife_history'
 const result = ref(null)
+const showHistory = ref(false)
+const history = ref([])
+
+function loadHistory() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    history.value = raw ? JSON.parse(raw) : []
+  } catch { history.value = [] }
+}
+
+function saveHistory(item) {
+  loadHistory()
+  const entry = { ...item, id: Date.now(), savedAt: new Date().toISOString() }
+  history.value.unshift(entry)
+  if (history.value.length > 20) history.value = history.value.slice(0, 20)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(history.value))
+}
+
+function deleteHistory(id) {
+  history.value = history.value.filter(h => h.id !== id)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(history.value))
+}
+
+loadHistory()
 
 function onSubmit({ name, breed, year, month, day, hour }) {
-  result.value = { name, breed, ...computeSaju(year, month, day, hour) }
+  const data = { name, breed, year, month, day, hour, ...computeSaju(year, month, day, hour) }
+  result.value = data
+  showHistory.value = false
+  saveHistory(data)
+}
+
+function viewHistory(item) {
+  result.value = item
+  showHistory.value = false
 }
 
 function reset() {
   result.value = null
+  showHistory.value = false
 }
 </script>
 
 <template>
   <div class="app">
     <header class="header">
-      <span class="logo">🐾 PetLife</span>
+      <span class="logo" @click="reset" style="cursor:pointer">🐾 PetLife</span>
+      <button v-if="history.length && !result" class="history-toggle" @click="showHistory = !showHistory">
+        {{ showHistory ? '닫기' : '기록 ' + history.length }}
+      </button>
     </header>
-    <HeroSection v-if="!result" />
-    <SajuForm v-if="!result" @submit="onSubmit" />
+    <HistoryList
+      v-if="showHistory && !result"
+      :history="history"
+      @view="viewHistory"
+      @delete="deleteHistory"
+    />
+    <HeroSection v-if="!result && !showHistory" />
+    <SajuForm v-if="!result && !showHistory" @submit="onSubmit" />
     <SajuResult v-if="result" :result="result" @reset="reset" />
     <footer class="footer">© 2026 PetLife — 반려동물과 함께하는 행복한 삶 🐶</footer>
   </div>
@@ -69,6 +113,18 @@ body {
   font-weight: 700;
   color: var(--primary);
   letter-spacing: -0.02em;
+}
+
+.history-toggle {
+  margin-left: auto;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .footer {
