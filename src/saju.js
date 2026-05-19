@@ -1,6 +1,8 @@
 // 간지 표
 const CHEONGAN = ['갑','을','병','정','무','기','경','신','임','계']
+const CHEONGAN_HANJA = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸']
 const JIJI = ['자','축','인','묘','진','사','오','미','신','유','술','해']
+const JIJI_HANJA = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥']
 const CHEONGAN_ELEMENT = ['木','木','火','火','土','土','金','金','水','水']
 const JIJI_ELEMENT = ['水','土','木','木','土','火','火','土','金','金','土','水']
 const ELEMENT_NAMES = { '木': '목(木)', '火': '화(火)', '土': '토(土)', '金': '금(金)', '水': '수(水)' }
@@ -382,6 +384,11 @@ export function computeSaju(year, month, day, hour, petType = 'dog') {
   const dayPillar = dayGan + dayJi
   const hourPillar = hourGan + hourJi
 
+  const yearPillarHanja = `${yearGan}(${CHEONGAN_HANJA[yearGanIdx]})${yearJi}(${JIJI_HANJA[yearJiIdx]})`
+  const monthPillarHanja = `${monthGan}(${CHEONGAN_HANJA[monthGanIdx]})${monthJi}(${JIJI_HANJA[monthJiIdx]})`
+  const dayPillarHanja = `${dayGan}(${CHEONGAN_HANJA[dayGanIdx]})${dayJi}(${JIJI_HANJA[dayJiIdx]})`
+  const hourPillarHanja = `${hourGan}(${CHEONGAN_HANJA[hourGanIdx]})${hourJi}(${JIJI_HANJA[hourJiIdx]})`
+
   const elements = [yearGan, monthGan, dayGan, hourGan].map(g => CHEONGAN_ELEMENT[CHEONGAN.indexOf(g)])
   const elementsWithJi = [
     ...elements,
@@ -411,6 +418,7 @@ export function computeSaju(year, month, day, hour, petType = 'dog') {
   return {
     petType: type,
     yearPillar, monthPillar, dayPillar, hourPillar,
+    yearPillarHanja, monthPillarHanja, dayPillarHanja, hourPillarHanja,
     yearAnimal,
     ilju: dayPillar,
     personality,

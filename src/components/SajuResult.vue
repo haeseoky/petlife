@@ -10,15 +10,16 @@ const emit = defineEmits(['reset'])
 const petLabel = props.result.petType === 'cat' ? '고양이' : '강아지'
 
 const { name, breed, yearPillar, monthPillar, dayPillar, hourPillar,
+  yearPillarHanja, monthPillarHanja, dayPillarHanja, hourPillarHanja,
   yearAnimal, ilju, personality, distribution, missing, mainElement,
   todayLuck, todayLuckMsg, compatibility, monthlyLuck, age, luckyItems,
   elementNames, elementColors } = props.result
 
 const pillars = [
-  { label: '년주(年柱)', value: yearPillar },
-  { label: '월주(月柱)', value: monthPillar },
-  { label: '일주(日柱)', value: dayPillar },
-  { label: '시주(時柱)', value: hourPillar }
+  { label: '년주(年柱)', value: yearPillar, hanja: yearPillarHanja },
+  { label: '월주(月柱)', value: monthPillar, hanja: monthPillarHanja },
+  { label: '일주(日柱)', value: dayPillar, hanja: dayPillarHanja },
+  { label: '시주(時柱)', value: hourPillar, hanja: hourPillarHanja }
 ]
 
 const shareToast = ref(false)
@@ -112,6 +113,7 @@ async function saveAsImage() {
         <div class="pillar" v-for="p in pillars" :key="p.label">
           <span class="pillar-label">{{ p.label }}</span>
           <span class="pillar-value">{{ p.value }}</span>
+          <span class="pillar-hanja">{{ p.hanja }}</span>
         </div>
       </div>
       <p class="ilju-text">일주 <strong>{{ ilju }}</strong></p>
@@ -311,6 +313,12 @@ async function saveAsImage() {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--primary);
+}
+.pillar-hanja {
+  font-size: 0.7rem;
+  color: var(--text-sub);
+  opacity: 0.6;
+  margin-top: 4px;
 }
 .ilju-text {
   text-align: center;
