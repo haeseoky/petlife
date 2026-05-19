@@ -1,15 +1,15 @@
 <template>
   <section class="hero">
     <div class="hero-emoji">🐶</div>
-    <h1 class="hero-title">우리 댕댕이의 사주는?</h1>
+    <h1 class="hero-title">우리 댕댕이 · 냥이의 사주는?</h1>
     <p class="hero-desc">
-      강아지의 생년월일시로 알아보는 특별한 사주!<br/>
-      우리 아이의 성격과 운을 재미있게 분석해드려요 🐾
+      반려동물의 생년월일시로 알아보는 특별한 사주!
+      강아지와 고양이 모두 분석해드려요
     </p>
     <div class="badges">
-      <span class="badge">🇰🇷 한국어</span>
-      <span class="badge">🔮 사주 분석</span>
-      <span class="badge">💝 무료</span>
+      <span class="badge">강아지 · 고양이</span>
+      <span class="badge">사주 분석</span>
+      <span class="badge">무료</span>
     </div>
   </section>
 </template>

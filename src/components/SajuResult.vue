@@ -6,6 +6,8 @@ const props = defineProps({
 })
 const emit = defineEmits(['reset'])
 
+const petLabel = props.result.petType === 'cat' ? '고양이' : '강아지'
+
 const { name, breed, yearPillar, monthPillar, dayPillar, hourPillar,
   yearAnimal, ilju, personality, distribution, missing, mainElement,
   todayLuck, todayLuckMsg, compatibility, elementNames, elementColors } = props.result
@@ -37,7 +39,7 @@ function buildShareText() {
     ``,
     `오행 분포: ${elSummary}${missingText}`,
     ``,
-    `🐾 PetLife — 강아지 사주`,
+    `🐾 PetLife — ${petLabel} 사주`,
     `https://petlife-pe7.pages.dev`
   ].join('\n')
 }
@@ -84,6 +86,7 @@ async function copyToClipboard(text) {
       <h3>성격 분석</h3>
       <p class="personality-title">{{ personality.title }}</p>
       <p class="personality-desc">{{ personality.desc }}</p>
+      <div class="section-subtitle">특징</div>
       <div class="trait-tags">
         <span class="trait-tag" v-for="t in personality.traits" :key="t">{{ t }}</span>
       </div>
@@ -108,7 +111,7 @@ async function copyToClipboard(text) {
 
     <!-- 산책 스타일 -->
     <div class="detail-card">
-      <h3>산책 스타일</h3>
+      <h3>{{ petLabel === '고양이' ? '놀이 & 활동 스타일' : '산책 스타일' }}</h3>
       <p>{{ personality.walkStyle }}</p>
     </div>
 
@@ -237,6 +240,12 @@ async function copyToClipboard(text) {
   color: var(--text-main);
   word-break: keep-all;
   margin-bottom: 16px;
+}
+.section-subtitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-sub);
+  margin-bottom: 10px;
 }
 .trait-tags {
   display: flex;
