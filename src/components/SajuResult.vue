@@ -9,6 +9,7 @@ import PetTarot from './PetTarot.vue'
 import PetMBTI from './PetMBTI.vue'
 import WeeklyHoroscope from './WeeklyHoroscope.vue'
 import BirthdayCountdown from './BirthdayCountdown.vue'
+import PetWishCoupons from './PetWishCoupons.vue'
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
@@ -240,6 +241,9 @@ async function saveAsImage() {
 
     <!-- 반려동물 생일 카운트다운 -->
     <BirthdayCountdown :result="result" />
+
+    <!-- 반려동물 소원권 -->
+    <PetWishCoupons :result="result" />
 
     <!-- 행운의 방위 & 인테리어 -->
     <FengShuiGuide :result="result" />
