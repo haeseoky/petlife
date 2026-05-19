@@ -405,6 +405,8 @@ export function computeSaju(year, month, day, hour, petType = 'dog') {
   const compatibility = getCompatibility(mainElement, todayLuckElement)
   const currentMonth = new Date().getMonth() + 1
   const monthlyLuck = getMonthlyLuck(currentMonth)
+  const age = getPetHumanAge(year, type)
+  const luckyItems = getLuckyItems(mainElement, type)
 
   return {
     petType: type,
@@ -419,7 +421,59 @@ export function computeSaju(year, month, day, hour, petType = 'dog') {
     todayLuckMsg: LUCK_MSG[todayLuckElement],
     compatibility,
     monthlyLuck,
+    age,
+    luckyItems,
     elementNames: ELEMENT_NAMES,
     elementColors: ELEMENT_COLORS
   }
+}
+
+function getPetHumanAge(birthYear, petType) {
+  const currentYear = new Date().getFullYear()
+  const petAge = currentYear - birthYear
+  let humanAge
+  if (petAge <= 0) {
+    humanAge = 0
+  } else if (petAge === 1) {
+    humanAge = 15
+  } else if (petAge === 2) {
+    humanAge = 24
+  } else {
+    humanAge = 24 + (petAge - 2) * 4
+  }
+  let stage
+  if (petAge <= 0) stage = '신생아'
+  else if (petAge === 1) stage = '유아기'
+  else if (humanAge <= 24) stage = '청소년기'
+  else if (humanAge <= 40) stage = '청년기'
+  else if (humanAge <= 56) stage = '중년기'
+  else if (humanAge <= 72) stage = '장년기'
+  else stage = '시니어'
+  return { petAge, humanAge, stage }
+}
+
+function getLuckyItems(element, petType) {
+  const ITEMS = {
+    '木': {
+      dog: { color: '초록', colorEmoji: '🟢', direction: '동쪽', snack: '고구마', activity: '숲속 산책' },
+      cat: { color: '초록', colorEmoji: '🟢', direction: '동쪽', snack: '캣그라스', activity: '관엽식물 탐험' }
+    },
+    '火': {
+      dog: { color: '빨강', colorEmoji: '🔴', direction: '남쪽', snack: '닭고기', activity: '햇살 아래 낮잠' },
+      cat: { color: '빨강', colorEmoji: '🔴', direction: '남쪽', snack: '참치', activity: '햇살 위 뒹굴기' }
+    },
+    '土': {
+      dog: { color: '노랑', colorEmoji: '🟡', direction: '중앙', snack: '단호박', activity: '집 근처 공원 산책' },
+      cat: { color: '노랑', colorEmoji: '🟡', direction: '중앙', snack: '치즈', activity: '박스 안 숨바꼭질' }
+    },
+    '金': {
+      dog: { color: '흰색', colorEmoji: '⚪', direction: '서쪽', snack: '소고기', activity: '깔끔한 미용 후 산책' },
+      cat: { color: '흰색', colorEmoji: '⚪', direction: '서쪽', snack: '연어', activity: '그루밍 타임' }
+    },
+    '水': {
+      dog: { color: '파랑', colorEmoji: '🔵', direction: '북쪽', snack: '오리고기', activity: '물가 산책' },
+      cat: { color: '파랑', colorEmoji: '🔵', direction: '북쪽', snack: '새우', activity: '물그릇 놀이' }
+    }
+  }
+  return ITEMS[element]?.[petType] || ITEMS['土'][petType]
 }

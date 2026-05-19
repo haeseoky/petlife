@@ -11,7 +11,8 @@ const petLabel = props.result.petType === 'cat' ? '고양이' : '강아지'
 
 const { name, breed, yearPillar, monthPillar, dayPillar, hourPillar,
   yearAnimal, ilju, personality, distribution, missing, mainElement,
-  todayLuck, todayLuckMsg, compatibility, monthlyLuck, elementNames, elementColors } = props.result
+  todayLuck, todayLuckMsg, compatibility, monthlyLuck, age, luckyItems,
+  elementNames, elementColors } = props.result
 
 const pillars = [
   { label: '년주(年柱)', value: yearPillar },
@@ -189,6 +190,50 @@ async function saveAsImage() {
     <CompatSection :myResult="result" />
 
     <!-- 맞춤 팁 -->
+    <div class="detail-card">
+      <h3>{{ petLabel }} 나이 환산</h3>
+      <div class="age-display">
+        <div class="age-item">
+          <span class="age-label">실제 나이</span>
+          <span class="age-value">{{ age.petAge }}살</span>
+        </div>
+        <span class="age-arrow">→</span>
+        <div class="age-item">
+          <span class="age-label">사람 나이</span>
+          <span class="age-value highlight">약 {{ age.humanAge }}살</span>
+        </div>
+      </div>
+      <p class="age-stage">현재 <strong>{{ age.stage }}</strong>이에요!</p>
+    </div>
+
+    <!-- 럭키 아이템 -->
+    <div class="detail-card">
+      <h3>오늘의 럭키 아이템</h3>
+      <div class="lucky-grid">
+        <div class="lucky-item">
+          <span class="lucky-emoji">{{ luckyItems.colorEmoji }}</span>
+          <span class="lucky-label">럭키 컬러</span>
+          <span class="lucky-value">{{ luckyItems.color }}</span>
+        </div>
+        <div class="lucky-item">
+          <span class="lucky-emoji">🧭</span>
+          <span class="lucky-label">럭키 방향</span>
+          <span class="lucky-value">{{ luckyItems.direction }}</span>
+        </div>
+        <div class="lucky-item">
+          <span class="lucky-emoji">🍖</span>
+          <span class="lucky-label">럭키 간식</span>
+          <span class="lucky-value">{{ luckyItems.snack }}</span>
+        </div>
+        <div class="lucky-item">
+          <span class="lucky-emoji">⭐</span>
+          <span class="lucky-label">럭키 활동</span>
+          <span class="lucky-value">{{ luckyItems.activity }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 맞춤 케어 팁 -->
     <div class="tips-card">
       <h3>맞춤 케어 팁</h3>
       <ul>
@@ -454,6 +499,70 @@ async function saveAsImage() {
 .image-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+.age-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.age-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.age-label {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+.age-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.age-value.highlight {
+  color: var(--primary);
+}
+.age-arrow {
+  font-size: 1.2rem;
+  color: var(--text-sub);
+}
+.age-stage {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-sub);
+}
+.age-stage strong {
+  color: var(--primary);
+}
+.lucky-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.lucky-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--primary-light);
+  padding: 16px 8px;
+  border-radius: 10px;
+}
+.lucky-emoji {
+  font-size: 1.5rem;
+}
+.lucky-label {
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  font-weight: 500;
+}
+.lucky-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary);
 }
 .reset-btn {
   flex: 1;
