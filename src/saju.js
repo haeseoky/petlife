@@ -353,6 +353,59 @@ export function computeCompat(saju1, saju2) {
   return { score, label: labels, relation, tips, el1, el2 }
 }
 
+const PET_TYPES = {
+  'ESTJ': { name: '당당한 지도자', desc: '규율을 중시하고 무리를 이끄는 든든한 대장형' },
+  'ESTP': { name: '활동적인 탐험가', desc: '에너지가 넘치고 새로운 자극을 즐기는 본능적인 모험가' },
+  'ESFJ': { name: '사교적인 조율사', desc: '모두와 잘 어울리고 조화를 중시하는 평화주의자' },
+  'ESFP': { name: '분위기 메이커', desc: '밝은 에너지로 주변을 즐겁게 만드는 사교의 왕' },
+  'ENTJ': { name: '영리한 전략가', desc: '목표 지향적이고 똑똑하게 상황을 판단하는 리더' },
+  'ENTP': { name: '기발한 발명가', desc: '호기심이 많고 창의적인 방식으로 장난을 치는 천재' },
+  'ENFJ': { name: '다정한 선도자', desc: '타인의 감정을 잘 읽고 긍정적인 영향을 주는 다정한 친구' },
+  'ENFP': { name: '자유로운 영혼', desc: '풍부한 상상력과 호기심으로 매일이 즐거운 에너지원' },
+  'ISTJ': { name: '철저한 수호자', desc: '조용하지만 맡은 바 임무를 다하는 묵직하고 믿음직한 아이' },
+  'ISTP': { name: '과묵한 장인', desc: '독립심이 강하고 손재주가 좋은 관찰자' },
+  'ISFJ': { name: '헌신적인 보호자', desc: '가족의 곁을 묵묵히 지키는 따뜻하고 세심한 배려자' },
+  'ISFP': { name: '성인군자형 예술가', desc: '다정다감하고 예술적인 감수성을 지닌 온화한 영혼' },
+  'INTJ': { name: '용의주도한 전략가', desc: '독립적이고 분석적이며 자신만의 세계가 뚜렷한 아이' },
+  'INTP': { name: '논리적인 사색가', desc: '혼자만의 시간을 즐기며 세상을 탐구하는 지적인 사유자' },
+  'INFJ': { name: '선의의 옹호자', desc: '깊은 통찰력과 공감 능력으로 주인과 깊이 교감하는 아이' },
+  'INFP': { name: '열정적인 중재자', desc: '내면의 세계가 풍부하고 꿈꾸는 듯한 낭만적인 성격' }
+}
+
+function computePetType(distribution, dayGan) {
+  const fire = distribution['火'] || 0
+  const water = distribution['水'] || 0
+  const earth = distribution['土'] || 0
+  const wood = distribution['木'] || 0
+  const metal = distribution['金'] || 0
+
+  const e_i = fire >= water ? 'E' : 'I'
+  const s_n = earth >= wood ? 'S' : 'N'
+  const t_f = metal >= fire ? 'T' : 'F'
+  const j_p = ['갑', '병', '무', '경', '임'].includes(dayGan) ? 'J' : 'P'
+
+  const typeCode = e_i + s_n + t_f + j_p
+  const typeInfo = PET_TYPES[typeCode]
+
+  // 시각화를 위한 게이지 값 (0~100)
+  const getGauge = (val1, val2) => {
+    if (val1 === 0 && val2 === 0) return 50
+    return Math.round((val1 / (val1 + val2)) * 100)
+  }
+
+  return {
+    code: typeCode,
+    name: typeInfo.name,
+    desc: typeInfo.desc,
+    gauges: {
+      ei: getGauge(fire, water),
+      sn: getGauge(earth, wood),
+      tf: getGauge(metal, fire),
+      jp: j_p === 'J' ? 80 : 20
+    }
+  }
+}
+
 export function computeSaju(year, month, day, hour, petType = 'dog') {
   const yearGanIdx = (year - 4) % 10
   const yearJiIdx = (year - 4) % 12
@@ -407,6 +460,7 @@ export function computeSaju(year, month, day, hour, petType = 'dog') {
   const mainElement = getMainElement(distribution)
   const type = petType === 'cat' ? 'cat' : 'dog'
   const personality = PERSONALITY[type][dayGan]
+  const petTypeResult = computePetType(distribution, dayGan)
   const todayLuck = getTodayLuck()
   const todayLuckElement = CHEONGAN_ELEMENT[CHEONGAN.indexOf(todayLuck)]
   const compatibility = getCompatibility(mainElement, todayLuckElement)
@@ -423,6 +477,7 @@ export function computeSaju(year, month, day, hour, petType = 'dog') {
     yearAnimal,
     ilju: dayPillar,
     personality,
+    petTypeResult,
     distribution,
     missing,
     mainElement,

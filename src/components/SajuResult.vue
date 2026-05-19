@@ -16,7 +16,7 @@ const { name, breed, yearPillar, monthPillar, dayPillar, hourPillar,
   yearPillarHanja, monthPillarHanja, dayPillarHanja, hourPillarHanja,
   yearAnimal, ilju, personality, distribution, missing, mainElement,
   todayLuck, todayLuckMsg, compatibility, monthlyLuck, age, luckyItems,
-  luckyNames: initialLuckyNames, elementNames, elementColors } = props.result
+  luckyNames: initialLuckyNames, elementNames, elementColors, petTypeResult } = props.result
 
 const luckyNames = ref(initialLuckyNames)
 
@@ -202,6 +202,58 @@ async function saveAsImage() {
 
     <!-- 럭키 데이 캘린더 -->
     <LuckyCalendar :result="result" />
+
+    <!-- 반려동물 성격 유형 -->
+    <div class="detail-card pet-type-card">
+      <h3>{{ t('petTypeTitle') }}</h3>
+      <div class="type-header">
+        <span class="type-code">{{ petTypeResult.code }}</span>
+        <div class="type-info">
+          <span class="type-name">{{ petTypeResult.name }}</span>
+          <p class="type-desc-short">{{ petTypeResult.desc }}</p>
+        </div>
+      </div>
+      <p class="section-desc">{{ t('petTypeDesc') }}</p>
+      
+      <div class="type-gauges">
+        <div class="gauge-item">
+          <div class="gauge-labels">
+            <span>{{ t('personalityE') }}</span>
+            <span>{{ t('personalityI') }}</span>
+          </div>
+          <div class="gauge-bar-bg">
+            <div class="gauge-bar-fill" :style="{ width: petTypeResult.gauges.ei + '%' }"></div>
+          </div>
+        </div>
+        <div class="gauge-item">
+          <div class="gauge-labels">
+            <span>{{ t('personalityS') }}</span>
+            <span>{{ t('personalityN') }}</span>
+          </div>
+          <div class="gauge-bar-bg">
+            <div class="gauge-bar-fill" :style="{ width: petTypeResult.gauges.sn + '%' }"></div>
+          </div>
+        </div>
+        <div class="gauge-item">
+          <div class="gauge-labels">
+            <span>{{ t('personalityT') }}</span>
+            <span>{{ t('personalityF') }}</span>
+          </div>
+          <div class="gauge-bar-bg">
+            <div class="gauge-bar-fill" :style="{ width: petTypeResult.gauges.tf + '%' }"></div>
+          </div>
+        </div>
+        <div class="gauge-item">
+          <div class="gauge-labels">
+            <span>{{ t('personalityJ') }}</span>
+            <span>{{ t('personalityP') }}</span>
+          </div>
+          <div class="gauge-bar-bg">
+            <div class="gauge-bar-fill" :style="{ width: petTypeResult.gauges.jp + '%' }"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- 맞춤 팁 -->
     <div class="detail-card">
@@ -718,6 +770,68 @@ async function saveAsImage() {
 @keyframes toast-in {
   from { opacity: 0; transform: translateX(-50%) translateY(8px); }
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+/* Pet Personality Type */
+.type-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.type-code {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+  min-width: 100px;
+  text-align: center;
+  background: var(--primary-light);
+  padding: 16px 20px;
+  border-radius: 12px;
+}
+.type-info {
+  flex: 1;
+}
+.type-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: block;
+  margin-bottom: 4px;
+}
+.type-desc-short {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+.type-gauges {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.gauge-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.gauge-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+.gauge-bar-bg {
+  height: 8px;
+  background: var(--bar-bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.gauge-bar-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 4px;
+  transition: width 0.5s ease;
 }
 .fade-up-enter-active {
   transition: all 0.5s ease;
