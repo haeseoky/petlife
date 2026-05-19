@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import CompatSection from './CompatSection.vue'
 import LuckyCalendar from './LuckyCalendar.vue'
+import PetTarot from './PetTarot.vue'
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
@@ -31,9 +32,14 @@ const pillars = [
   { label: '시주(時柱)', value: hourPillar, hanja: hourPillarHanja }
 ]
 
+const tarotData = ref(null)
 const shareToast = ref(false)
 const savingImage = ref(false)
 const resultRef = ref(null)
+
+function onTarotSelect(data) {
+  tarotData.value = data
+}
 
 function buildShareText() {
   const elSummary = Object.entries(distribution)
@@ -42,6 +48,11 @@ function buildShareText() {
   const missingText = missing.length
     ? `\n부족한 오행: ${missing.map(e => elementNames[e]).join(', ')}`
     : ''
+  
+  const tarotText = tarotData.value 
+    ? `\n\n🐾 ${t('tarotSharePrefix')}: ${tarotData.value.cardEmoji} ${tarotData.value.cardName}\n"${tarotData.value.message}"`
+    : ''
+
   return [
     `🐾 ${name}(${breed})의 사주 결과`,
     `━━━━━━━━━━━━━━`,
@@ -51,7 +62,7 @@ function buildShareText() {
     ``,
     `${personality.desc}`,
     ``,
-    `오행 분포: ${elSummary}${missingText}`,
+    `오행 분포: ${elSummary}${missingText}${tarotText}`,
     ``,
     `🐾 PetLife — ${petLabel} 사주`,
     `https://petlife-pe7.pages.dev`
@@ -202,6 +213,9 @@ async function saveAsImage() {
 
     <!-- 럭키 데이 캘린더 -->
     <LuckyCalendar :result="result" />
+
+    <!-- 반려동물 타로 -->
+    <PetTarot :result="result" @select="onTarotSelect" />
 
     <!-- 반려동물 성격 유형 -->
     <div class="detail-card pet-type-card">

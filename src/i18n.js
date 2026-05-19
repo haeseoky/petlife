@@ -88,7 +88,11 @@ const messages = {
     luckyNameTitle: '럭키 네임 추천',
     luckyNameDesc: '반려동물에게 좋은 기운을 주는 이름들이에요',
     refreshBtn: '다시 뽑기',
-    meaningLabel: '의미'
+    meaningLabel: '의미',
+    tarotTitle: '🐾 오늘의 타로',
+    tarotInstruction: '마음에 드는 카드를 골라보세요',
+    tarotRedraw: '다시 뽑기',
+    tarotSharePrefix: '타로 카드'
   },
   en: {
     appTitle: '🐾 PetLife',
@@ -177,7 +181,11 @@ const messages = {
     luckyNameTitle: 'Lucky Name Recommendation',
     luckyNameDesc: 'Names that bring good energy to your pet',
     refreshBtn: 'Refresh',
-    meaningLabel: 'Meaning'
+    meaningLabel: 'Meaning',
+    tarotTitle: '🐾 Daily Tarot',
+    tarotInstruction: 'Choose a card that calls to you',
+    tarotRedraw: 'Draw Again',
+    tarotSharePrefix: 'Tarot Card'
   }
 }
 
