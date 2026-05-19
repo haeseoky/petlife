@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import CompatSection from './CompatSection.vue'
+import LuckyCalendar from './LuckyCalendar.vue'
 
 const props = defineProps({
   result: { type: Object, required: true }
@@ -190,6 +191,9 @@ async function saveAsImage() {
 
     <!-- 반려동물 궁합 -->
     <CompatSection :myResult="result" />
+
+    <!-- 럭키 데이 캘린더 -->
+    <LuckyCalendar :result="result" />
 
     <!-- 맞춤 팁 -->
     <div class="detail-card">
