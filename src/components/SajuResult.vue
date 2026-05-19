@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import CompatSection from './CompatSection.vue'
 import FengShuiGuide from './FengShuiGuide.vue'
 import LuckyCalendar from './LuckyCalendar.vue'
@@ -42,6 +42,72 @@ const tarotData = ref(null)
 const shareToast = ref(false)
 const savingImage = ref(false)
 const resultRef = ref(null)
+
+const scrollProgress = ref(0)
+const activeSection = ref('')
+
+const navSections = [
+  { id: 'section-personality', label: '성격분석' },
+  { id: 'section-today-luck', label: '오늘의운세' },
+  { id: 'section-month-luck', label: '이달의운세' },
+  { id: 'section-compat', label: '궁합' },
+  { id: 'section-mbti', label: 'MBTI' },
+  { id: 'section-calendar', label: '캘린더' },
+  { id: 'section-balance', label: '밸런스게임' },
+  { id: 'section-birthday', label: '생일카운트다운' },
+  { id: 'section-zodiac', label: '별자리' },
+  { id: 'section-lucky-food', label: '럭키푸드' },
+  { id: 'section-fengshui', label: '풍수' },
+  { id: 'section-age', label: '나이환산' },
+  { id: 'section-lucky-item', label: '럭키아이템' },
+  { id: 'section-care-tip', label: '케어팁' }
+]
+
+function handleScroll() {
+  const winScroll = window.scrollY
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+  scrollProgress.value = (winScroll / height) * 100
+}
+
+let observer = null
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        activeSection.value = entry.target.id
+      }
+    })
+  }, { threshold: 0.2, rootMargin: '-10% 0px -60% 0px' })
+
+  navSections.forEach((s) => {
+    const el = document.getElementById(s.id)
+    if (el) observer.observe(el)
+  })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+  if (observer) observer.disconnect()
+})
+
+function scrollToSection(id) {
+  const el = document.getElementById(id)
+  if (el) {
+    const offset = 20
+    const bodyRect = document.body.getBoundingClientRect().top
+    const elementRect = el.getBoundingClientRect().top
+    const elementPosition = elementRect - bodyRect
+    const offsetPosition = elementPosition - offset
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    })
+  }
+}
 
 function onTarotSelect(data) {
   tarotData.value = data
@@ -129,11 +195,30 @@ async function saveAsImage() {
 <template>
   <transition name="fade-up">
   <section class="result" ref="resultRef">
+    <!-- 스크롤 프로그레스 바 -->
+    <div class="scroll-progress-container">
+      <div class="scroll-progress-bar" :style="{ width: scrollProgress + '%' }"></div>
+    </div>
+
+    <!-- 퀵 네비게이션 (플로팅 도트) -->
+    <nav class="quick-nav">
+      <button 
+        v-for="section in navSections" 
+        :key="section.id"
+        class="nav-dot"
+        :class="{ active: activeSection === section.id }"
+        @click="scrollToSection(section.id)"
+        :title="section.label"
+      >
+        <span class="dot-label">{{ section.label }}</span>
+      </button>
+    </nav>
+
     <h2 class="result-title">{{ name }}의 사주</h2>
     <p class="breed-tag">{{ breed }} · {{ yearAnimal }}띠</p>
 
     <!-- 성격 분석 -->
-    <div class="personality-card">
+    <div id="section-personality" class="personality-card">
       <h3>성격 분석</h3>
       <p class="personality-title">{{ personality.title }}</p>
       <p class="personality-desc">{{ personality.desc }}</p>
@@ -162,7 +247,7 @@ async function saveAsImage() {
     </div>
 
     <!-- 오늘의 운세 -->
-    <div class="luck-card">
+    <div id="section-today-luck" class="luck-card">
       <h3>오늘의 운세</h3>
       <p class="luck-main">오늘 일주: <strong>{{ todayLuck }}</strong></p>
       <p class="luck-compat">{{ compatibility }}</p>
@@ -170,44 +255,44 @@ async function saveAsImage() {
     </div>
 
     <!-- 이달의 운세 -->
-    <div class="luck-card">
+    <div id="section-month-luck" class="luck-card">
       <h3>이달의 운세</h3>
       <p class="luck-main">이달의 기운: <strong>{{ monthlyLuck.monthGan }}</strong></p>
       <p class="luck-msg">{{ petLabel === '고양이' ? monthlyLuck.catMsg : monthlyLuck.dogMsg }}</p>
     </div>
 
     <!-- 반려동물 궁합 -->
-    <CompatSection :myResult="result" />
+    <CompatSection id="section-compat" :myResult="result" />
 
     <!-- 반려동물 MBTI 성격 유형 -->
-    <PetMBTI :petType="result.petType" :ilju="ilju" :mainElement="mainElement" :missing="missing" :hourPillar="hourPillar" />
+    <PetMBTI id="section-mbti" :petType="result.petType" :ilju="ilju" :mainElement="mainElement" :missing="missing" :hourPillar="hourPillar" />
 
     <!-- 오늘의 반려동물 운세 캡슐 -->
     <PetFortuneGacha :name="name" :mainElement="mainElement" />
 
     <!-- 럭키 데이 캘린더 -->
-    <LuckyCalendar :result="result" />
+    <LuckyCalendar id="section-calendar" :result="result" />
 
     <!-- 반려동물 주간 운세 -->
     <WeeklyHoroscope :result="result" />
 
     <!-- 반려동물 밸런스 게임 -->
-    <PetBalanceGame :mainElement="mainElement" :petType="result.petType" />
+    <PetBalanceGame id="section-balance" :mainElement="mainElement" :petType="result.petType" />
 
     <!-- 반려동물 생일 카운트다운 -->
-    <BirthdayCountdown :result="result" />
+    <BirthdayCountdown id="section-birthday" :result="result" />
 
     <!-- 반려동물 서양 별자리 -->
-    <PetZodiac :month="result.month" :day="result.day" :petType="result.petType" :mainElement="mainElement" />
+    <PetZodiac id="section-zodiac" :month="result.month" :day="result.day" :petType="result.petType" :mainElement="mainElement" />
 
     <!-- 반려동물 럭키 푸드 -->
-    <PetLuckyFood :petType="result.petType" :mainElement="mainElement" :missing="missing" />
+    <PetLuckyFood id="section-lucky-food" :petType="result.petType" :mainElement="mainElement" :missing="missing" />
 
     <!-- 행운의 방위 & 인테리어 -->
-    <FengShuiGuide :result="result" />
+    <FengShuiGuide id="section-fengshui" :result="result" />
 
     <!-- 맞춤 팁 -->
-    <div class="detail-card">
+    <div id="section-age" class="detail-card">
       <h3>{{ petLabel }} 나이 환산</h3>
       <div class="age-display">
         <div class="age-item">
@@ -224,7 +309,7 @@ async function saveAsImage() {
     </div>
 
     <!-- 럭키 아이템 -->
-    <div class="detail-card">
+    <div id="section-lucky-item" class="detail-card">
       <h3>오늘의 럭키 아이템</h3>
       <div class="lucky-grid">
         <div class="lucky-item">
@@ -274,7 +359,7 @@ async function saveAsImage() {
     </div>
 
     <!-- 맞춤 케어 팁 -->
-    <div class="tips-card">
+    <div id="section-care-tip" class="tips-card">
       <h3>맞춤 케어 팁</h3>
       <ul>
         <li v-if="missing.includes('木')">산책과 자연 접촉이 좋아요! 공원 산책을 자주 시켜주세요.</li>
@@ -300,7 +385,109 @@ async function saveAsImage() {
 <style scoped>
 .result {
   padding-top: 20px;
+  position: relative;
 }
+
+/* Scroll Progress Bar */
+.scroll-progress-container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--bg-main);
+  z-index: 1000;
+  margin-bottom: -3px;
+}
+.scroll-progress-bar {
+  height: 100%;
+  background: var(--primary);
+  width: 0;
+  transition: width 0.1s ease-out;
+}
+
+/* Quick Navigation */
+.quick-nav {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+  background: var(--bg-main);
+  padding: 12px 6px;
+  border-radius: 24px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: opacity 0.3s;
+}
+.nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-light);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-dot:hover {
+  background: var(--text-sub);
+}
+.nav-dot.active {
+  background: var(--primary);
+  transform: scale(1.4);
+}
+.dot-label {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  font-weight: 600;
+}
+.nav-dot:hover .dot-label {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .quick-nav {
+    right: 12px;
+    opacity: 0.5;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  .quick-nav:active, .quick-nav:focus-within {
+    opacity: 1;
+  }
+  .nav-dot {
+    width: 14px;
+    height: 14px;
+    background: var(--placeholder);
+  }
+  .dot-label {
+    display: none;
+  }
+}
+
+@media print {
+  .scroll-progress-container, .quick-nav {
+    display: none !important;
+  }
+}
+
 .result-title {
   font-size: 1.75rem;
   font-weight: 700;
