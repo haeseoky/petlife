@@ -5,6 +5,7 @@ import FengShuiGuide from './FengShuiGuide.vue'
 import DailyMission from './DailyMission.vue'
 import LuckyCalendar from './LuckyCalendar.vue'
 import PetTarot from './PetTarot.vue'
+import PetMBTI from './PetMBTI.vue'
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
@@ -212,6 +213,9 @@ async function saveAsImage() {
 
     <!-- 반려동물 궁합 -->
     <CompatSection :myResult="result" />
+
+    <!-- 반려동물 MBTI 성격 유형 -->
+    <PetMBTI :petType="result.petType" :ilju="ilju" :mainElement="mainElement" :missing="missing" :hourPillar="hourPillar" />
 
     <!-- 오늘의 반려동물 미션 -->
     <DailyMission :petType="result.petType" :mainElement="mainElement" :missing="missing" />
