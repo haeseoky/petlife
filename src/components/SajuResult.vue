@@ -1,15 +1,11 @@
 <script setup>
 import { ref } from 'vue'
-import ElementRadar from './ElementRadar.vue'
 import CompatSection from './CompatSection.vue'
 import FengShuiGuide from './FengShuiGuide.vue'
-import DailyMission from './DailyMission.vue'
 import LuckyCalendar from './LuckyCalendar.vue'
-import PetTarot from './PetTarot.vue'
 import PetMBTI from './PetMBTI.vue'
 import WeeklyHoroscope from './WeeklyHoroscope.vue'
 import BirthdayCountdown from './BirthdayCountdown.vue'
-import PetWishCoupons from './PetWishCoupons.vue'
 import PetZodiac from './PetZodiac.vue'
 import PetLuckyFood from './PetLuckyFood.vue'
 import PetFortuneGacha from './PetFortuneGacha.vue'
@@ -136,19 +132,6 @@ async function saveAsImage() {
     <h2 class="result-title">{{ name }}의 사주</h2>
     <p class="breed-tag">{{ breed }} · {{ yearAnimal }}띠</p>
 
-    <!-- 사주 명식 -->
-    <div class="pillar-card">
-      <h3>사주명식 (四柱)</h3>
-      <div class="pillars">
-        <div class="pillar" v-for="p in pillars" :key="p.label">
-          <span class="pillar-label">{{ p.label }}</span>
-          <span class="pillar-value">{{ p.value }}</span>
-          <span class="pillar-hanja">{{ p.hanja }}</span>
-        </div>
-      </div>
-      <p class="ilju-text">일주 <strong>{{ ilju }}</strong></p>
-    </div>
-
     <!-- 성격 분석 -->
     <div class="personality-card">
       <h3>성격 분석</h3>
@@ -159,26 +142,6 @@ async function saveAsImage() {
         <span class="trait-tag" v-for="t in personality.traits" :key="t">{{ t }}</span>
       </div>
     </div>
-
-    <!-- 오행 분포 -->
-    <div class="element-card">
-      <h3>오행(五行) 분포</h3>
-      <div class="element-bars">
-        <div class="element-row" v-for="(pct, el) in distribution" :key="el">
-          <span class="element-name">{{ elementNames[el] }}</span>
-          <div class="bar-bg">
-            <div class="bar-fill" :style="{ width: pct + '%', background: elementColors[el] }"></div>
-          </div>
-          <span class="element-pct">{{ pct }}%</span>
-        </div>
-      </div>
-      <p v-if="missing.length" class="missing-text">
-        부족한 오행: {{ missing.map(e => elementNames[e]).join(', ') }}
-      </p>
-    </div>
-
-    <!-- 오행 레이더 차트 -->
-    <ElementRadar :distribution="distribution" :missing="missing" />
 
     <!-- 산책 스타일 -->
     <div class="detail-card">
@@ -196,14 +159,6 @@ async function saveAsImage() {
     <div class="detail-card">
       <h3>건강 관리 팁</h3>
       <p>{{ personality.healthTip }}</p>
-    </div>
-
-    <!-- 잘 맞는 일주 -->
-    <div class="detail-card">
-      <h3>잘 맞는 일주</h3>
-      <div class="compat-list">
-        <span class="compat-tag" v-for="c in personality.compatible" :key="c">{{ c }}</span>
-      </div>
     </div>
 
     <!-- 오늘의 운세 -->
@@ -227,17 +182,11 @@ async function saveAsImage() {
     <!-- 반려동물 MBTI 성격 유형 -->
     <PetMBTI :petType="result.petType" :ilju="ilju" :mainElement="mainElement" :missing="missing" :hourPillar="hourPillar" />
 
-    <!-- 오늘의 반려동물 미션 -->
-    <DailyMission :petType="result.petType" :mainElement="mainElement" :missing="missing" />
-
     <!-- 오늘의 반려동물 운세 캡슐 -->
     <PetFortuneGacha :name="name" :mainElement="mainElement" />
 
     <!-- 럭키 데이 캘린더 -->
     <LuckyCalendar :result="result" />
-
-    <!-- 반려동물 타로 -->
-    <PetTarot :result="result" @select="onTarotSelect" />
 
     <!-- 반려동물 주간 운세 -->
     <WeeklyHoroscope :result="result" />
@@ -248,9 +197,6 @@ async function saveAsImage() {
     <!-- 반려동물 생일 카운트다운 -->
     <BirthdayCountdown :result="result" />
 
-    <!-- 반려동물 소원권 -->
-    <PetWishCoupons :result="result" />
-
     <!-- 반려동물 서양 별자리 -->
     <PetZodiac :month="result.month" :day="result.day" :petType="result.petType" :mainElement="mainElement" />
 
@@ -259,58 +205,6 @@ async function saveAsImage() {
 
     <!-- 행운의 방위 & 인테리어 -->
     <FengShuiGuide :result="result" />
-
-    <!-- 반려동물 성격 유형 -->
-    <div class="detail-card pet-type-card">
-      <h3>{{ t('petTypeTitle') }}</h3>
-      <div class="type-header">
-        <span class="type-code">{{ petTypeResult.code }}</span>
-        <div class="type-info">
-          <span class="type-name">{{ petTypeResult.name }}</span>
-          <p class="type-desc-short">{{ petTypeResult.desc }}</p>
-        </div>
-      </div>
-      <p class="section-desc">{{ t('petTypeDesc') }}</p>
-      
-      <div class="type-gauges">
-        <div class="gauge-item">
-          <div class="gauge-labels">
-            <span>{{ t('personalityE') }}</span>
-            <span>{{ t('personalityI') }}</span>
-          </div>
-          <div class="gauge-bar-bg">
-            <div class="gauge-bar-fill" :style="{ width: petTypeResult.gauges.ei + '%' }"></div>
-          </div>
-        </div>
-        <div class="gauge-item">
-          <div class="gauge-labels">
-            <span>{{ t('personalityS') }}</span>
-            <span>{{ t('personalityN') }}</span>
-          </div>
-          <div class="gauge-bar-bg">
-            <div class="gauge-bar-fill" :style="{ width: petTypeResult.gauges.sn + '%' }"></div>
-          </div>
-        </div>
-        <div class="gauge-item">
-          <div class="gauge-labels">
-            <span>{{ t('personalityT') }}</span>
-            <span>{{ t('personalityF') }}</span>
-          </div>
-          <div class="gauge-bar-bg">
-            <div class="gauge-bar-fill" :style="{ width: petTypeResult.gauges.tf + '%' }"></div>
-          </div>
-        </div>
-        <div class="gauge-item">
-          <div class="gauge-labels">
-            <span>{{ t('personalityJ') }}</span>
-            <span>{{ t('personalityP') }}</span>
-          </div>
-          <div class="gauge-bar-bg">
-            <div class="gauge-bar-fill" :style="{ width: petTypeResult.gauges.jp + '%' }"></div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- 맞춤 팁 -->
     <div class="detail-card">
