@@ -11,7 +11,7 @@ const petLabel = props.result.petType === 'cat' ? '고양이' : '강아지'
 
 const { name, breed, yearPillar, monthPillar, dayPillar, hourPillar,
   yearAnimal, ilju, personality, distribution, missing, mainElement,
-  todayLuck, todayLuckMsg, compatibility, elementNames, elementColors } = props.result
+  todayLuck, todayLuckMsg, compatibility, monthlyLuck, elementNames, elementColors } = props.result
 
 const pillars = [
   { label: '년주(年柱)', value: yearPillar },
@@ -147,6 +147,13 @@ function printResult() {
       <p class="luck-main">오늘 일주: <strong>{{ todayLuck }}</strong></p>
       <p class="luck-compat">{{ compatibility }}</p>
       <p class="luck-msg">{{ todayLuckMsg }}</p>
+    </div>
+
+    <!-- 이달의 운세 -->
+    <div class="luck-card">
+      <h3>이달의 운세</h3>
+      <p class="luck-main">이달의 기운: <strong>{{ monthlyLuck.monthGan }}</strong></p>
+      <p class="luck-msg">{{ petLabel === '고양이' ? monthlyLuck.catMsg : monthlyLuck.dogMsg }}</p>
     </div>
 
     <!-- 반려동물 궁합 -->

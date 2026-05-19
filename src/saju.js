@@ -194,6 +194,45 @@ const PERSONALITY = {
   }
 }
 
+const MONTHLY_LUCK = {
+  dog: {
+    '갑': '이달은 새로운 모험이 기다리고 있어요! 산책 코스를 바꿔보거나 새로운 장난감을 시도해보세요. 활동량이 늘어날 수 있으니 체력 관리에 신경 써주세요.',
+    '을': '이달은 가족과의 유대가 깊어지는 시기예요. 스킨십과 함께하는 시간이 많아지면 더 행복해할 거예요. 건강은 양호하니 마음껏 사랑해주세요!',
+    '병': '에너지가 넘치는 한 달! 강아지 공원에서 다른 친구들과 놀기에 좋은 시기예요. 다만 여름엔 열사병 주의하고 수분 보충을 충분히 해주세요.',
+    '정': '감수성이 풍부해지는 달이에요. 주인의 기분에 더 예민하게 반응할 수 있으니 따뜻하게 대해주세요. 조용한 산책과 부드러운 음악이 좋아요.',
+    '무': '든든하고 안정적인 한 달이에요. 규칙적인 생활이 건강의 열쇠! 식사 시간과 산책 시간을 일정하게 유지해주세요. 체중 관리에도 신경 써주세요.',
+    '기': '모두와 화목하게 지내는 달! 애견카페나 강아지 모임에 참여하기 좋은 시기예요. 새로운 친구를 사귈 수 있는 행운이 있어요.',
+    '경': '의지가 강해지는 시기! 훈련의 효과가 배가되는 달이에요. 새로운 트릭을 가르치거나 고급 훈련을 시도해보세요. 보람을 느낄 거예요.',
+    '신': '지능이 더욱 빛나는 달! 퍼즐 장난감이나 지능 개발 놀이를 특히 좋아할 거예요. 새로운 간식으로 훈련 동기도 높아져요.',
+    '임': '모험심이 강해지는 달! 새로운 산책 코스나 처음 가보는 공원을 탐험하기에 완벽한 시기. 물 근처에서 놀면 더 행복해할 거예요.',
+    '계': '직관이 예민한 달이에요. 주인의 기분 변화를 잘 감지하니, 따뜻한 관심을 많이 보내주세요. 비 오는 날의 산책을 유독 좋아할 수 있어요.'
+  },
+  cat: {
+    '갑': '이달은 영역을 넓히고 싶어하는 시기예요. 캣타워 높은 곳을 정복하거나 새로운 방을 탐험하고 싶어할 거예요. 안전한 환경에서 탐험을 허락해주세요!',
+    '을': '포근함이 최고인 달! 주인의 무릎 위에서 보내는 시간이 많아질 거예요. 부드러운 담요나 새로운 잠자리를 마련해주면 더 행복해해요.',
+    '병': '장난기가 넘치는 달! 낚시대 장난감이나 레이저 포인터 놀이에 열광할 거예요. 새벽에 주인을 깨우는 횟수도 늘어날 수 있어요!',
+    '정': '조용하고 평화로운 한 달이에요. 창가에서 비를 구경하거나 햇살 위에서 낮잠 자는 시간이 많아질 거예요. 은은한 음악을 틀어주면 좋아해요.',
+    '무': '느긋하고 여유로운 달. 가장 좋아하는 자리에서 평화롭게 지내고 싶어해요. 급격한 변화는 피하고 편안한 환경을 유지해주세요.',
+    '기': '다른 동물과도 잘 지내는 달! 다묘 가정이라면 형제묘와 함께 뒹굴 시간이 늘어날 거예요. 공동 장난감을 새로 들여놓으면 좋아해요.',
+    '경': '사냥 본능이 강해지는 달! 작은 장난감이나 날벌레(!)를 쫓는 횟수가 늘어나요. 활동적인 놀이를 많이 시켜주면 스트레스 해소에 좋아요.',
+    '신': '지적인 호기심이 폭발하는 달! 퍼즐 피딩이나 새로운 장난감에 깊이 빠져들 거예요. 서랍이나 문 여는 법을 새로 터득할 수도 있어요!',
+    '임': '탐험 욕구가 왕성한 달! 집 안 구석구석을 다시 점검하고 싶어해요. 상자나 가방이 들어오면 제일 먼저 들어가보는 친구가 될 거예요.',
+    '계': '신비로운 기운이 감도는 달! 주인과의 교감이 특히 깊어져요. 밤이면 조용히 곁에 와서 앉아있는 시간이 많아질 거예요. 깊은 애정을 느낄 수 있어요.'
+  }
+}
+
+function getMonthlyLuck(month) {
+  // 월의 천간 근사
+  const year = new Date().getFullYear()
+  const monthGanIdx = ((year - 4) % 5 * 2 + month) % 10
+  const monthGan = CHEONGAN[monthGanIdx]
+  return {
+    monthGan,
+    dogMsg: MONTHLY_LUCK.dog[monthGan],
+    catMsg: MONTHLY_LUCK.cat[monthGan]
+  }
+}
+
 const LUCK_MSG = {
   '木': '새로운 성장의 기운이 있어요. 새로운 장난감이나 놀이를 소개해보세요!',
   '火': '에너지가 넘치는 시기! 활동량을 늘리고 함께 놀아주세요.',
@@ -364,6 +403,8 @@ export function computeSaju(year, month, day, hour, petType = 'dog') {
   const todayLuck = getTodayLuck()
   const todayLuckElement = CHEONGAN_ELEMENT[CHEONGAN.indexOf(todayLuck)]
   const compatibility = getCompatibility(mainElement, todayLuckElement)
+  const currentMonth = new Date().getMonth() + 1
+  const monthlyLuck = getMonthlyLuck(currentMonth)
 
   return {
     petType: type,
@@ -377,6 +418,7 @@ export function computeSaju(year, month, day, hour, petType = 'dog') {
     todayLuck,
     todayLuckMsg: LUCK_MSG[todayLuckElement],
     compatibility,
+    monthlyLuck,
     elementNames: ELEMENT_NAMES,
     elementColors: ELEMENT_COLORS
   }
