@@ -33,8 +33,8 @@ function deleteHistory(id) {
 
 loadHistory()
 
-function onSubmit({ name, breed, year, month, day, hour }) {
-  const data = { petType: petType, name, breed, year, month, day, hour, ...computeSaju(year, month, day, hour, petType) }
+function onSubmit({ petType, name, breed, year, month, day, hour }) {
+  const data = { petType, name, breed, year, month, day, hour, ...computeSaju(year, month, day, hour, petType) }
   result.value = data
   showHistory.value = false
   saveHistory(data)
