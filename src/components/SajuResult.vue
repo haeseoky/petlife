@@ -63,6 +63,10 @@ async function copyToClipboard(text) {
   shareToast.value = true
   setTimeout(() => { shareToast.value = false }, 2000)
 }
+
+function printResult() {
+  window.print()
+}
 </script>
 
 <template>
@@ -163,6 +167,7 @@ async function copyToClipboard(text) {
 
     <div class="btn-group">
       <button class="share-btn" @click="shareResult">결과 공유하기</button>
+      <button class="print-btn" @click="printResult">저장/인쇄</button>
       <button class="reset-btn" @click="emit('reset')">다시 보기</button>
     </div>
     <div class="share-toast" v-if="shareToast">클립보드에 복사되었습니다</div>
@@ -377,6 +382,22 @@ async function copyToClipboard(text) {
 }
 .share-btn:hover {
   background: #674E40;
+}
+.print-btn {
+  flex: 1;
+  padding: 16px;
+  background: transparent;
+  color: var(--text-sub);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.print-btn:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 .reset-btn {
   flex: 1;

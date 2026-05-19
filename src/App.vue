@@ -217,4 +217,44 @@ input, select {
   -moz-appearance: none;
   appearance: none;
 }
-</style>
+
+/* 인쇄 스타일 */
+@media print {
+  body {
+    background: white !important;
+    color: #2C2C2C !important;
+  }
+  .header, .footer, .btn-group, .share-toast, .dark-toggle, .history-toggle {
+    display: none !important;
+  }
+  .app {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .pillar-card, .personality-card, .element-card, .detail-card, .luck-card, .tips-card {
+    break-inside: avoid;
+    border-color: #ddd !important;
+    background: white !important;
+  }
+  .result-title {
+    font-size: 1.5rem !important;
+  }
+  .personality-title {
+    color: #7B5E4D !important;
+  }
+  .pillar-value {
+    color: #7B5E4D !important;
+  }
+  .trait-tag {
+    background: #f5f0eb !important;
+    color: #7B5E4D !important;
+  }
+  .compat-tag {
+    background: #f0f5ff !important;
+    color: #3B82F6 !important;
+  }
+  .bar-fill {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}</style>
