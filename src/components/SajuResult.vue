@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from 'vue'
+
 const props = defineProps({
   result: { type: Object, required: true }
 })
@@ -13,6 +15,49 @@ const pillars = [
   { label: '일주(日柱)', value: dayPillar },
   { label: '시주(時柱)', value: hourPillar }
 ]
+
+const shareToast = ref(false)
+
+function buildShareText() {
+  const elSummary = Object.entries(distribution)
+    .map(([el, pct]) => `${elementNames[el]} ${pct}%`)
+    .join(' | ')
+  const missingText = missing.length
+    ? `\n부족한 오행: ${missing.map(e => elementNames[e]).join(', ')}`
+    : ''
+  return [
+    `🐾 ${name}(${breed})의 사주 결과`,
+    `━━━━━━━━━━━━━━`,
+    `사주: ${yearPillar} ${monthPillar} ${dayPillar} ${hourPillar}`,
+    `일주: ${ilju}`,
+    ``,
+    `${personality}`,
+    ``,
+    `오행 분포: ${elSummary}${missingText}`,
+    ``,
+    `🐾 PetLife — 강아지 사주`,
+    `https://petlife-pe7.pages.dev`
+  ].join('\n')
+}
+
+async function shareResult() {
+  const text = buildShareText()
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: `${name}의 사주 결과`, text })
+    } catch (e) {
+      if (e.name !== 'AbortError') copyToClipboard(text)
+    }
+  } else {
+    copyToClipboard(text)
+  }
+}
+
+async function copyToClipboard(text) {
+  await navigator.clipboard.writeText(text)
+  shareToast.value = true
+  setTimeout(() => { shareToast.value = false }, 2000)
+}
 </script>
 
 <template>
@@ -64,7 +109,11 @@ const pillars = [
       </ul>
     </div>
 
-    <button class="reset-btn" @click="emit('reset')">🔄 다시 보기</button>
+    <div class="btn-group">
+      <button class="share-btn" @click="shareResult">결과 공유하기</button>
+      <button class="reset-btn" @click="emit('reset')">다시 보기</button>
+    </div>
+    <div class="share-toast" v-if="shareToast">클립보드에 복사되었습니다</div>
   </section>
 </template>
 
@@ -189,22 +238,59 @@ const pillars = [
 .tips-card li:last-child {
   border-bottom: none;
 }
+.btn-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+.share-btn {
+  flex: 1;
+  padding: 16px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(123, 94, 77, 0.15);
+}
+.share-btn:hover {
+  background: #674E40;
+}
 .reset-btn {
-  display: block;
-  width: 100%;
-  padding: 18px;
+  flex: 1;
+  padding: 16px;
   background: transparent;
   color: var(--text-sub);
   border: 1px solid var(--border-light);
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-top: 32px;
   cursor: pointer;
 }
 .reset-btn:hover {
   background: var(--primary-light);
   color: var(--primary);
   border-color: var(--primary);
+}
+.share-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-main);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  z-index: 100;
+  animation: toast-in 0.3s ease;
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 </style>
