@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import CompatSection from './CompatSection.vue'
+import FengShuiGuide from './FengShuiGuide.vue'
 import DailyMission from './DailyMission.vue'
 import LuckyCalendar from './LuckyCalendar.vue'
 import PetTarot from './PetTarot.vue'
@@ -223,6 +224,9 @@ async function saveAsImage() {
 
     <!-- 반려동물 밸런스 게임 -->
     <PetBalanceGame :mainElement="mainElement" :petType="result.petType" />
+
+    <!-- 행운의 방위 & 인테리어 -->
+    <FengShuiGuide :result="result" />
 
     <!-- 반려동물 성격 유형 -->
     <div class="detail-card pet-type-card">
