@@ -46,6 +46,7 @@ const resultRef = ref(null)
 
 const scrollProgress = ref(0)
 const activeSection = ref('')
+const showScrollTop = ref(false)
 
 const navSections = [
   { id: 'section-personality', label: '성격분석' },
@@ -68,9 +69,11 @@ function handleScroll() {
   const winScroll = window.scrollY
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
   scrollProgress.value = (winScroll / height) * 100
+  showScrollTop.value = winScroll > 400
 }
 
 let observer = null
+let revealObserver = null
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
@@ -87,12 +90,30 @@ onMounted(() => {
     const el = document.getElementById(s.id)
     if (el) observer.observe(el)
   })
+
+  // Entrance animations observer
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active')
+        revealObserver.unobserve(entry.target)
+      }
+    })
+  }, { threshold: 0.15 })
+
+  const revealEls = document.querySelectorAll('.reveal')
+  revealEls.forEach(el => revealObserver.observe(el))
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
   if (observer) observer.disconnect()
+  if (revealObserver) revealObserver.disconnect()
 })
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 
 function scrollToSection(id) {
   const el = document.getElementById(id)
@@ -222,7 +243,7 @@ async function saveAsImage() {
     <AdBanner slot="" format="auto" />
 
     <!-- 성격 분석 -->
-    <div id="section-personality" class="personality-card">
+    <div id="section-personality" class="personality-card reveal">
       <h3>성격 분석</h3>
       <p class="personality-title">{{ personality.title }}</p>
       <p class="personality-desc">{{ personality.desc }}</p>
@@ -233,25 +254,25 @@ async function saveAsImage() {
     </div>
 
     <!-- 산책 스타일 -->
-    <div class="detail-card">
+    <div class="detail-card reveal">
       <h3>{{ petLabel === '고양이' ? '놀이 & 활동 스타일' : '산책 스타일' }}</h3>
       <p>{{ personality.walkStyle }}</p>
     </div>
 
     <!-- 식성 -->
-    <div class="detail-card">
+    <div class="detail-card reveal">
       <h3>식성 & 추천 식단</h3>
       <p>{{ personality.foodPref }}</p>
     </div>
 
     <!-- 건강 팁 -->
-    <div class="detail-card">
+    <div class="detail-card reveal">
       <h3>건강 관리 팁</h3>
       <p>{{ personality.healthTip }}</p>
     </div>
 
     <!-- 오늘의 운세 -->
-    <div id="section-today-luck" class="luck-card">
+    <div id="section-today-luck" class="luck-card reveal">
       <h3>오늘의 운세</h3>
       <p class="luck-main">오늘 일주: <strong>{{ todayLuck }}</strong></p>
       <p class="luck-compat">{{ compatibility }}</p>
@@ -259,50 +280,50 @@ async function saveAsImage() {
     </div>
 
     <!-- 이달의 운세 -->
-    <div id="section-month-luck" class="luck-card">
+    <div id="section-month-luck" class="luck-card reveal">
       <h3>이달의 운세</h3>
       <p class="luck-main">이달의 기운: <strong>{{ monthlyLuck.monthGan }}</strong></p>
       <p class="luck-msg">{{ petLabel === '고양이' ? monthlyLuck.catMsg : monthlyLuck.dogMsg }}</p>
     </div>
 
     <!-- 반려동물 궁합 -->
-    <CompatSection id="section-compat" :myResult="result" />
+    <CompatSection id="section-compat" class="reveal" :myResult="result" />
 
     <!-- 중간 광고 -->
     <AdBanner slot="" format="auto" />
 
     <!-- 반려동물 MBTI 성격 유형 -->
-    <PetMBTI id="section-mbti" :petType="result.petType" :ilju="ilju" :mainElement="mainElement" :missing="missing" :hourPillar="hourPillar" />
+    <PetMBTI id="section-mbti" class="reveal" :petType="result.petType" :ilju="ilju" :mainElement="mainElement" :missing="missing" :hourPillar="hourPillar" />
 
     <!-- 오늘의 반려동물 운세 캡슐 -->
-    <PetFortuneGacha :name="name" :mainElement="mainElement" />
+    <PetFortuneGacha class="reveal" :name="name" :mainElement="mainElement" />
 
     <!-- 럭키 데이 캘린더 -->
-    <LuckyCalendar id="section-calendar" :result="result" />
+    <LuckyCalendar id="section-calendar" class="reveal" :result="result" />
 
     <!-- 반려동물 주간 운세 -->
-    <WeeklyHoroscope :result="result" />
+    <WeeklyHoroscope class="reveal" :result="result" />
 
     <!-- 반려동물 밸런스 게임 -->
-    <PetBalanceGame id="section-balance" :mainElement="mainElement" :petType="result.petType" />
+    <PetBalanceGame id="section-balance" class="reveal" :mainElement="mainElement" :petType="result.petType" />
 
     <!-- 반려동물 생일 카운트다운 -->
-    <BirthdayCountdown id="section-birthday" :result="result" />
+    <BirthdayCountdown id="section-birthday" class="reveal" :result="result" />
 
     <!-- 반려동물 서양 별자리 -->
-    <PetZodiac id="section-zodiac" :month="result.month" :day="result.day" :petType="result.petType" :mainElement="mainElement" />
+    <PetZodiac id="section-zodiac" class="reveal" :month="result.month" :day="result.day" :petType="result.petType" :mainElement="mainElement" />
 
     <!-- 반려동물 럭키 푸드 -->
-    <PetLuckyFood id="section-lucky-food" :petType="result.petType" :mainElement="mainElement" :missing="missing" />
+    <PetLuckyFood id="section-lucky-food" class="reveal" :petType="result.petType" :mainElement="mainElement" :missing="missing" />
 
     <!-- 행운의 방위 & 인테리어 -->
     <!-- 하단 광고 -->
     <AdBanner slot="" format="auto" />
 
-    <FengShuiGuide id="section-fengshui" :result="result" />
+    <FengShuiGuide id="section-fengshui" class="reveal" :result="result" />
 
     <!-- 맞춤 팁 -->
-    <div id="section-age" class="detail-card">
+    <div id="section-age" class="detail-card reveal">
       <h3>{{ petLabel }} 나이 환산</h3>
       <div class="age-display">
         <div class="age-item">
@@ -319,7 +340,7 @@ async function saveAsImage() {
     </div>
 
     <!-- 럭키 아이템 -->
-    <div id="section-lucky-item" class="detail-card">
+    <div id="section-lucky-item" class="detail-card reveal">
       <h3>오늘의 럭키 아이템</h3>
       <div class="lucky-grid">
         <div class="lucky-item">
@@ -346,7 +367,7 @@ async function saveAsImage() {
     </div>
 
     <!-- 럭키 네임 추천 -->
-    <div class="detail-card">
+    <div class="detail-card reveal">
       <div class="card-header">
         <h3>{{ t('luckyNameTitle') }}</h3>
         <button class="refresh-btn" @click="refreshLuckyNames">
@@ -369,7 +390,7 @@ async function saveAsImage() {
     </div>
 
     <!-- 맞춤 케어 팁 -->
-    <div id="section-care-tip" class="tips-card">
+    <div id="section-care-tip" class="tips-card reveal">
       <h3>맞춤 케어 팁</h3>
       <ul>
         <li v-if="missing.includes('木')">산책과 자연 접촉이 좋아요! 공원 산책을 자주 시켜주세요.</li>
@@ -381,13 +402,25 @@ async function saveAsImage() {
       </ul>
     </div>
 
-    <div class="btn-group">
+    <div class="btn-group reveal">
       <button class="share-btn" @click="shareResult">결과 공유하기</button>
       <button class="print-btn" @click="printResult">저장/인쇄</button>
       <button class="image-btn" @click="saveAsImage" :disabled="savingImage">{{ savingImage ? '저장 중...' : '이미지 저장' }}</button>
       <button class="reset-btn" @click="emit('reset')">다시 보기</button>
     </div>
     <div class="share-toast" v-if="shareToast">클립보드에 복사되었습니다</div>
+
+    <!-- 위로 가기 버튼 -->
+    <transition name="fade">
+      <button 
+        v-if="showScrollTop" 
+        class="back-to-top" 
+        @click="scrollToTop"
+        aria-label="맨 위로 이동"
+      >
+        <span class="arrow-up">↑</span>
+      </button>
+    </transition>
   </section>
   </transition>
 </template>
@@ -981,6 +1014,73 @@ async function saveAsImage() {
   border-radius: 4px;
   transition: width 0.5s ease;
 }
+
+/* Entrance Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  will-change: opacity, transform;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 30px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 99;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.back-to-top:hover {
+  background: #674E40;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+.arrow-up {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    right: 16px;
+    bottom: 24px;
+    width: 44px;
+    height: 44px;
+    opacity: 0.9;
+  }
+}
+
+/* Transitions */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
 .fade-up-enter-active {
   transition: all 0.5s ease;
 }
