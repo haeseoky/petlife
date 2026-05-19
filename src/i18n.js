@@ -127,7 +127,37 @@ const messages = {
     traitRelaxed: '평화로운 휴식가',
     traitSocial: '사교적인 인기쟁이',
     traitIndependent: '당당한 독립가',
-    traitSensitive: '섬세한 감성파'
+    traitSensitive: '섬세한 감성파',
+    dailyMission: {
+      title: '🐾 오늘의 반려동물 미션',
+      desc: '오늘 우리 아이에게 필요한 오행 기운을 채워주세요!',
+      completed: '오늘의 미션 완료!',
+      congrats: '축하합니다! 3개 미션을 모두 완료했어요!',
+      progress: '미션 달성도',
+      badge: '오늘의 우수 반려인',
+      missions: {
+        wood: {
+          dog: { title: '숲속 탐험', desc: '나무가 많은 곳에서 자연의 냄새를 맡게 해주세요.', time: '15분' },
+          cat: { title: '캣그라스 파티', desc: '싱싱한 캣그라스를 제공하거나 풀 냄새를 맡게 해주세요.', time: '10분' }
+        },
+        fire: {
+          dog: { title: '에너지 발산', desc: '심박수가 올라갈 정도로 신나게 뛰어놀아 주세요.', time: '20분' },
+          cat: { title: '우다다 타임', desc: '낚시대로 사냥 본능을 자극해 힘차게 움직이게 해주세요.', time: '15분' }
+        },
+        earth: {
+          dog: { title: '흙길 산책', desc: '아스팔트 대신 폭신한 흙이나 잔디를 밟게 해주세요.', time: '15분' },
+          cat: { title: '아늑한 휴식', desc: '가장 좋아하는 박스나 구석진 곳에서 푹 쉬게 해주세요.', time: '30분' }
+        },
+        metal: {
+          dog: { title: '영리한 훈련', desc: '새로운 개인기를 가르치거나 앉아/기다려 복습을 해보세요.', time: '10분' },
+          cat: { title: '완벽한 그루밍', desc: '평소보다 더 꼼꼼하고 부드럽게 빗질을 해주세요.', time: '15분' }
+        },
+        water: {
+          dog: { title: '수분 충전', desc: '신선한 물로 교체해주고 충분히 마실 수 있게 도와주세요.', time: '5분' },
+          cat: { title: '흐르는 물 관찰', desc: '음수대나 수도꼭지 물소리로 호기심을 자극해보세요.', time: '10분' }
+        }
+      }
+    }
   },
   en: {
     appTitle: '🐾 PetLife',
@@ -220,7 +250,37 @@ const messages = {
     tarotTitle: '🐾 Daily Tarot',
     tarotInstruction: 'Choose a card that calls to you',
     tarotRedraw: 'Draw Again',
-    tarotSharePrefix: 'Tarot Card'
+    tarotSharePrefix: 'Tarot Card',
+    dailyMission: {
+      title: '🐾 Daily Pet Mission',
+      desc: 'Fill up your pet\'s energy with today\'s missions!',
+      completed: 'Today\'s Mission Complete!',
+      congrats: 'Congratulations! All 3 missions completed!',
+      progress: 'Mission Progress',
+      badge: 'Best Pet Parent',
+      missions: {
+        wood: {
+          dog: { title: 'Forest Adventure', desc: 'Let your pet smell nature where there are many trees.', time: '15m' },
+          cat: { title: 'Catgrass Party', desc: 'Provide fresh catgrass or let them smell some plants.', time: '10m' }
+        },
+        fire: {
+          dog: { title: 'Burn Energy', desc: 'Play actively until their heart rate goes up.', time: '20m' },
+          cat: { title: 'Zoomie Time', desc: 'Stimulate their hunting instinct with a wand toy.', time: '15m' }
+        },
+        earth: {
+          dog: { title: 'Soil Walk', desc: 'Let them walk on soft soil or grass instead of asphalt.', time: '15m' },
+          cat: { title: 'Cozy Rest', desc: 'Let them rest in their favorite box or a quiet corner.', time: '30m' }
+        },
+        metal: {
+          dog: { title: 'Smart Training', desc: 'Teach a new trick or review basic commands.', time: '10m' },
+          cat: { title: 'Perfect Grooming', desc: 'Brush them more thoroughly and gently than usual.', time: '15m' }
+        },
+        water: {
+          dog: { title: 'Hydration', desc: 'Replace with fresh water and help them drink enough.', time: '5m' },
+          cat: { title: 'Flowing Water', desc: 'Stimulate curiosity with a water fountain or tap.', time: '10m' }
+        }
+      }
+    }
   }
 }
 

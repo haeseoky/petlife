@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import CompatSection from './CompatSection.vue'
+import DailyMission from './DailyMission.vue'
 import LuckyCalendar from './LuckyCalendar.vue'
 import PetTarot from './PetTarot.vue'
 import { t } from '../i18n.js'
@@ -210,6 +211,9 @@ async function saveAsImage() {
 
     <!-- 반려동물 궁합 -->
     <CompatSection :myResult="result" />
+
+    <!-- 오늘의 반려동물 미션 -->
+    <DailyMission :petType="result.petType" :mainElement="mainElement" :missing="missing" />
 
     <!-- 럭키 데이 캘린더 -->
     <LuckyCalendar :result="result" />
