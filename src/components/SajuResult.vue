@@ -12,6 +12,7 @@ import BirthdayCountdown from './BirthdayCountdown.vue'
 import PetWishCoupons from './PetWishCoupons.vue'
 import PetZodiac from './PetZodiac.vue'
 import PetLuckyFood from './PetLuckyFood.vue'
+import PetFortuneGacha from './PetFortuneGacha.vue'
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
@@ -228,6 +229,9 @@ async function saveAsImage() {
 
     <!-- 오늘의 반려동물 미션 -->
     <DailyMission :petType="result.petType" :mainElement="mainElement" :missing="missing" />
+
+    <!-- 오늘의 반려동물 운세 캡슐 -->
+    <PetFortuneGacha :name="name" :mainElement="mainElement" />
 
     <!-- 럭키 데이 캘린더 -->
     <LuckyCalendar :result="result" />
