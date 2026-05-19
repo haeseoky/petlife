@@ -77,12 +77,13 @@ function formatDate(iso) {
 }
 .item-date {
   font-size: 0.75rem;
-  color: #B0A8A0;
+  color: var(--text-sub);
+  opacity: 0.5;
 }
 .item-delete {
   background: none;
   border: none;
-  color: #CCC6C0;
+  color: var(--placeholder);
   font-size: 0.9rem;
   padding: 4px 8px;
   cursor: pointer;

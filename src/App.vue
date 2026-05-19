@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watchEffect } from 'vue'
+import { ref, onMounted } from 'vue'
 import HeroSection from './components/HeroSection.vue'
 import SajuForm from './components/SajuForm.vue'
 import SajuResult from './components/SajuResult.vue'
@@ -7,9 +7,33 @@ import HistoryList from './components/HistoryList.vue'
 import { computeSaju } from './saju'
 
 const STORAGE_KEY = 'petlife_history'
+const DARK_KEY = 'petlife_dark'
 const result = ref(null)
 const showHistory = ref(false)
 const history = ref([])
+const isDark = ref(false)
+
+function initDarkMode() {
+  const saved = localStorage.getItem(DARK_KEY)
+  if (saved !== null) {
+    isDark.value = saved === 'true'
+  } else {
+    isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
+  applyDark()
+}
+
+function applyDark() {
+  document.documentElement.classList.toggle('dark', isDark.value)
+}
+
+function toggleDark() {
+  isDark.value = !isDark.value
+  localStorage.setItem(DARK_KEY, String(isDark.value))
+  applyDark()
+}
+
+onMounted(initDarkMode)
 
 function loadHistory() {
   try {
@@ -55,6 +79,7 @@ function reset() {
   <div class="app">
     <header class="header">
       <span class="logo" @click="reset" style="cursor:pointer">🐾 PetLife</span>
+      <button class="dark-toggle" @click="toggleDark" :title="isDark ? '라이트 모드' : '다크 모드'">{{ isDark ? '☀️' : '🌙' }}</button>
       <button v-if="history.length && !result" class="history-toggle" @click="showHistory = !showHistory">
         {{ showHistory ? '닫기' : '기록 ' + history.length }}
       </button>
@@ -83,6 +108,34 @@ function reset() {
   --border-light: #E5E1DA;
   --bg-main: #FDFCFB;
   --white: #FFFFFF;
+  --card-bg: #FFFFFF;
+  --bar-bg: #F0EDE9;
+  --missing-bg: #FFF9F0;
+  --missing-text: #A37B45;
+  --compat-bg: #F0F7FF;
+  --compat-text: #3B82F6;
+  --tip-border: #F8F7F5;
+  --toast-bg: #2C2C2C;
+  --placeholder: #CCC6C0;
+}
+
+html.dark {
+  --primary: #C4A882;
+  --primary-light: #2A2420;
+  --text-main: #E8E2DC;
+  --text-sub: #A89E96;
+  --border-light: #3A3430;
+  --bg-main: #1A1714;
+  --white: #242018;
+  --card-bg: #242018;
+  --bar-bg: #3A3430;
+  --missing-bg: #2E2518;
+  --missing-text: #C4A882;
+  --compat-bg: #1E2A3A;
+  --compat-text: #6BA3F7;
+  --tip-border: #3A3430;
+  --toast-bg: #E8E2DC;
+  --placeholder: #5A524A;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -93,6 +146,7 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   letter-spacing: -0.01em;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app {
@@ -108,6 +162,24 @@ body {
   padding: 32px 0;
 }
 
+.dark-toggle {
+  margin-left: auto;
+  background: var(--primary-light);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+.dark-toggle:hover {
+  transform: scale(1.1);
+}
+
 .logo {
   font-size: 1.25rem;
   font-weight: 700;
@@ -116,7 +188,7 @@ body {
 }
 
 .history-toggle {
-  margin-left: auto;
+  margin-left: 8px;
   background: var(--primary-light);
   color: var(--primary);
   border: none;
@@ -131,7 +203,8 @@ body {
   text-align: center;
   padding: 60px 0 20px;
   font-size: 0.85rem;
-  color: #B0A8A0;
+  color: var(--text-sub);
+  opacity: 0.5;
 }
 
 button {

@@ -277,7 +277,7 @@ async function copyToClipboard(text) {
 .bar-bg {
   flex: 1;
   height: 8px;
-  background: #F0EDE9;
+  background: var(--bar-bg);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -295,10 +295,10 @@ async function copyToClipboard(text) {
 .missing-text {
   margin-top: 20px;
   padding: 12px;
-  background: #FFF9F0;
+  background: var(--missing-bg);
   border-radius: 8px;
   font-size: 0.85rem;
-  color: #A37B45;
+  color: var(--missing-text);
   text-align: center;
 }
 .detail-card p {
@@ -312,8 +312,8 @@ async function copyToClipboard(text) {
   flex-wrap: wrap;
 }
 .compat-tag {
-  background: #F0F7FF;
-  color: #3B82F6;
+  background: var(--compat-bg);
+  color: var(--compat-text);
   padding: 6px 14px;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -349,7 +349,7 @@ async function copyToClipboard(text) {
   line-height: 1.6;
   color: var(--text-sub);
   font-size: 0.95rem;
-  border-bottom: 1px solid #F8F7F5;
+  border-bottom: 1px solid var(--tip-border);
 }
 .tips-card li:last-child {
   border-bottom: none;
@@ -395,8 +395,8 @@ async function copyToClipboard(text) {
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--text-main);
-  color: var(--white);
+  background: var(--toast-bg);
+  color: var(--bg-main);
   padding: 12px 24px;
   border-radius: 8px;
   font-size: 0.9rem;
