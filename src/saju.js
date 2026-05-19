@@ -654,3 +654,69 @@ function getLuckyItems(element, petType) {
   }
   return ITEMS[element]?.[petType] || ITEMS['土'][petType]
 }
+
+const WEEKLY_MESSAGES = {
+  dog: {
+    5: ["컨디션 최고! 신나게 뛰어놀기 좋은 날이에요.", "주인과의 교감이 완벽한 날, 야외 활동을 추천해요.", "새로운 친구를 사귈 수 있는 아주 좋은 기운이네요."],
+    4: ["안정적인 하루예요. 평소처럼 즐거운 산책을 즐기세요.", "식욕도 좋고 활발한 하루가 예상됩니다.", "집안에서도 즐겁게 놀 수 있는 편안한 날이에요."],
+    3: ["무난한 하루예요. 일상적인 루틴을 지켜주세요.", "적당한 휴식과 산책이 필요한 날입니다.", "특별한 일은 없지만 평화로운 하루가 될 거예요."],
+    2: ["조금 예민할 수 있어요. 차분한 환경을 만들어주세요.", "무리한 활동보다는 집에서 쉬는 것을 추천해요.", "낯선 곳보다는 익숙한 길로 산책하는 게 좋아요."],
+    1: ["컨디션 관리에 신경 써주세요. 푹 쉬게 해주는 게 최고!", "오늘은 스트레스를 피하고 안정을 취해야 해요.", "소화가 잘 안 될 수 있으니 식단에 유의하세요."]
+  },
+  cat: {
+    5: ["호기심 폭발! 새로운 장난감으로 신나게 놀아주세요.", "기분이 아주 좋아요. 골골송이 멈추지 않는 날!", "사냥 본능이 최고조! 즐거운 놀이 시간을 가져보세요."],
+    4: ["평온하고 행복한 하루예요. 햇살 아래 낮잠이 꿀맛!", "주인의 곁에서 안정을 느끼는 따뜻한 날입니다.", "그루밍도 열심히 하고 컨디션이 좋은 상태예요."],
+    3: ["일상적인 하루예요. 좋아하는 자리에 웅크려 쉬기 좋아요.", "평소와 다름없는 편안한 일상이 이어집니다.", "조용히 창밖을 구경하며 시간을 보내기 적당해요."],
+    2: ["작은 소리에도 깜짝 놀랄 수 있으니 주의해주세요.", "혼자만의 시간이 더 필요한 날일 수 있어요.", "낯선 사람의 방문은 가급적 피하는 게 좋습니다."],
+    1: ["기운이 조금 없을 수 있어요. 따뜻하게 보살펴주세요.", "컨디션이 저조하니 무리한 놀이는 삼가주세요.", "식사량이 줄 수 있으니 좋아하는 간식을 챙겨주세요."]
+  }
+}
+
+export function computeWeeklyFortune(dayPillar, mainElement, missing, petType) {
+  const generating = { '木': '火', '火': '土', '土': '金', '金': '水', '水': '木' }
+  const restraining = { '木': '土', '土': '水', '水': '火', '火': '金', '金': '木' }
+
+  const now = new Date()
+  const currentDay = now.getDay() // 0 (Sun) to 6 (Sat)
+  const diffToMon = currentDay === 0 ? -6 : 1 - currentDay
+  const monday = new Date(now)
+  monday.setDate(now.getDate() + diffToMon)
+
+  const days = []
+  const myGan = dayPillar[0]
+  const myElement = CHEONGAN_ELEMENT[CHEONGAN.indexOf(myGan)]
+
+  for (let i = 0; i < 7; i++) {
+    const targetDate = new Date(monday)
+    targetDate.setDate(monday.getDate() + i)
+    
+    const year = targetDate.getFullYear()
+    const month = targetDate.getMonth() + 1
+    const day = targetDate.getDate()
+    
+    const a = Math.floor((14 - month) / 12)
+    const y = year + 4800 - a
+    const m = month + 12 * a - 3
+    const jdn = day + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045
+    const dayGanIdx = (jdn - 1) % 10
+    const dayElement = CHEONGAN_ELEMENT[dayGanIdx]
+
+    let score = 3
+    if (myElement === dayElement) score = 4
+    else if (generating[myElement] === dayElement || generating[dayElement] === myElement) score = 5
+    else if (restraining[myElement] === dayElement || restraining[dayElement] === myElement) score = 2
+
+    const msgList = WEEKLY_MESSAGES[petType][score]
+    const message = msgList[dayGanIdx % msgList.length]
+
+    days.push({
+      date: `${month}/${day}`,
+      dayName: ['월','화','수','목','금','토','일'][i],
+      score,
+      message,
+      isToday: targetDate.toDateString() === now.toDateString()
+    })
+  }
+
+  return { days, todayIndex: currentDay === 0 ? 6 : currentDay - 1 }
+}

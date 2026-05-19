@@ -6,6 +6,7 @@ import DailyMission from './DailyMission.vue'
 import LuckyCalendar from './LuckyCalendar.vue'
 import PetTarot from './PetTarot.vue'
 import PetMBTI from './PetMBTI.vue'
+import WeeklyHoroscope from './WeeklyHoroscope.vue'
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
@@ -225,6 +226,9 @@ async function saveAsImage() {
 
     <!-- 반려동물 타로 -->
     <PetTarot :result="result" @select="onTarotSelect" />
+
+    <!-- 반려동물 주간 운세 -->
+    <WeeklyHoroscope :result="result" />
 
     <!-- 반려동물 밸런스 게임 -->
     <PetBalanceGame :mainElement="mainElement" :petType="result.petType" />
