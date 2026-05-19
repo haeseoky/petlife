@@ -21,6 +21,8 @@ const pillars = [
 ]
 
 const shareToast = ref(false)
+const savingImage = ref(false)
+const resultRef = ref(null)
 
 function buildShareText() {
   const elSummary = Object.entries(distribution)
@@ -67,11 +69,38 @@ async function copyToClipboard(text) {
 function printResult() {
   window.print()
 }
+
+async function saveAsImage() {
+  savingImage.value = true
+  try {
+    const el = resultRef.value
+    if (!el) return
+    // 버튼/토스트 임시 숨김
+    const btnGroup = el.querySelector('.btn-group')
+    const toast = el.querySelector('.share-toast')
+    if (btnGroup) btnGroup.style.display = 'none'
+    if (toast) toast.style.display = 'none'
+    const canvas = await window.html2canvas(el, {
+      backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-main').trim() || '#FDFCFB',
+      scale: 2,
+      useCORS: true
+    })
+    if (btnGroup) btnGroup.style.display = ''
+    if (toast) toast.style.display = ''
+    const link = document.createElement('a')
+    link.download = `${name}_saju.png`
+    link.href = canvas.toDataURL('image/png')
+    link.click()
+  } catch (e) {
+    console.error('이미지 저장 실패:', e)
+  }
+  savingImage.value = false
+}
 </script>
 
 <template>
   <transition name="fade-up">
-  <section class="result">
+  <section class="result" ref="resultRef">
     <h2 class="result-title">{{ name }}의 사주</h2>
     <p class="breed-tag">{{ breed }} · {{ yearAnimal }}띠</p>
 
@@ -175,6 +204,7 @@ function printResult() {
     <div class="btn-group">
       <button class="share-btn" @click="shareResult">결과 공유하기</button>
       <button class="print-btn" @click="printResult">저장/인쇄</button>
+      <button class="image-btn" @click="saveAsImage" :disabled="savingImage">{{ savingImage ? '저장 중...' : '이미지 저장' }}</button>
       <button class="reset-btn" @click="emit('reset')">다시 보기</button>
     </div>
     <div class="share-toast" v-if="shareToast">클립보드에 복사되었습니다</div>
@@ -405,6 +435,25 @@ function printResult() {
   background: var(--primary-light);
   color: var(--primary);
   border-color: var(--primary);
+}
+.image-btn {
+  flex: 1;
+  padding: 16px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.image-btn:hover:not(:disabled) {
+  background: var(--primary);
+  color: var(--white);
+}
+.image-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 .reset-btn {
   flex: 1;
