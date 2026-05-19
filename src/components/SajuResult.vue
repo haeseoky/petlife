@@ -65,6 +65,7 @@ async function copyToClipboard(text) {
 </script>
 
 <template>
+  <transition name="fade-up">
   <section class="result">
     <h2 class="result-title">{{ name }}의 사주</h2>
     <p class="breed-tag">{{ breed }} · {{ yearAnimal }}띠</p>
@@ -162,6 +163,7 @@ async function copyToClipboard(text) {
     </div>
     <div class="share-toast" v-if="shareToast">클립보드에 복사되었습니다</div>
   </section>
+  </transition>
 </template>
 
 <style scoped>
@@ -406,5 +408,12 @@ async function copyToClipboard(text) {
 @keyframes toast-in {
   from { opacity: 0; transform: translateX(-50%) translateY(8px); }
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.fade-up-enter-active {
+  transition: all 0.5s ease;
+}
+.fade-up-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
 }
 </style>

@@ -10,6 +10,7 @@ const year = ref(2024)
 const month = ref(1)
 const day = ref(1)
 const hour = ref(12)
+const loading = ref(false)
 
 const dogBreeds = [
   '말티즈', '푸들', '포메라니안', '치와와', '요크셔테리어',
@@ -34,15 +35,19 @@ const catBreeds = [
 const breeds = computed(() => petType.value === 'dog' ? dogBreeds : catBreeds)
 
 function handleSubmit() {
-  emit('submit', {
-    petType: petType.value,
-    name: name.value,
-    breed: breed.value,
-    year: year.value,
-    month: month.value,
-    day: day.value,
-    hour: hour.value
-  })
+  loading.value = true
+  setTimeout(() => {
+    emit('submit', {
+      petType: petType.value,
+      name: name.value,
+      breed: breed.value,
+      year: year.value,
+      month: month.value,
+      day: day.value,
+      hour: hour.value
+    })
+    loading.value = false
+  }, 600)
 }
 
 watch(petType, () => { breed.value = '' })
@@ -93,7 +98,10 @@ watch(petType, () => { breed.value = '' })
       </select>
     </div>
 
-    <button type="submit" class="submit-btn">🔮 사주 보기</button>
+    <button type="submit" class="submit-btn" :disabled="loading">
+      <span v-if="loading" class="spinner"></span>
+      <span v-else>사주 보기</span>
+    </button>
   </form>
 </template>
 
@@ -171,9 +179,28 @@ watch(petType, () => { breed.value = '' })
   margin-top: 16px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(123, 94, 77, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
 }
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
   background: #674E40;
   transform: translateY(-1px);
+}
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 </style>

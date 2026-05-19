@@ -1,0 +1,16 @@
+{
+  "name": "PetLife",
+  "short_name": "PetLife",
+  "description": "강아지·고양이 사주(四柱) 웹서비스",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFCFB",
+  "theme_color": "#7B5E4D",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
