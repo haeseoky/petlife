@@ -74,7 +74,11 @@ const messages = {
     resultOf: '의 사주 결과',
     saveProfile: '내 반려동물 프로필 저장',
     savedProfiles: '저장된 프로필',
-    deleteProfile: '삭제'
+    deleteProfile: '삭제',
+    luckyNameTitle: '럭키 네임 추천',
+    luckyNameDesc: '반려동물에게 좋은 기운을 주는 이름들이에요',
+    refreshBtn: '다시 뽑기',
+    meaningLabel: '의미'
   },
   en: {
     appTitle: '🐾 PetLife',
@@ -149,7 +153,11 @@ const messages = {
     resultOf: '\'s Saju Result',
     saveProfile: 'Save my pet profile',
     savedProfiles: 'Saved Profiles',
-    deleteProfile: 'Delete'
+    deleteProfile: 'Delete',
+    luckyNameTitle: 'Lucky Name Recommendation',
+    luckyNameDesc: 'Names that bring good energy to your pet',
+    refreshBtn: 'Refresh',
+    meaningLabel: 'Meaning'
   }
 }
 

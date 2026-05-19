@@ -414,6 +414,7 @@ export function computeSaju(year, month, day, hour, petType = 'dog') {
   const monthlyLuck = getMonthlyLuck(currentMonth)
   const age = getPetHumanAge(year, type)
   const luckyItems = getLuckyItems(mainElement, type)
+  const luckyNames = getLuckyNames(mainElement, missing, type)
 
   return {
     petType: type,
@@ -431,6 +432,7 @@ export function computeSaju(year, month, day, hour, petType = 'dog') {
     monthlyLuck,
     age,
     luckyItems,
+    luckyNames,
     elementNames: ELEMENT_NAMES,
     elementColors: ELEMENT_COLORS
   }
@@ -458,6 +460,118 @@ function getPetHumanAge(birthYear, petType) {
   else if (humanAge <= 72) stage = '장년기'
   else stage = '시니어'
   return { petAge, humanAge, stage }
+}
+
+export function getLuckyNames(mainElement, missing, petType) {
+  const NAMES = {
+    '木': {
+      dog: [
+        { name: '초록', meaning: '푸른 자연의 생명력을 닮은 아이', element: '木' },
+        { name: '솔', meaning: '소나무처럼 한결같고 건강하게', element: '木' },
+        { name: '숲', meaning: '넓고 깊은 숲의 평온함을 가진 아이', element: '木' },
+        { name: '나무', meaning: '든든하게 곁을 지켜주는 큰 나무', element: '木' },
+        { name: '올리브', meaning: '평화와 활력을 가져다주는 존재', element: '木' }
+      ],
+      cat: [
+        { name: '잎', meaning: '싱그러운 나뭇잎처럼 생기발랄함', element: '木' },
+        { name: '새싹', meaning: '새로운 시작과 희망을 품은 아이', element: '木' },
+        { name: '가지', meaning: '유연하고 영리하게 뻗어나가는 기운', element: '木' },
+        { name: '모차', meaning: '부드러우면서도 쌉싸름한 매력', element: '木' },
+        { name: '세이지', meaning: '지혜롭고 건강한 기운을 담은 이름', element: '木' }
+      ]
+    },
+    '火': {
+      dog: [
+        { name: '태양', meaning: '어디서나 밝게 빛나는 리더의 기운', element: '火' },
+        { name: '불꽃', meaning: '열정적이고 에너지가 넘치는 아이', element: '火' },
+        { name: '써니', meaning: '햇살처럼 주변을 환하게 만드는 존재', element: '火' },
+        { name: '루미', meaning: '빛나는 눈동자를 가진 사랑스러운 아이', element: '火' },
+        { name: '레드', meaning: '강렬한 개성과 자신감 넘치는 이름', element: '火' }
+      ],
+      cat: [
+        { name: '빛', meaning: '어둠을 밝히는 따뜻한 온기 같은 아이', element: '火' },
+        { name: '별', meaning: '밤하늘처럼 신비롭고 반짝이는 존재', element: '火' },
+        { name: '캔디', meaning: '달콤하고 통통 튀는 매력을 가진 아이', element: '火' },
+        { name: '페퍼', meaning: '톡 쏘는 매력과 활발한 기운', element: '火' },
+        { name: '마블', meaning: '화려하고 다채로운 빛을 머금은 아이', element: '火' }
+      ]
+    },
+    '土': {
+      dog: [
+        { name: '흙', meaning: '모든 것을 품어주는 든든한 대지의 기운', element: '土' },
+        { name: '돌', meaning: '단단하고 변치 않는 믿음직한 아이', element: '土' },
+        { name: '산', meaning: '웅장하고 깊은 인내심을 가진 존재', element: '土' },
+        { name: '버크', meaning: '단단한 나무껍질처럼 가족을 보호하는 아이', element: '土' },
+        { name: '도토리', meaning: '작지만 야무지고 건강한 기운', element: '土' }
+      ],
+      cat: [
+        { name: '밤', meaning: '알차고 단단하게 여문 행운의 아이', element: '土' },
+        { name: '클레이', meaning: '무엇이든 품어주는 부드러운 흙의 기운', element: '土' },
+        { name: '크래커', meaning: '바삭하고 고소한 즐거움을 주는 아이', element: '土' },
+        { name: '머핀', meaning: '포근하고 달콤한 안식처 같은 존재', element: '土' },
+        { name: '토비', meaning: '건강하고 밝은 대지의 기운을 담은 이름', element: '土' }
+      ]
+    },
+    '金': {
+      dog: [
+        { name: '은', meaning: '세련되고 고귀한 빛을 가진 아이', element: '金' },
+        { name: '금', meaning: '변치 않는 가치와 풍요를 부르는 이름', element: '金' },
+        { name: '백', meaning: '순수하고 당당한 카리스마의 기운', element: '金' },
+        { name: '실버', meaning: '냉철하고 영리한 매력을 가진 존재', element: '金' },
+        { name: '백설', meaning: '눈처럼 깨끗하고 눈부신 행운의 아이', element: '金' }
+      ],
+      cat: [
+        { name: '구름', meaning: '높고 깨끗한 하늘 위 보석 같은 아이', element: '金' },
+        { name: '진주', meaning: '깊은 속에서 빛나는 소중한 보물', element: '金' },
+        { name: '달코', meaning: '달콤하고 단단한 매력을 지닌 존재', element: '金' },
+        { name: '라떼', meaning: '부드러운 우유 거품 같은 고급스러운 기운', element: '金' },
+        { name: '큐티', meaning: '반짝이는 보석처럼 작고 귀한 아이', element: '金' }
+      ]
+    },
+    '水': {
+      dog: [
+        { name: '바다', meaning: '넓은 마음과 자유로운 영혼의 기운', element: '水' },
+        { name: '강', meaning: '멈추지 않고 나아가는 활기찬 생명력', element: '水' },
+        { name: '파도', meaning: '역동적이고 시원한 매력을 가진 아이', element: '水' },
+        { name: '해류', meaning: '흐름을 아는 지혜롭고 유연한 존재', element: '水' },
+        { name: '아쿠아', meaning: '맑고 투명한 치유의 기운을 담은 이름', element: '水' }
+      ],
+      cat: [
+        { name: '물', meaning: '어디든 스며드는 유연함과 조화로운 기운', element: '水' },
+        { name: '사파이어', meaning: '신비롭고 깊은 푸른 빛의 행운', element: '水' },
+        { name: '물방울', meaning: '작지만 영롱하게 빛나는 소중한 존재', element: '水' },
+        { name: '코코', meaning: '깊고 풍부한 감성을 머금은 아이', element: '水' },
+        { name: '미스트', meaning: '안개처럼 은은하고 매혹적인 분위기', element: '水' }
+      ]
+    }
+  }
+
+  const allElements = ['木', '火', '土', '金', '水']
+  const targetElements = missing.length > 0 ? missing : allElements
+  
+  let pool = []
+  targetElements.forEach(el => {
+    pool = [...pool, ...NAMES[el][petType]]
+  })
+
+  // 만약 부족한 오행 기반 pool이 너무 적으면 다른 오행에서도 가져옴 (최소 3개 보장)
+  if (pool.length < 3) {
+    allElements.forEach(el => {
+      if (!targetElements.includes(el)) {
+        pool = [...pool, ...NAMES[el][petType]]
+      }
+    })
+  }
+
+  // 랜덤하게 3개 추천
+  const shuffled = [...pool].sort(() => 0.5 - Math.random())
+  const selected = shuffled.slice(0, 3)
+
+  const tip = missing.length > 0 
+    ? `부족한 오행(${missing.join(', ')})을 보완하는 이름이 ${petType === 'dog' ? '강아지' : '고양이'}에게 더 좋은 기운을 줄 수 있어요!`
+    : `오행이 균형 잡혀 있어 어떤 이름도 잘 어울려요! ${petType === 'dog' ? '강아지' : '고양이'}의 이미지에 맞는 이름을 골라보세요.`
+
+  return { names: selected, tip }
 }
 
 function getLuckyItems(element, petType) {

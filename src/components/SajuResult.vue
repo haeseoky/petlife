@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import CompatSection from './CompatSection.vue'
 import LuckyCalendar from './LuckyCalendar.vue'
+import { t } from '../i18n.js'
+import { getLuckyNames } from '../saju.js'
 
 const props = defineProps({
   result: { type: Object, required: true }
@@ -14,7 +16,13 @@ const { name, breed, yearPillar, monthPillar, dayPillar, hourPillar,
   yearPillarHanja, monthPillarHanja, dayPillarHanja, hourPillarHanja,
   yearAnimal, ilju, personality, distribution, missing, mainElement,
   todayLuck, todayLuckMsg, compatibility, monthlyLuck, age, luckyItems,
-  elementNames, elementColors } = props.result
+  luckyNames: initialLuckyNames, elementNames, elementColors } = props.result
+
+const luckyNames = ref(initialLuckyNames)
+
+function refreshLuckyNames() {
+  luckyNames.value = getLuckyNames(mainElement, missing, props.result.petType)
+}
 
 const pillars = [
   { label: '년주(年柱)', value: yearPillar, hanja: yearPillarHanja },
@@ -237,6 +245,29 @@ async function saveAsImage() {
           <span class="lucky-value">{{ luckyItems.activity }}</span>
         </div>
       </div>
+    </div>
+
+    <!-- 럭키 네임 추천 -->
+    <div class="detail-card">
+      <div class="card-header">
+        <h3>{{ t('luckyNameTitle') }}</h3>
+        <button class="refresh-btn" @click="refreshLuckyNames">
+          <span class="refresh-icon">🔄</span> {{ t('refreshBtn') }}
+        </button>
+      </div>
+      <p class="section-desc">{{ t('luckyNameDesc') }}</p>
+      <div class="lucky-names">
+        <div v-for="item in luckyNames.names" :key="item.name" class="name-item">
+          <div class="name-header">
+            <span class="name-text">{{ item.name }}</span>
+            <span class="element-tag" :style="{ background: elementColors[item.element] + '22', color: elementColors[item.element] }">
+              {{ elementNames[item.element] }}
+            </span>
+          </div>
+          <p class="name-meaning"><strong>{{ t('meaningLabel') }}:</strong> {{ item.meaning }}</p>
+        </div>
+      </div>
+      <p class="name-tip">{{ luckyNames.tip }}</p>
     </div>
 
     <!-- 맞춤 케어 팁 -->
@@ -575,6 +606,83 @@ async function saveAsImage() {
   font-size: 0.9rem;
   font-weight: 700;
   color: var(--primary);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.card-header h3 {
+  margin-bottom: 0 !important;
+}
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-sub);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.refresh-btn:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.refresh-icon {
+  font-size: 0.8rem;
+}
+.section-desc {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  margin-bottom: 20px;
+}
+.lucky-names {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.name-item {
+  background: var(--bg-main);
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+}
+.name-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.name-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.element-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.name-meaning {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+.name-tip {
+  font-size: 0.85rem;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 12px;
+  border-radius: 8px;
+  line-height: 1.6;
 }
 .reset-btn {
   flex: 1;
