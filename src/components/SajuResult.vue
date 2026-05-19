@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import ElementRadar from './ElementRadar.vue'
 import CompatSection from './CompatSection.vue'
 import FengShuiGuide from './FengShuiGuide.vue'
 import DailyMission from './DailyMission.vue'
@@ -171,6 +172,9 @@ async function saveAsImage() {
         부족한 오행: {{ missing.map(e => elementNames[e]).join(', ') }}
       </p>
     </div>
+
+    <!-- 오행 레이더 차트 -->
+    <ElementRadar :distribution="distribution" :missing="missing" />
 
     <!-- 산책 스타일 -->
     <div class="detail-card">
