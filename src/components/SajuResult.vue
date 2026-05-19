@@ -240,7 +240,7 @@ async function saveAsImage() {
     <p class="breed-tag">{{ breed }} · {{ yearAnimal }}띠</p>
 
     <!-- 상단 광고 -->
-    <AdBanner slot="" format="auto" />
+    <AdBanner slot="8202228141" format="auto" />
 
     <!-- 성격 분석 -->
     <div id="section-personality" class="personality-card reveal">
@@ -290,7 +290,7 @@ async function saveAsImage() {
     <CompatSection id="section-compat" class="reveal" :myResult="result" />
 
     <!-- 중간 광고 -->
-    <AdBanner slot="" format="auto" />
+    <AdBanner slot="2949901469" format="auto" />
 
     <!-- 반려동물 MBTI 성격 유형 -->
     <PetMBTI id="section-mbti" class="reveal" :petType="result.petType" :ilju="ilju" :mainElement="mainElement" :missing="missing" :hourPillar="hourPillar" />
@@ -318,7 +318,7 @@ async function saveAsImage() {
 
     <!-- 행운의 방위 & 인테리어 -->
     <!-- 하단 광고 -->
-    <AdBanner slot="" format="auto" />
+    <AdBanner slot="5507782043" format="auto" />
 
     <FengShuiGuide id="section-fengshui" class="reveal" :result="result" />
 
