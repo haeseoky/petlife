@@ -71,7 +71,10 @@ const messages = {
     hourSuffix: '시',
     zodiacSuffix: '띠',
     of: '의 사주',
-    resultOf: '의 사주 결과'
+    resultOf: '의 사주 결과',
+    saveProfile: '내 반려동물 프로필 저장',
+    savedProfiles: '저장된 프로필',
+    deleteProfile: '삭제'
   },
   en: {
     appTitle: '🐾 PetLife',
@@ -143,7 +146,10 @@ const messages = {
     hourSuffix: '',
     zodiacSuffix: '',
     of: '\'s Saju',
-    resultOf: '\'s Saju Result'
+    resultOf: '\'s Saju Result',
+    saveProfile: 'Save my pet profile',
+    savedProfiles: 'Saved Profiles',
+    deleteProfile: 'Delete'
   }
 }
 

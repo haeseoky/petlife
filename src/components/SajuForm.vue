@@ -1,5 +1,8 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
+import { t, currentLang } from '../i18n.js'
+
+const PROFILE_KEY = 'petlife_profiles'
 
 const emit = defineEmits(['submit'])
 
@@ -11,6 +14,9 @@ const month = ref(1)
 const day = ref(1)
 const hour = ref(12)
 const loading = ref(false)
+const saveProfile = ref(true)
+const profiles = ref([])
+const profileToast = ref('')
 
 const dogBreeds = [
   '말티즈', '푸들', '포메라니안', '치와와', '요크셔테리어',
@@ -34,9 +40,69 @@ const catBreeds = [
 
 const breeds = computed(() => petType.value === 'dog' ? dogBreeds : catBreeds)
 
+function loadProfiles() {
+  try {
+    const raw = localStorage.getItem(PROFILE_KEY)
+    profiles.value = raw ? JSON.parse(raw) : []
+  } catch { profiles.value = [] }
+}
+
+function persistProfiles() {
+  localStorage.setItem(PROFILE_KEY, JSON.stringify(profiles.value))
+}
+
+function savePetProfile() {
+  const existing = profiles.value.findIndex(p => p.name === name.value && p.breed === breed.value)
+  const entry = {
+    id: Date.now(),
+    name: name.value,
+    petType: petType.value,
+    breed: breed.value,
+    year: year.value,
+    month: month.value,
+    day: day.value,
+    hour: hour.value,
+    savedAt: new Date().toISOString()
+  }
+  if (existing >= 0) {
+    entry.id = profiles.value[existing].id
+    profiles.value[existing] = entry
+  } else {
+    profiles.value.unshift(entry)
+    if (profiles.value.length > 10) profiles.value = profiles.value.slice(0, 10)
+  }
+  persistProfiles()
+}
+
+function loadProfile(p) {
+  petType.value = p.petType
+  name.value = p.name
+  breed.value = p.breed
+  year.value = p.year
+  month.value = p.month
+  day.value = p.day
+  hour.value = p.hour
+  showToast(currentLang.value === 'ko' ? '프로필을 불러왔습니다' : 'Profile loaded')
+}
+
+function deleteProfile(id) {
+  profiles.value = profiles.value.filter(p => p.id !== id)
+  persistProfiles()
+}
+
+function showToast(msg) {
+  profileToast.value = msg
+  setTimeout(() => { profileToast.value = '' }, 2000)
+}
+
+onMounted(loadProfiles)
+
 function handleSubmit() {
   loading.value = true
   setTimeout(() => {
+    if (saveProfile.value && name.value) {
+      savePetProfile()
+    }
     emit('submit', {
       petType: petType.value,
       name: name.value,
@@ -54,58 +120,189 @@ watch(petType, () => { breed.value = '' })
 </script>
 
 <template>
+  <!-- 저장된 프로필 -->
+  <div v-if="profiles.length" class="profiles-section">
+    <div class="profiles-header">
+      <span class="profiles-title">📋 {{ t('savedProfiles') }}</span>
+    </div>
+    <div class="profiles-list">
+      <div
+        v-for="p in profiles"
+        :key="p.id"
+        class="profile-card"
+        @click="loadProfile(p)"
+      >
+        <div class="profile-info">
+          <span class="profile-emoji">{{ p.petType === 'dog' ? '🐕' : '🐈' }}</span>
+          <div class="profile-detail">
+            <span class="profile-name">{{ p.name }}</span>
+            <span class="profile-meta">{{ p.breed }} · {{ p.year }}.{{ p.month }}.{{ p.day }}</span>
+          </div>
+        </div>
+        <button class="profile-delete" @click.stop="deleteProfile(p.id)" :title="t('deleteProfile')">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 프로필 로드 토스트 -->
+  <transition name="toast">
+    <div v-if="profileToast" class="profile-toast">{{ profileToast }}</div>
+  </transition>
+
   <form class="form" @submit.prevent="handleSubmit">
     <div class="form-group">
-      <label>반려동물 종류</label>
+      <label>{{ t('petType') }}</label>
       <div class="type-toggle">
-        <button type="button" :class="['type-btn', { active: petType === 'dog' }]" @click="petType = 'dog'">강아지</button>
-        <button type="button" :class="['type-btn', { active: petType === 'cat' }]" @click="petType = 'cat'">고양이</button>
+        <button type="button" :class="['type-btn', { active: petType === 'dog' }]" @click="petType = 'dog'">{{ t('dog') }}</button>
+        <button type="button" :class="['type-btn', { active: petType === 'cat' }]" @click="petType = 'cat'">{{ t('cat') }}</button>
       </div>
     </div>
 
     <div class="form-group">
-      <label>{{ petType === 'dog' ? '강아지' : '고양이' }} 이름</label>
-      <input v-model="name" type="text" :placeholder="petType === 'dog' ? '예: 초코' : '예: 나비'" required />
+      <label>{{ petType === 'dog' ? t('dog') : t('cat') }} {{ t('nameLabel') }}</label>
+      <input v-model="name" type="text" :placeholder="petType === 'dog' ? t('namePlaceholder') : t('catPlaceholder')" required />
     </div>
 
     <div class="form-group">
-      <label>품종</label>
+      <label>{{ t('breedLabel') }}</label>
       <select v-model="breed" required>
-        <option value="" disabled>품종을 선택해주세요</option>
+        <option value="" disabled>{{ t('breedDefault') }}</option>
         <option v-for="b in breeds" :key="b" :value="b">{{ b }}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label>📅 생년월일</label>
+      <label>📅 {{ t('birthLabel') }}</label>
       <div class="date-row">
         <select v-model.number="year">
-          <option v-for="y in 30" :key="2026-y+1" :value="2026-y+1">{{ 2026-y+1 }}년</option>
+          <option v-for="y in 30" :key="2026-y+1" :value="2026-y+1">{{ 2026-y+1 }}{{ t('yearSuffix') }}</option>
         </select>
         <select v-model.number="month">
-          <option v-for="m in 12" :key="m" :value="m">{{ m }}월</option>
+          <option v-for="m in 12" :key="m" :value="m">{{ m }}{{ t('monthSuffix') }}</option>
         </select>
         <select v-model.number="day">
-          <option v-for="d in 31" :key="d" :value="d">{{ d }}일</option>
+          <option v-for="d in 31" :key="d" :value="d">{{ d }}{{ t('daySuffix') }}</option>
         </select>
       </div>
     </div>
 
     <div class="form-group">
-      <label>🕐 태어난 시각 (모르면 12시)</label>
+      <label>🕐 {{ t('hourLabel') }}</label>
       <select v-model.number="hour">
-        <option v-for="h in 24" :key="h-1" :value="h-1">{{ String(h-1).padStart(2, '0') }}시</option>
+        <option v-for="h in 24" :key="h-1" :value="h-1">{{ String(h-1).padStart(2, '0') }}{{ t('hourSuffix') }}</option>
       </select>
     </div>
 
     <button type="submit" class="submit-btn" :disabled="loading">
       <span v-if="loading" class="spinner"></span>
-      <span v-else>사주 보기</span>
+      <span v-else>{{ t('submitBtn') }}</span>
     </button>
+
+    <label class="save-profile-check">
+      <input type="checkbox" v-model="saveProfile" />
+      <span>{{ t('saveProfile') }}</span>
+    </label>
   </form>
 </template>
 
 <style scoped>
+/* 프로필 섹션 */
+.profiles-section {
+  margin-bottom: 24px;
+}
+.profiles-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.profiles-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.profiles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.profile-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.profile-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(123, 94, 77, 0.1);
+  transform: translateY(-1px);
+}
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile-emoji {
+  font-size: 1.3rem;
+}
+.profile-detail {
+  display: flex;
+  flex-direction: column;
+}
+.profile-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.profile-meta {
+  font-size: 0.78rem;
+  color: var(--text-sub);
+}
+.profile-delete {
+  background: none;
+  border: none;
+  color: var(--placeholder);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.profile-delete:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+/* 프로필 토스트 */
+.profile-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--toast-bg);
+  color: var(--bg-main);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.toast-enter-active,
+.toast-leave-active {
+  transition: all 0.3s ease;
+}
+.toast-enter-from,
+.toast-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+}
+
+/* 폼 */
 .form {
   background: var(--white);
   padding: 0;
@@ -202,5 +399,20 @@ watch(petType, () => { breed.value = '' })
 }
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+.save-profile-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+.save-profile-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
 }
 </style>
