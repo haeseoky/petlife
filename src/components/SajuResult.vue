@@ -11,6 +11,7 @@ import WeeklyHoroscope from './WeeklyHoroscope.vue'
 import BirthdayCountdown from './BirthdayCountdown.vue'
 import PetWishCoupons from './PetWishCoupons.vue'
 import PetZodiac from './PetZodiac.vue'
+import PetLuckyFood from './PetLuckyFood.vue'
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
@@ -248,6 +249,9 @@ async function saveAsImage() {
 
     <!-- 반려동물 서양 별자리 -->
     <PetZodiac :month="result.month" :day="result.day" :petType="result.petType" :mainElement="mainElement" />
+
+    <!-- 반려동물 럭키 푸드 -->
+    <PetLuckyFood :petType="result.petType" :mainElement="mainElement" :missing="missing" />
 
     <!-- 행운의 방위 & 인테리어 -->
     <FengShuiGuide :result="result" />
