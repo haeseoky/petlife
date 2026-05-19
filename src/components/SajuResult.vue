@@ -217,6 +217,9 @@ async function saveAsImage() {
     <!-- 반려동물 타로 -->
     <PetTarot :result="result" @select="onTarotSelect" />
 
+    <!-- 반려동물 밸런스 게임 -->
+    <PetBalanceGame :mainElement="mainElement" :petType="result.petType" />
+
     <!-- 반려동물 성격 유형 -->
     <div class="detail-card pet-type-card">
       <h3>{{ t('petTypeTitle') }}</h3>
