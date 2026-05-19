@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import AdBanner from './AdBanner.vue'
 import CompatSection from './CompatSection.vue'
 import FengShuiGuide from './FengShuiGuide.vue'
 import LuckyCalendar from './LuckyCalendar.vue'
@@ -217,6 +218,9 @@ async function saveAsImage() {
     <h2 class="result-title">{{ name }}의 사주</h2>
     <p class="breed-tag">{{ breed }} · {{ yearAnimal }}띠</p>
 
+    <!-- 상단 광고 -->
+    <AdBanner slot="" format="auto" />
+
     <!-- 성격 분석 -->
     <div id="section-personality" class="personality-card">
       <h3>성격 분석</h3>
@@ -264,6 +268,9 @@ async function saveAsImage() {
     <!-- 반려동물 궁합 -->
     <CompatSection id="section-compat" :myResult="result" />
 
+    <!-- 중간 광고 -->
+    <AdBanner slot="" format="auto" />
+
     <!-- 반려동물 MBTI 성격 유형 -->
     <PetMBTI id="section-mbti" :petType="result.petType" :ilju="ilju" :mainElement="mainElement" :missing="missing" :hourPillar="hourPillar" />
 
@@ -289,6 +296,9 @@ async function saveAsImage() {
     <PetLuckyFood id="section-lucky-food" :petType="result.petType" :mainElement="mainElement" :missing="missing" />
 
     <!-- 행운의 방위 & 인테리어 -->
+    <!-- 하단 광고 -->
+    <AdBanner slot="" format="auto" />
+
     <FengShuiGuide id="section-fengshui" :result="result" />
 
     <!-- 맞춤 팁 -->
