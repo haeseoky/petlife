@@ -103,7 +103,65 @@ onMounted(() => {
 
   const revealEls = document.querySelectorAll('.reveal')
   revealEls.forEach(el => revealObserver.observe(el))
+
+  runConfetti()
 })
+
+const runConfetti = () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+  const emojis = ['🐾', '⭐', '❤️']
+  const container = document.createElement('div')
+  container.className = 'confetti-container'
+  Object.assign(container.style, {
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    width: '100vw',
+    height: '100vh',
+    pointerEvents: 'none',
+    zIndex: '10000',
+    overflow: 'hidden'
+  })
+
+  const style = document.createElement('style')
+  style.textContent = `
+    @keyframes confetti-fall {
+      0% { transform: translateY(-50px) translateX(0) rotate(0deg); opacity: 1; }
+      25% { transform: translateY(25vh) translateX(15px) rotate(90deg); opacity: 1; }
+      50% { transform: translateY(50vh) translateX(-15px) rotate(180deg); opacity: 1; }
+      75% { transform: translateY(75vh) translateX(15px) rotate(270deg); opacity: 1; }
+      100% { transform: translateY(110vh) translateX(0) rotate(360deg); opacity: 0; }
+    }
+  `
+  document.head.appendChild(style)
+  document.body.appendChild(container)
+
+  const interval = setInterval(() => {
+    const item = document.createElement('div')
+    item.textContent = emojis[Math.floor(Math.random() * emojis.length)]
+    Object.assign(item.style, {
+      position: 'absolute',
+      left: Math.random() * 100 + '%',
+      top: '-50px',
+      fontSize: (Math.random() * 1 + 1.2) + 'rem',
+      animation: `confetti-fall ${Math.random() * 1.5 + 2}s linear forwards`,
+      willChange: 'transform',
+      filter: 'drop-shadow(0 0 2px rgba(255,255,255,0.3))'
+    })
+    container.appendChild(item)
+    
+    setTimeout(() => item.remove(), 4000)
+  }, 80)
+
+  setTimeout(() => {
+    clearInterval(interval)
+    setTimeout(() => {
+      container.remove()
+      style.remove()
+    }, 4000)
+  }, 3000)
+}
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
