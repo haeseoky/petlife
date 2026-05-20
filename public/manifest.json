@@ -1,16 +1,25 @@
 {
-  "name": "PetLife",
+  "name": "PetLife — 반려동물 사주풀이",
   "short_name": "PetLife",
-  "description": "강아지·고양이 사주(四柱) 웹서비스",
+  "description": "무료 반려동물 사주풀이 서비스. 강아지·고양이의 사주, 성격, 운세, 궁합을 재미있게 분석해드려요.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FDFCFB",
   "theme_color": "#7B5E4D",
+  "lang": "ko",
+  "categories": ["entertainment", "lifestyle"],
   "icons": [
     {
       "src": "/icon.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
     }
   ]
 }
