@@ -11,6 +11,7 @@ import PetZodiac from './PetZodiac.vue'
 import PetLuckyFood from './PetLuckyFood.vue'
 import PetFortuneGacha from './PetFortuneGacha.vue'
 import PetMoodTracker from './PetMoodTracker.vue'
+import PetBalanceGame from './PetBalanceGame.vue'
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
