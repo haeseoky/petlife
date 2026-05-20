@@ -10,6 +10,7 @@ import BirthdayCountdown from './BirthdayCountdown.vue'
 import PetZodiac from './PetZodiac.vue'
 import PetLuckyFood from './PetLuckyFood.vue'
 import PetFortuneGacha from './PetFortuneGacha.vue'
+import PetMoodTracker from './PetMoodTracker.vue'
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
@@ -367,6 +368,9 @@ async function saveAsImage() {
 
     <!-- 반려동물 생일 카운트다운 -->
     <BirthdayCountdown id="section-birthday" class="reveal" :result="result" />
+
+    <!-- 오늘의 기분 트래커 -->
+    <PetMoodTracker class="reveal" :name="name" />
 
     <!-- 반려동물 서양 별자리 -->
     <PetZodiac id="section-zodiac" class="reveal" :month="result.month" :day="result.day" :petType="result.petType" :mainElement="mainElement" />
