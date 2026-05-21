@@ -242,6 +242,29 @@ async function copyToClipboard(text) {
   setTimeout(() => { shareToast.value = false }, 2000)
 }
 
+async function shareKakao() {
+  const shareUrl = 'https://petlife.nutalk.co.kr'
+  const shareText = `${name}(${breed})의 사주 결과를 확인해보세요! 🐾`
+  if (window.Kakao && window.Kakao.Share) {
+    window.Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: `${name}의 사주 결과 — PetLife`,
+        description: `${breed} · ${yearAnimal}띠 · ${personality.title}`,
+        imageUrl: `${shareUrl}/og-image.png`,
+        link: { mobileWebUrl: shareUrl, webUrl: shareUrl }
+      },
+      buttons: [
+        { title: '우리 아이 사주 보기', link: { mobileWebUrl: shareUrl, webUrl: shareUrl } }
+      ]
+    })
+  } else {
+    // Fallback: open KakaoTalk sharing URL
+    const kakaoUrl = `https://sharer.kakao.com/talk/friends/picker/link?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`
+    window.open(kakaoUrl, '_blank', 'width=500,height=600')
+  }
+}
+
 function printResult() {
   window.print()
 }
@@ -263,9 +286,80 @@ async function saveAsImage() {
     })
     if (btnGroup) btnGroup.style.display = ''
     if (toast) toast.style.display = ''
+
+    // Add watermark + URL + QR code to the image
+    const ctx = canvas.getContext('2d')
+    const w = canvas.width
+    const h = canvas.height
+    const footerH = Math.round(h * 0.04) + 60
+    const newCanvas = document.createElement('canvas')
+    newCanvas.width = w
+    newCanvas.height = h + footerH
+    const nctx = newCanvas.getContext('2d')
+    nctx.drawImage(canvas, 0, 0)
+
+    // Footer background
+    nctx.fillStyle = '#7B5E4D'
+    nctx.fillRect(0, h, w, footerH)
+
+    // URL text
+    const fontSize = Math.max(18, Math.round(w * 0.018))
+    nctx.font = `bold ${fontSize}px sans-serif`
+    nctx.fillStyle = '#FFFFFF'
+    nctx.textAlign = 'left'
+    nctx.textBaseline = 'middle'
+    nctx.fillText('🐾 PetLife — 반려동물 사주풀이', 20, h + footerH / 2 - 10)
+    nctx.font = `${Math.round(fontSize * 0.8)}px sans-serif`
+    nctx.fillStyle = '#E8DDD3'
+    nctx.fillText('petlife.nutalk.co.kr', 20, h + footerH / 2 + 14)
+
+    // Simple QR code (using a tiny inline QR for the URL)
+    const qrSize = footerH - 16
+    const qrX = w - qrSize - 12
+    const qrY = h + 8
+    try {
+      const qrCanvas = document.createElement('canvas')
+      qrCanvas.width = qrSize
+      qrCanvas.height = qrSize
+      const qrCtx = qrCanvas.getContext('2d')
+      qrCtx.fillStyle = '#FFFFFF'
+      qrCtx.fillRect(0, 0, qrSize, qrSize)
+      // Generate simple QR pattern from URL string
+      const url = 'https://petlife.nutalk.co.kr'
+      const moduleCount = 21
+      const cellSize = qrSize / moduleCount
+      qrCtx.fillStyle = '#000000'
+      // Finder patterns (top-left, top-right, bottom-left)
+      function drawFinder(ox, oy) {
+        for (let r = 0; r < 7; r++) {
+          for (let c = 0; c < 7; c++) {
+            if (r === 0 || r === 6 || c === 0 || c === 6 || (r >= 2 && r <= 4 && c >= 2 && c <= 4)) {
+              qrCtx.fillRect(ox + c * cellSize, oy + r * cellSize, cellSize, cellSize)
+            }
+          }
+        }
+      }
+      drawFinder(0, 0)
+      drawFinder((moduleCount - 7) * cellSize, 0)
+      drawFinder(0, (moduleCount - 7) * cellSize)
+      // Data modules (simplified hash-based pattern)
+      let hash = 0
+      for (let i = 0; i < url.length; i++) { hash = ((hash << 5) - hash + url.charCodeAt(i)) | 0 }
+      for (let r = 0; r < moduleCount; r++) {
+        for (let c = 0; c < moduleCount; c++) {
+          if ((r < 8 && c < 8) || (r < 8 && c > moduleCount - 9) || (r > moduleCount - 9 && c < 8)) continue
+          if (((hash * (r * moduleCount + c + 7)) & 1) === 0) {
+            qrCtx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize)
+          }
+          hash = (hash * 31 + r * c) | 0
+        }
+      }
+      nctx.drawImage(qrCanvas, qrX, qrY, qrSize, qrSize)
+    } catch (e) { /* QR generation failed, skip */ }
+
     const link = document.createElement('a')
     link.download = `${name}_saju.png`
-    link.href = canvas.toDataURL('image/png')
+    link.href = newCanvas.toDataURL('image/png')
     link.click()
   } catch (e) {
     console.error('이미지 저장 실패:', e)
@@ -467,6 +561,7 @@ async function saveAsImage() {
 
     <div class="btn-group reveal">
       <button class="share-btn" @click="shareResult">결과 공유하기</button>
+      <button class="kakao-btn" @click="shareKakao">카카오톡 공유</button>
       <button class="print-btn" @click="printResult">저장/인쇄</button>
       <button class="image-btn" @click="saveAsImage" :disabled="savingImage">{{ savingImage ? '저장 중...' : '이미지 저장' }}</button>
       <button class="reset-btn" @click="emit('reset')">다시 보기</button>
@@ -803,6 +898,21 @@ async function saveAsImage() {
 }
 .share-btn:hover {
   background: #674E40;
+}
+.kakao-btn {
+  flex: 1;
+  padding: 16px;
+  background: #FEE500;
+  color: #191919;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(254, 229, 0, 0.25);
+}
+.kakao-btn:hover {
+  background: #E6D300;
 }
 .print-btn {
   flex: 1;

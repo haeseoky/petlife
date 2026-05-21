@@ -146,7 +146,7 @@ watch(petType, () => { breed.value = '' })
 
   <!-- 프로필 로드 토스트 -->
   <transition name="toast">
-    <div v-if="profileToast" class="profile-toast">{{ profileToast }}</div>
+    <div v-if="profileToast" class="profile-toast" role="status" aria-live="polite">{{ profileToast }}</div>
   </transition>
 
   <form class="form" @submit.prevent="handleSubmit">

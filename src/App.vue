@@ -78,24 +78,30 @@ function reset() {
 
 <template>
   <div class="app">
-    <header class="header">
-      <span class="logo" @click="reset" style="cursor:pointer">🐾 PetLife</span>
-      <button class="dark-toggle" @click="toggleDark" :title="isDark ? '라이트 모드' : '다크 모드'">{{ isDark ? '☀️' : '🌙' }}</button>
-      <button class="lang-toggle" @click="toggleLang">{{ currentLang === 'ko' ? 'EN' : '한' }}</button>
-      <button v-if="history.length && !result" class="history-toggle" @click="showHistory = !showHistory">
+    <a href="#main-content" class="skip-link">본문으로 바로가기</a>
+    <header class="header" role="banner">
+      <span class="logo" @click="reset" style="cursor:pointer" role="button" tabindex="0" @keydown.enter="reset" @keydown.space.prevent="reset" aria-label="PetLife 홈">🐾 PetLife</span>
+      <button class="dark-toggle" @click="toggleDark" :title="isDark ? '라이트 모드' : '다크 모드'" :aria-label="isDark ? '라이트 모드로 전환' : '다크 모드로 전환'">{{ isDark ? '☀️' : '🌙' }}</button>
+      <button class="lang-toggle" @click="toggleLang" :aria-label="currentLang === 'ko' ? 'Switch to English' : '한국어로 변경'">{{ currentLang === 'ko' ? 'EN' : '한' }}</button>
+      <button v-if="history.length && !result" class="history-toggle" @click="showHistory = !showHistory" :aria-expanded="showHistory" aria-controls="history-panel">
         {{ showHistory ? '닫기' : '기록 ' + history.length }}
       </button>
     </header>
     <HistoryList
       v-if="showHistory && !result"
+      id="history-panel"
+      role="region"
+      aria-label="사주 기록 목록"
       :history="history"
       @view="viewHistory"
       @delete="deleteHistory"
     />
-    <HeroSection v-if="!result && !showHistory" />
-    <SajuForm v-if="!result && !showHistory" @submit="onSubmit" />
-    <SajuResult v-if="result" :result="result" @reset="reset" />
-    <footer class="footer">© 2026 PetLife — 반려동물과 함께하는 행복한 삶 🐶</footer>
+    <main id="main-content">
+      <HeroSection v-if="!result && !showHistory" />
+      <SajuForm v-if="!result && !showHistory" @submit="onSubmit" />
+      <SajuResult v-if="result" :result="result" @reset="reset" />
+    </main>
+    <footer class="footer" role="contentinfo">© 2026 PetLife — 반려동물과 함께하는 행복한 삶 🐶</footer>
   </div>
 </template>
 
@@ -238,6 +244,23 @@ input, select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+/* 스킵 링크 */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--primary);
+  color: white;
+  padding: 8px 16px;
+  z-index: 1000;
+  font-size: 0.85rem;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0;
 }
 
 /* 인쇄 스타일 */
