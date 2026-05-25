@@ -106,7 +106,6 @@ onMounted(() => {
   const revealEls = document.querySelectorAll('.reveal')
   revealEls.forEach(el => revealObserver.observe(el))
 
-  runConfetti()
 })
 
 const runConfetti = () => {
