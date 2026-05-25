@@ -560,7 +560,6 @@ async function saveAsImage() {
 
     <div class="btn-group reveal">
       <button class="share-btn" @click="shareResult">결과 공유하기</button>
-      <button class="kakao-btn" @click="shareKakao">카카오톡 공유</button>
       <button class="print-btn" @click="printResult">저장/인쇄</button>
       <button class="image-btn" @click="saveAsImage" :disabled="savingImage">{{ savingImage ? '저장 중...' : '이미지 저장' }}</button>
       <button class="reset-btn" @click="emit('reset')">다시 보기</button>
