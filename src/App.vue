@@ -101,7 +101,15 @@ function reset() {
       <SajuForm v-if="!result && !showHistory" @submit="onSubmit" />
       <SajuResult v-if="result" :result="result" @reset="reset" />
     </main>
-    <footer class="footer" role="contentinfo">© 2026 PetLife — 반려동물과 함께하는 행복한 삶 🐶</footer>
+    <footer class="footer" role="contentinfo">
+      <nav class="footer-nav" aria-label="하단 내비게이션">
+        <a href="/about.html">서비스 소개</a>
+        <a href="/privacy.html">개인정보처리방침</a>
+        <a href="/terms.html">이용약관</a>
+        <a href="/contact.html">문의하기</a>
+      </nav>
+      <p class="footer-copy">© 2026 PetLife — 반려동물과 함께하는 행복한 삶 🐶</p>
+    </footer>
   </div>
 </template>
 
@@ -233,6 +241,26 @@ body {
   font-size: 0.85rem;
   color: var(--text-sub);
   opacity: 0.5;
+}
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 8px;
+}
+.footer-nav a {
+  color: var(--text-sub);
+  text-decoration: none;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.footer-nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+.footer-copy {
+  margin-top: 4px;
 }
 
 button {
