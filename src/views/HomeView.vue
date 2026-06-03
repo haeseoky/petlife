@@ -103,29 +103,14 @@ function reset() {
       <HeroSection v-if="!result && !showHistory" />
       <!-- 게임 섹션 -->
       <section v-if="!result && !showHistory" class="game-section">
-        <h3 class="game-section-title">🎮 반려동물 미니게임</h3>
-        <div class="game-grid">
-          <router-link to="/draw" class="game-card">
-            <div class="game-icon">✏️</div>
-            <div class="game-name">모양 따라그리기</div>
-            <div class="game-desc">도형을 정확하게 따라그리세요!</div>
-          </router-link>
-          <router-link to="/memory" class="game-card">
-            <div class="game-icon">🧩</div>
-            <div class="game-name">짝 맞추기</div>
-            <div class="game-desc">같은 동물 카드를 찾아보세요!</div>
-          </router-link>
-          <router-link to="/color" class="game-card">
-            <div class="game-icon">🎨</div>
-            <div class="game-name">색깔 맞추기</div>
-            <div class="game-desc">글자의 색상을 맞혀보세요!</div>
-          </router-link>
-          <router-link to="/reaction" class="game-card">
-            <div class="game-icon">⚡</div>
-            <div class="game-name">반응속도 테스트</div>
-            <div class="game-desc">얼마나 빠르게 반응할 수 있나요?</div>
-          </router-link>
-        </div>
+        <a href="https://game.nutalk.co.kr" target="_blank" rel="noopener" class="game-hub-card">
+          <div class="game-hub-icon">🎮</div>
+          <div class="game-hub-info">
+            <div class="game-hub-title">반려동물 미니게임</div>
+            <div class="game-hub-desc">모양 따라그리기, 짝 맞추기, 색깔 맞추기, 반응속도 테스트!</div>
+          </div>
+          <div class="game-hub-arrow">→</div>
+        </a>
       </section>
       <SajuForm v-if="!result && !showHistory" @submit="onSubmit" />
       <SajuResult v-if="result" :result="result" @reset="reset" />
@@ -365,43 +350,37 @@ input, select {
 .game-section {
   margin: 20px 0;
 }
-.game-section-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 12px;
-}
-.game-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-.game-card {
-  display: block;
-  background: var(--card-bg);
-  border: 1px solid var(--border-light);
-  border-radius: 14px;
-  padding: 16px;
+.game-hub-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #1B355A, #4D9BC6);
+  border-radius: 16px;
+  padding: 18px 20px;
   text-decoration: none;
-  color: var(--text-main);
+  color: #fff;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.game-card:hover {
+.game-hub-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 20px rgba(77, 155, 198, 0.3);
 }
-.game-icon {
-  font-size: 28px;
-  margin-bottom: 6px;
+.game-hub-icon {
+  font-size: 36px;
+  flex-shrink: 0;
 }
-.game-name {
-  font-size: 0.9rem;
+.game-hub-info { flex: 1; }
+.game-hub-title {
+  font-size: 1rem;
   font-weight: 700;
-  color: var(--primary);
 }
-.game-desc {
+.game-hub-desc {
   font-size: 0.75rem;
-  color: var(--text-sub);
+  opacity: 0.8;
   margin-top: 2px;
+}
+.game-hub-arrow {
+  font-size: 1.2rem;
+  opacity: 0.7;
 }
 </style>
