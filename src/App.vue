@@ -1,115 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import HeroSection from './components/HeroSection.vue'
-import SajuForm from './components/SajuForm.vue'
-import SajuResult from './components/SajuResult.vue'
-import HistoryList from './components/HistoryList.vue'
-import { computeSaju } from './saju'
-import { currentLang, toggleLang, t } from './i18n.js'
+import { useRouter } from 'vue-router'
 
-const STORAGE_KEY = 'petlife_history'
-const DARK_KEY = 'petlife_dark'
-const result = ref(null)
-const showHistory = ref(false)
-const history = ref([])
-const isDark = ref(false)
-
-function initDarkMode() {
-  const saved = localStorage.getItem(DARK_KEY)
-  if (saved !== null) {
-    isDark.value = saved === 'true'
-  } else {
-    isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-  }
-  applyDark()
-}
-
-function applyDark() {
-  document.documentElement.classList.toggle('dark', isDark.value)
-}
-
-function toggleDark() {
-  isDark.value = !isDark.value
-  localStorage.setItem(DARK_KEY, String(isDark.value))
-  applyDark()
-}
-
-onMounted(initDarkMode)
-
-function loadHistory() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    history.value = raw ? JSON.parse(raw) : []
-  } catch { history.value = [] }
-}
-
-function saveHistory(item) {
-  loadHistory()
-  const entry = { ...item, id: Date.now(), savedAt: new Date().toISOString() }
-  history.value.unshift(entry)
-  if (history.value.length > 20) history.value = history.value.slice(0, 20)
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(history.value))
-}
-
-function deleteHistory(id) {
-  history.value = history.value.filter(h => h.id !== id)
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(history.value))
-}
-
-loadHistory()
-
-function onSubmit({ petType, name, breed, year, month, day, hour }) {
-  const data = { petType, name, breed, year, month, day, hour, ...computeSaju(year, month, day, hour, petType) }
-  result.value = data
-  showHistory.value = false
-  saveHistory(data)
-}
-
-function viewHistory(item) {
-  result.value = item
-  showHistory.value = false
-}
-
-function reset() {
-  result.value = null
-  showHistory.value = false
-}
+const router = useRouter()
 </script>
 
 <template>
   <div class="app">
-    <a href="#main-content" class="skip-link">본문으로 바로가기</a>
-    <header class="header" role="banner">
-      <span class="logo" @click="reset" style="cursor:pointer" role="button" tabindex="0" @keydown.enter="reset" @keydown.space.prevent="reset" aria-label="PetLife 홈">🐾 PetLife</span>
-      <button class="dark-toggle" @click="toggleDark" :title="isDark ? '라이트 모드' : '다크 모드'" :aria-label="isDark ? '라이트 모드로 전환' : '다크 모드로 전환'">{{ isDark ? '☀️' : '🌙' }}</button>
-      <button class="lang-toggle" @click="toggleLang" :aria-label="currentLang === 'ko' ? 'Switch to English' : '한국어로 변경'">{{ currentLang === 'ko' ? 'EN' : '한' }}</button>
-      <button v-if="history.length && !result" class="history-toggle" @click="showHistory = !showHistory" :aria-expanded="showHistory" aria-controls="history-panel">
-        {{ showHistory ? '닫기' : '기록 ' + history.length }}
-      </button>
-    </header>
-    <HistoryList
-      v-if="showHistory && !result"
-      id="history-panel"
-      role="region"
-      aria-label="사주 기록 목록"
-      :history="history"
-      @view="viewHistory"
-      @delete="deleteHistory"
-    />
-    <main id="main-content">
-      <HeroSection v-if="!result && !showHistory" />
-      <SajuForm v-if="!result && !showHistory" @submit="onSubmit" />
-      <SajuResult v-if="result" :result="result" @reset="reset" />
-    </main>
-    <footer class="footer" role="contentinfo">
-      <nav class="footer-nav" aria-label="하단 내비게이션">
-        <a href="/about.html">서비스 소개</a>
-        <a href="/privacy.html">개인정보처리방침</a>
-        <a href="/terms.html">이용약관</a>
-        <a href="/contact.html">문의하기</a>
-      </nav>
-      <p class="footer-copy">© 2026 PetLife — 반려동물과 함께하는 행복한 삶 🐶</p>
-    </footer>
+    <router-view />
   </div>
 </template>
 
@@ -169,98 +66,6 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: 0 24px 80px;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 32px 0;
-}
-
-.dark-toggle {
-  margin-left: auto;
-  background: var(--primary-light);
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease;
-}
-.dark-toggle:hover {
-  transform: scale(1.1);
-}
-
-.logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary);
-  letter-spacing: -0.02em;
-}
-
-.lang-toggle {
-  margin-left: 6px;
-  background: var(--primary-light);
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 0.75rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease;
-  color: var(--primary);
-}
-.lang-toggle:hover {
-  transform: scale(1.1);
-}
-
-.history-toggle {
-  margin-left: 8px;
-  background: var(--primary-light);
-  color: var(--primary);
-  border: none;
-  padding: 6px 14px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.footer {
-  text-align: center;
-  padding: 60px 0 20px;
-  font-size: 0.85rem;
-  color: var(--text-sub);
-  opacity: 0.5;
-}
-.footer-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 4px 16px;
-  margin-bottom: 8px;
-}
-.footer-nav a {
-  color: var(--text-sub);
-  text-decoration: none;
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-.footer-nav a:hover {
-  opacity: 1;
-  text-decoration: underline;
-}
-.footer-copy {
-  margin-top: 4px;
 }
 
 button {
@@ -330,4 +135,5 @@ input, select {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
-}</style>
+}
+</style>
