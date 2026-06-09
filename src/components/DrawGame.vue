@@ -35,6 +35,7 @@
         @touchstart.prevent="onTouchStart"
         @touchmove.prevent="onTouchMove"
         @touchend.prevent="onTouchEnd"
+        @touchcancel.prevent="onTouchEnd"
         @mousedown.prevent="onMouseDown"
         @mousemove.prevent="onMouseMove"
         @mouseup.prevent="onMouseUp"
@@ -310,8 +311,20 @@ function onTouchMove(e) {
 function onTouchEnd() {
   if (!isDrawing.value) return
   isDrawing.value = false
-  // 그리기 완료 → 바로 채점
-  endGame()
+  if (gameState.value !== 'playing') return
+  // 최소 이동 거리 + 포인트 수 확인 — 터치 지터로 인한 실수 종료 방지
+  if (userPath.length >= 5) {
+    let pathLen = 0
+    for (let i = 1; i < userPath.length; i++) {
+      const dx = userPath[i].x - userPath[i - 1].x
+      const dy = userPath[i].y - userPath[i - 1].y
+      pathLen += Math.sqrt(dx * dx + dy * dy)
+    }
+    const minLen = Math.min(canvasW, canvasH) * 0.05
+    if (pathLen >= minLen) {
+      endGame()
+    }
+  }
 }
 
 // Mouse handlers (desktop) — 터치 기기에서는 무시
@@ -339,7 +352,10 @@ function onMouseUp() {
 function onMouseLeave() {
   if (isTouchDevice) return
   if (isDrawing.value) {
-    onTouchEnd()
+    isDrawing.value = false
+    if (gameState.value === 'playing' && userPath.length >= 5) {
+      endGame()
+    }
   }
 }
 
