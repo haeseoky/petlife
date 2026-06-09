@@ -339,9 +339,7 @@ function onMouseUp() {
 function onMouseLeave() {
   if (isTouchDevice) return
   if (isDrawing.value) {
-    // Pause drawing instead of ending/scoring — user can re-enter canvas
-    isDrawing.value = false
-    ctx.beginPath()
+    onTouchEnd()
   }
 }
 
