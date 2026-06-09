@@ -149,6 +149,7 @@ onMounted(() => {
   initCanvas()
   loadHighScore()
   window.addEventListener('resize', onResize)
+  document.addEventListener('visibilitychange', onVisibilityChange)
 })
 
 onUnmounted(() => {
@@ -156,6 +157,7 @@ onUnmounted(() => {
   clearTimeout(resizeTimer)
   cancelAnimationFrame(animFrameId)
   window.removeEventListener('resize', onResize)
+  document.removeEventListener('visibilitychange', onVisibilityChange)
   if (gridCanvas) {
     gridCanvas.width = 0
     gridCanvas.height = 0
@@ -163,6 +165,29 @@ onUnmounted(() => {
   }
   ctx = null
 })
+
+function onVisibilityChange() {
+  if (document.hidden) {
+    clearInterval(timerInterval)
+  } else if (gameState.value === 'playing') {
+    clearInterval(timerInterval)
+    const elapsed = Math.floor((Date.now() - gameStartTime) / 1000)
+    const remaining = Math.max(0, timeLimit.value - elapsed)
+    timeLeft.value = remaining
+    if (remaining <= 0) {
+      endGame()
+      return
+    }
+    gameStartTime = Date.now() - (timeLimit.value - remaining) * 1000
+    timerInterval = setInterval(() => {
+      const elapsed2 = Math.floor((Date.now() - gameStartTime) / 1000)
+      timeLeft.value = Math.max(0, timeLimit.value - elapsed2)
+      if (timeLeft.value <= 0) {
+        endGame()
+      }
+    }, 250)
+  }
+}
 
 function initCanvas() {
   const canvas = canvasRef.value
