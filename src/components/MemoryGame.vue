@@ -46,7 +46,8 @@
         <span class="score-value">{{ score }}</span>
       </div>
       <button v-if="gameState === 'idle'" class="btn-start" @click="startGame">시작!</button>
-      <button v-if="gameState === 'done'" class="btn-start" @click="startGame">다시하기</button>
+      <button v-if="gameState === 'done' && timedOut" class="btn-start" @click="startGame">⏰ 시간 초과! 다시하기</button>
+      <button v-else-if="gameState === 'done'" class="btn-start" @click="startGame">다시하기</button>
       <button v-if="gameState === 'done'" class="btn-share" @click="$emit('share')">📤 공유</button>
     </footer>
   </div>
@@ -79,6 +80,8 @@ let gameStartTime = 0
 let flipTimeout = null
 let isChecking = false // 더블탭 치팅 방지
 
+const timedOut = ref(false)
+
 function startGame() {
   gameState.value = 'playing'
   found.value = 0
@@ -86,6 +89,7 @@ function startGame() {
   timeLeft.value = 60
   timeLimit.value = 60
   flipped.value = []
+  timedOut.value = false
   clearTimeout(flipTimeout)
 
   const selected = shuffle(EMOJIS).slice(0, totalPairs)
@@ -133,8 +137,10 @@ function flipCard(index) {
 }
 
 function endGame() {
+  if (gameState.value !== 'playing') return
   clearInterval(timerInterval)
   gameState.value = 'done'
+  if (found.value < totalPairs && timeLeft.value <= 0) timedOut.value = true
 
   // 점수: 짝 찾기 보너스 + 시간 보너스 - 무브 패널티
   const pairBonus = found.value * 100

@@ -79,26 +79,29 @@ const finalTrait = computed(() => {
     const q = questions.value[idx]
     const el = elementMap[q.weights[sel]]
     
-    if (el === '木' || el === '火') counts.traitActive++
-    if (el === '土' || el === '水') counts.traitRelaxed++
-    
-    // Specific logic for social/independent/sensitive
-    if (q.id === 4 && sel === 'a') counts.traitSocial += 2
-    if (q.id === 20 && sel === 'b') counts.traitSensitive += 2
-    if (q.id === 11 && sel === 'a') counts.traitIndependent += 2
+    // Each element contributes to primary + secondary traits
+    if (el === '木') { counts.traitActive += 1.2; counts.traitIndependent += 0.8 }
+    if (el === '火') { counts.traitActive += 1.2; counts.traitSocial += 0.8 }
+    if (el === '土') { counts.traitRelaxed += 1.0; counts.traitSocial += 0.5; counts.traitSensitive += 0.5 }
+    if (el === '金') { counts.traitIndependent += 1.2; counts.traitSensitive += 0.8 }
+    if (el === '水') { counts.traitRelaxed += 1.0; counts.traitSensitive += 0.5; counts.traitIndependent += 0.5 }
   })
 
   // Add weight from mainElement
-  if (props.mainElement === '木' || props.mainElement === '火') counts.traitActive += 1.5
-  if (props.mainElement === '土' || props.mainElement === '水') counts.traitRelaxed += 1.5
-  if (props.mainElement === '金') counts.traitIndependent += 1.5
+  if (props.mainElement === '木') { counts.traitActive += 1; counts.traitIndependent += 0.5 }
+  if (props.mainElement === '火') { counts.traitActive += 1; counts.traitSocial += 0.5 }
+  if (props.mainElement === '土') { counts.traitRelaxed += 0.8; counts.traitSensitive += 0.3 }
+  if (props.mainElement === '金') { counts.traitIndependent += 1; counts.traitSensitive += 0.5 }
+  if (props.mainElement === '水') { counts.traitRelaxed += 0.8; counts.traitSensitive += 0.3 }
 
-  let maxKey = 'traitActive'
-  let maxVal = -1
-  for (const key in counts) {
-    if (counts[key] > maxVal) {
-      maxVal = counts[key]
-      maxKey = key
+  // Deterministic tie-breaking: defined priority order
+  const tieOrder = ['traitActive', 'traitRelaxed', 'traitSocial', 'traitIndependent', 'traitSensitive']
+  let maxKey = tieOrder[0]
+  let maxVal = counts[tieOrder[0]]
+  for (let i = 1; i < tieOrder.length; i++) {
+    if (counts[tieOrder[i]] > maxVal) {
+      maxVal = counts[tieOrder[i]]
+      maxKey = tieOrder[i]
     }
   }
   return maxKey

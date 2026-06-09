@@ -38,7 +38,7 @@
         @mousedown.prevent="onMouseDown"
         @mousemove.prevent="onMouseMove"
         @mouseup.prevent="onMouseUp"
-        @mouseleave.prevent="onMouseUp"
+        @mouseleave.prevent="onMouseLeave"
         @contextmenu.prevent
       />
     </main>
@@ -330,6 +330,14 @@ function onMouseMove(e) {
   requestDraw()
 }
 function onMouseUp() { if (isTouchDevice) return; onTouchEnd() }
+function onMouseLeave() {
+  if (isTouchDevice) return
+  if (isDrawing.value) {
+    // Pause drawing instead of ending/scoring — user can re-enter canvas
+    isDrawing.value = false
+    ctx.beginPath()
+  }
+}
 
 // Drawing
 function drawFrame() {

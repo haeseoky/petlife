@@ -137,6 +137,7 @@ function selectAnswer(opt) {
 }
 
 function endGame() {
+  if (gameState.value !== 'playing') return
   clearInterval(timerInterval)
   gameState.value = 'done'
   feedback.value = null
