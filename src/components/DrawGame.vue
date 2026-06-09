@@ -315,7 +315,10 @@ function onTouchEnd() {
 }
 
 // Mouse handlers (desktop) — 터치 기기에서는 무시
-function onMouseDown(e) { if (isTouchDevice) return; onTouchStart(e) }
+function onMouseDown(e) {
+  isTouchDevice = false // 마우스 입력 시 리셋 — 태블릿+키보드 환경 지원
+  onTouchStart(e)
+}
 function onMouseMove(e) {
   if (isTouchDevice) return
   if (!isDrawing.value) return
@@ -329,7 +332,10 @@ function onMouseMove(e) {
   userPath.push(pos)
   requestDraw()
 }
-function onMouseUp() { if (isTouchDevice) return; onTouchEnd() }
+function onMouseUp() {
+  if (isTouchDevice) return
+  onTouchEnd()
+}
 function onMouseLeave() {
   if (isTouchDevice) return
   if (isDrawing.value) {
