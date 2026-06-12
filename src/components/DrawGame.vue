@@ -583,6 +583,7 @@ function shareResult() {
   -webkit-user-select: none;
   touch-action: none;
   overflow: hidden;
+  position: relative;
 }
 
 .game-header {
@@ -635,6 +636,7 @@ function shareResult() {
 
 .game-main {
   flex: 1;
+  min-height: 0;
   position: relative;
   background: #fafbfc;
 }
@@ -652,6 +654,7 @@ function shareResult() {
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
   background: #fff;
   border-top: 1px solid #eee;
   flex-shrink: 0;
