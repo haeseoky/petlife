@@ -37,7 +37,7 @@ defineExpose({ load })
 </script>
 
 <style scoped>
-.leaderboard { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.leaderboard { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex-shrink: 0; max-height: 35vh; overflow-y: auto; }
 .lb-title { font-size: 16px; font-weight: 700; color: #1B355A; margin-bottom: 12px; }
 .lb-empty { text-align: center; color: #aaa; font-size: 13px; padding: 20px 0; }
 .lb-list { display: flex; flex-direction: column; gap: 4px; }
