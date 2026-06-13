@@ -31,7 +31,7 @@ function onShare() {
 </script>
 
 <style scoped>
-.game-page { height: 100dvh; display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box; }
+.game-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box; background: #fff; }
 .game-nav { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; background: #fff; border-bottom: 1px solid #eee; flex-shrink: 0; }
 .btn-back { background: none; border: none; font-size: 14px; color: #4D9BC6; cursor: pointer; font-weight: 600; padding: 6px 12px; }
 .game-title { font-size: 15px; font-weight: 700; color: #1B355A; }
