@@ -1,57 +1,44 @@
-# PetLife 🐾
+# 🐾 PetLife
 
-반려동물 사주풀이 웹 서비스 — 반려동물의 생일로 사주를 풀어보는 싱글 페이지 애플리케이션.
+> 반려동물 사주풀이 & 종합 운세 서비스
 
-## 배포
+## 🌐 서비스 URL
+- **메인:** https://petlife.nutalk.co.kr
+- **Pages:** https://petlife-pe7.pages.dev
 
-- **도메인:** [nutalk.co.kr](https://nutalk.co.kr)
-- **호스팅:** Cloudflare Pages (자동 배포: `main` 브랜치 push 시)
-- **프로젝트명:** petlife
+## 📋 소개
+반려동물의 생일을 기반으로 사주풀이, MBTI, 궁합, 운세 등 다양한 정보를 제공하는 웹 서비스입니다.
 
-## 기술 스택
+## ✨ 주요 기능
+- 🏮 **Pet Zodiac** — 반려동물 띠별 성격 분석
+- 🎂 **Birthday Countdown** — 생일까지 남은 날짜
+- 🔮 **PetFortuneGacha** — 오늘의 운세 가챠
+- 💕 **PetBalanceGame** — 반려동물 궁합 게임
+- 📅 **LuckyCalendar** — 행운의 날짜 캘린더
+- ⭐ **WeeklyHoroscope** — 주간 운세
+- 🐶 **Pet Mood Tracker** — 반려동물 기분 추적
 
-- Vue 3 + Vite
-- 순수 CSS (프레임워크 없음)
-- PWA (서비스 워커, 오프라인 캐싱)
+## 🛠 기술 스택
+- **Frontend:** Vue 3 + Vite
+- **배포:** Cloudflare Pages (자동 push 배포)
+- **디자인:** hub-design-guide (밝은 테마)
+- **i18n:** 한국어 / 영어 (313키)
+- **PWA:** manifest.json + Service Worker
 
-## 주요 기능
-
-| 컴포넌트 | 설명 |
-|---|---|
-| SajuForm | 반려동물 이름/생일 입력 |
-| SajuResult | 사주 결과 표시 |
-| PetZodiac | 띠별 운세 |
-| PetMBTI | 반려동물 MBTI 성격 분석 |
-| PetBalanceGame | 밸런스 게임 |
-| PetFortuneGacha | 운세 가챠 |
-| PetMoodTracker | 기분 트래커 |
-| PetLuckyFood | 오늘의 추천 메뉴 |
-| LuckyCalendar | 행운 캘린더 |
-| WeeklyHoroscope | 주간 운세 |
-| BirthdayCountdown | 생일 카운트다운 |
-| CompatSection | 궁합 분석 |
-| FengShuiGuide | 풍수 가이드 |
-| HeroSection | 메인 히어로 영역 |
-| HistoryList | 결과 히스토리 |
-| AdBanner | AdSense 광고 배너 |
-
-## 개발
-
-```bash
-npm install
-npm run dev      # 개발 서버
-npm run build    # 프로덕션 빌드
-npm run preview  # 빌드 미리보기
+## 📂 구조
+```
+src/
+├── components/     # Vue 컴포넌트
+├── composables/    # useScrollNav, useShare 등
+├── data/           # recipe, fortune, zodiac, saju 등
+├── views/          # 페이지 뷰
+└── locales/        # ko.json, en.json
 ```
 
-## 광고
+## 📊 데이터
+- 사주풀이, 운세, 궁합 등 정적 데이터 기반
+- 외부 API 의존성 없음
 
-- Google AdSense 적용 (ca-pub-6821934063903820)
-- 슬롯 3개: Top / Mid / Bottom
-
-## SEO
-
-- robots.txt, sitemap.xml
-- JSON-LD 구조화 데이터
-- Open Graph 메타태그
-- canonical URL
+## 🔗 관련
+- **메인 허브:** https://hub.nutalk.co.kr
+- **GitHub:** https://github.com/haeseoky/petlife
