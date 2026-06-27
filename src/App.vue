@@ -11,8 +11,6 @@ const router = useRouter()
 </template>
 
 <style>
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
-
 :root {
   --primary: #7B5E4D;
   --primary-light: #F8F5F2;

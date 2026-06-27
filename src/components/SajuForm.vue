@@ -151,29 +151,29 @@ watch(petType, () => { breed.value = '' })
 
   <form class="form" @submit.prevent="handleSubmit">
     <div class="form-group">
-      <label>{{ t('petType') }}</label>
-      <div class="type-toggle">
+      <label id="pet-type-label">{{ t('petType') }}</label>
+      <div class="type-toggle" role="group" aria-labelledby="pet-type-label">
         <button type="button" :class="['type-btn', { active: petType === 'dog' }]" @click="petType = 'dog'">{{ t('dog') }}</button>
         <button type="button" :class="['type-btn', { active: petType === 'cat' }]" @click="petType = 'cat'">{{ t('cat') }}</button>
       </div>
     </div>
 
     <div class="form-group">
-      <label>{{ petType === 'dog' ? t('dog') : t('cat') }} {{ t('nameLabel') }}</label>
-      <input v-model="name" type="text" :placeholder="petType === 'dog' ? t('namePlaceholder') : t('catPlaceholder')" required />
+      <label for="pet-name">{{ petType === 'dog' ? t('dog') : t('cat') }} {{ t('nameLabel') }}</label>
+      <input id="pet-name" v-model="name" type="text" :placeholder="petType === 'dog' ? t('namePlaceholder') : t('catPlaceholder')" required />
     </div>
 
     <div class="form-group">
-      <label>{{ t('breedLabel') }}</label>
-      <select v-model="breed" required>
+      <label for="pet-breed">{{ t('breedLabel') }}</label>
+      <select id="pet-breed" v-model="breed" required>
         <option value="" disabled>{{ t('breedDefault') }}</option>
         <option v-for="b in breeds" :key="b" :value="b">{{ b }}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label>📅 {{ t('birthLabel') }}</label>
-      <div class="date-row">
+      <span id="birth-label" class="label-text">📅 {{ t('birthLabel') }}</span>
+      <div class="date-row" role="group" aria-labelledby="birth-label">
         <select v-model.number="year">
           <option v-for="y in 30" :key="2026-y+1" :value="2026-y+1">{{ 2026-y+1 }}{{ t('yearSuffix') }}</option>
         </select>
@@ -187,8 +187,8 @@ watch(petType, () => { breed.value = '' })
     </div>
 
     <div class="form-group">
-      <label>🕐 {{ t('hourLabel') }}</label>
-      <select v-model.number="hour">
+      <label for="birth-hour">🕐 {{ t('hourLabel') }}</label>
+      <select id="birth-hour" v-model.number="hour">
         <option v-for="h in 24" :key="h-1" :value="h-1">{{ String(h-1).padStart(2, '0') }}{{ t('hourSuffix') }}</option>
       </select>
     </div>
