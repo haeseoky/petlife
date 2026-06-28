@@ -1,13 +1,15 @@
-import { createApp } from 'vue'
+import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
-import router from './router/index.js'
+import routes from './routes'
 
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {})
-  })
-}
+export const createApp = ViteSSG(
+  App,
+  { routes },
+  ({ isClient }) => {
+    if (isClient && 'serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {})
+      })
+    }
+  }
+)

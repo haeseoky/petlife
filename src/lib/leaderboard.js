@@ -6,43 +6,42 @@ const STORAGE_KEY_PREFIX = 'petlife-lb-'
 const LEGACY_KEY = 'drawtrace-leaderboard'
 const MAX_ENTRIES = 50
 
+const isBrowser = typeof localStorage !== 'undefined'
+
 function storageKey(gameId) {
   return STORAGE_KEY_PREFIX + gameId
 }
 
 // 기존 통합 데이터를 게임별로 마이그레이션 (최초 1회만 실행)
 function migrateLegacy() {
+  if (!isBrowser) return
   const raw = localStorage.getItem(LEGACY_KEY)
   if (!raw) return
   try {
     const legacy = JSON.parse(raw)
     if (!Array.isArray(legacy) || legacy.length === 0) return
-    // gameId별로 그룹핑
     const groups = {}
     legacy.forEach(e => {
       const gid = e.gameId || 'unknown'
       if (!groups[gid]) groups[gid] = []
       groups[gid].push(e)
     })
-    // 각 그룹을 개별 키로 저장
     Object.entries(groups).forEach(([gid, entries]) => {
       entries.sort((a, b) => b.score - a.score)
       if (entries.length > MAX_ENTRIES) entries.length = MAX_ENTRIES
       localStorage.setItem(storageKey(gid), JSON.stringify(entries))
     })
-    // 마이그레이션 완료 표시
     localStorage.removeItem(LEGACY_KEY)
   } catch { /* ignore corrupt data */ }
 }
 
-// 최초 로드 시 마이그레이션 실행
 migrateLegacy()
 
 export function getLeaderboard(gameId = null) {
+  if (!isBrowser) return []
   if (gameId) {
     return JSON.parse(localStorage.getItem(storageKey(gameId)) || '[]')
   }
-  // 전체 조회: 모든 게임 키 병합
   const all = []
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i)
@@ -55,6 +54,7 @@ export function getLeaderboard(gameId = null) {
 }
 
 export function addScore(entry) {
+  if (!isBrowser) return []
   const gameId = entry.gameId || 'unknown'
   const data = getLeaderboard(gameId)
   data.push({
@@ -84,6 +84,7 @@ export function getBestScore(gameId) {
 }
 
 export function clearLeaderboard(gameId = null) {
+  if (!isBrowser) return
   if (gameId) {
     localStorage.removeItem(storageKey(gameId))
   } else {

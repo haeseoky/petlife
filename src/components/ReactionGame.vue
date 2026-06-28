@@ -68,7 +68,7 @@ const getTimestamp = () => {
 }
 
 // bestMs는 '반응시간 ms'이므로 localStorage에서 직접 읽기 (getBestScore는 점수 기준)
-const bestMs = ref(parseInt(localStorage.getItem('reaction-best-ms') || '0', 10))
+const bestMs = ref(typeof localStorage !== 'undefined' ? parseInt(localStorage.getItem('reaction-best-ms') || '0', 10) : 0)
 
 const avgTime = computed(() => {
   if (rounds.value.length === 0) return 0

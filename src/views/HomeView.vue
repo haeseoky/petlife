@@ -59,7 +59,7 @@ function deleteHistory(id) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(history.value))
 }
 
-loadHistory()
+if (typeof localStorage !== 'undefined') loadHistory()
 
 function onSubmit({ petType, name, breed, year, month, day, hour }) {
   const data = { petType, name, breed, year, month, day, hour, ...computeSaju(year, month, day, hour, petType) }

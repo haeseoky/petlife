@@ -383,9 +383,11 @@ const messages = {
 }
 
 const STORAGE_KEY = 'petlife_lang'
-const currentLang = ref(loadLang())
+const isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined'
+const currentLang = ref(isBrowser ? loadLang() : 'ko')
 
 function loadLang() {
+  if (!isBrowser) return 'ko'
   const saved = localStorage.getItem(STORAGE_KEY)
   if (saved && messages[saved]) return saved
   const nav = navigator.language || 'ko'
@@ -394,7 +396,7 @@ function loadLang() {
 
 function setLang(lang) {
   currentLang.value = lang
-  localStorage.setItem(STORAGE_KEY, lang)
+  if (isBrowser) localStorage.setItem(STORAGE_KEY, lang)
 }
 
 function toggleLang() {
