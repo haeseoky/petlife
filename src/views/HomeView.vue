@@ -99,11 +99,11 @@ function reset() {
       @view="viewHistory"
       @delete="deleteHistory"
     />
-    <main id="main-content">
+    <main id="main-content" role="main">
       <HeroSection v-if="!result && !showHistory" />
       <!-- 게임 섹션 -->
       <section v-if="!result && !showHistory" class="game-section">
-        <a href="https://game.nutalk.co.kr" target="_blank" rel="noopener" class="game-hub-card">
+        <a href="https://game.nutalk.co.kr" target="_blank" rel="noopener" class="game-hub-card" aria-label="반려동물 미니게임 센터 열기 (새 창)">
           <div class="game-hub-icon">🎮</div>
           <div class="game-hub-info">
             <div class="game-hub-title">반려동물 미니게임</div>
