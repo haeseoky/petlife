@@ -130,7 +130,11 @@ watch(petType, () => { breed.value = '' })
         v-for="p in profiles"
         :key="p.id"
         class="profile-card"
+        role="button"
+        tabindex="0"
+        :aria-label="`${p.name} (${p.breed}) 프로필 불러오기`"
         @click="loadProfile(p)"
+        @keydown.enter="loadProfile(p)"
       >
         <div class="profile-info">
           <span class="profile-emoji">{{ p.petType === 'dog' ? '🐕' : '🐈' }}</span>
@@ -160,7 +164,7 @@ watch(petType, () => { breed.value = '' })
 
     <div class="form-group">
       <label for="pet-name">{{ petType === 'dog' ? t('dog') : t('cat') }} {{ t('nameLabel') }}</label>
-      <input id="pet-name" v-model="name" type="text" :placeholder="petType === 'dog' ? t('namePlaceholder') : t('catPlaceholder')" required />
+      <input id="pet-name" v-model="name" type="text" :placeholder="petType === 'dog' ? t('namePlaceholder') : t('catPlaceholder')" required autocomplete="name" />
     </div>
 
     <div class="form-group">
