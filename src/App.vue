@@ -5,7 +5,7 @@ const router = useRouter()
 </script>
 
 <template>
-  <div class="app">
+  <div class="app" role="main">
     <router-view />
   </div>
 </template>
