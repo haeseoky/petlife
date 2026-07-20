@@ -58,6 +58,7 @@ body {
   line-height: 1.6;
   letter-spacing: -0.01em;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overscroll-behavior: none;
 }
 
 .app {
@@ -69,6 +70,11 @@ body {
 button {
   font-family: inherit;
   transition: all 0.2s ease;
+  will-change: transform;
+}
+
+button:active {
+  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
