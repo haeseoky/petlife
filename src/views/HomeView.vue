@@ -289,18 +289,24 @@ input, select {
 /* 스킵 링크 */
 .skip-link {
   position: absolute;
-  top: -100px;
-  left: 0;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--primary);
   color: white;
   padding: 8px 16px;
   z-index: 1000;
   font-size: 0.85rem;
-  border-radius: 0 0 8px 0;
+  border-radius: 0 0 8px 8px;
   text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: top 0.2s ease;
 }
 .skip-link:focus {
   top: 0;
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
 
 /* 인쇄 스타일 */
