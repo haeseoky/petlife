@@ -1,0 +1,12 @@
+Contact: mailto:contact@nutalk.co.kr
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: ko, en
+Canonical: https://nutalk.co.kr/.well-known/security.txt
+Policy: https://nutalk.co.kr/security-policy.html
+Acknowledgments: https://nutalk.co.kr/security-acknowledgments.html
+
+# Security Policy
+# PetLife takes security seriously. If you discover a security vulnerability,
+# please report it responsibly via the contact information above.
+
+# Thank you for helping keep PetLife safe and secure.
