@@ -9,6 +9,14 @@
   "lang": "ko",
   "dir": "ltr",
   "categories": ["entertainment", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "label": "PetLife 메인 화면"
+    }
+  ],
   "icons": [
     {
       "src": "/icon-192.png",
