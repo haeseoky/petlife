@@ -21,11 +21,12 @@
           :key="i"
           class="color-btn"
           :style="{ background: opt.hex }"
+          :aria-label="`${opt.name} 색상 선택`"
           @click="selectAnswer(opt)"
         />
       </div>
       <Transition name="pop">
-        <div v-if="feedback" class="feedback" :class="feedback">{{ feedback === 'correct' ? '✅ 정답!' : '❌ 틀림!' }}</div>
+        <div v-if="feedback" class="feedback" :class="feedback" role="status" aria-live="polite">{{ feedback === 'correct' ? '✅ 정답!' : '❌ 틀림!' }}</div>
       </Transition>
     </main>
 

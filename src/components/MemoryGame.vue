@@ -30,7 +30,11 @@
           :key="i"
           class="card"
           :class="{ flipped: card.flipped, matched: card.matched }"
+          role="button"
+          tabindex="0"
+          :aria-label="card.matched ? `카드 ${i + 1}, 매칭됨` : card.flipped ? `카드 ${i + 1}, ${card.emoji}` : `카드 ${i + 1}, 뒤집기`"
           @click="flipCard(i)"
+          @keydown.enter="flipCard(i)"
         >
           <div class="card-inner">
             <div class="card-front">❓</div>
