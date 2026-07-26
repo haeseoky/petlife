@@ -1,6 +1,6 @@
 <template>
   <Transition name="slide">
-    <div v-if="visible" class="share-modal">
+    <div v-if="visible" class="share-modal" role="dialog" aria-modal="true" aria-label="결과 공유하기">
       <div class="share-card">
         <h3 class="share-title">📤 결과 공유하기</h3>
         <div class="share-score">{{ gameName }} {{ score }}점!</div>

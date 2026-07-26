@@ -84,6 +84,8 @@ const confettiParticles = computed(() => {
     size: 0.8 + Math.random() * 0.8
   }))
 })
+
+const progressLabel = computed(() => `${props.result.name} birthday progress`)
 </script>
 
 <template>
@@ -129,7 +131,7 @@ const confettiParticles = computed(() => {
         <span class="days-unit">{{ currentLang === 'ko' ? '일' : 'days' }}</span>
       </div>
       <div class="progress-section">
-        <div class="progress-bar-bg">
+        <div class="progress-bar-bg" role="progressbar" :aria-valuenow="birthdayInfo.yearProgress" aria-valuemin="0" aria-valuemax="100" :aria-label="progressLabel">
           <div class="progress-bar-fill" :style="{ width: birthdayInfo.yearProgress + '%' }"></div>
         </div>
         <span class="progress-label">{{ birthdayInfo.yearProgress }}%</span>
