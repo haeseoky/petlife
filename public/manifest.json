@@ -3,6 +3,7 @@
   "short_name": "PetLife",
   "description": "무료 반려동물 사주풀이 서비스. 강아지·고양이의 사주, 성격, 운세, 궁합을 재미있게 분석해드려요.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#FDFCFB",
   "theme_color": "#7B5E4D",
