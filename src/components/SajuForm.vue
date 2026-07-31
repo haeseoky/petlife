@@ -164,12 +164,12 @@ watch(petType, () => { breed.value = '' })
 
     <div class="form-group">
       <label for="pet-name">{{ petType === 'dog' ? t('dog') : t('cat') }} {{ t('nameLabel') }}</label>
-      <input id="pet-name" v-model="name" type="text" :placeholder="petType === 'dog' ? t('namePlaceholder') : t('catPlaceholder')" required autocomplete="name" />
+      <input id="pet-name" v-model="name" type="text" :placeholder="petType === 'dog' ? t('namePlaceholder') : t('catPlaceholder')" required autocomplete="name" aria-required="true" />
     </div>
 
     <div class="form-group">
       <label for="pet-breed">{{ t('breedLabel') }}</label>
-      <select id="pet-breed" v-model="breed" required>
+      <select id="pet-breed" v-model="breed" required aria-required="true">
         <option value="" disabled>{{ t('breedDefault') }}</option>
         <option v-for="b in breeds" :key="b" :value="b">{{ b }}</option>
       </select>
