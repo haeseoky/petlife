@@ -113,6 +113,43 @@ function reset() {
         </a>
       </section>
       <SajuForm v-if="!result && !showHistory" @submit="onSubmit" />
+
+      <!-- 여름철 반려동물 건강관리 팁 카드 -->
+      <section v-if="!result && !showHistory" class="seasonal-tip-card">
+        <div class="seasonal-header">
+          <span class="seasonal-icon">☀️</span>
+          <div>
+            <h3>여름철 반려동물 건강 관리</h3>
+            <p>폭염 속 우리 아이를 지키는 필수 수칙을 확인하세요!</p>
+          </div>
+        </div>
+        <div class="seasonal-tips-grid">
+          <div class="tip-item">
+            <span class="tip-emoji">🌡️</span>
+            <span class="tip-text">한낮 산책 금지, 아침·저녁 산책</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-emoji">💧</span>
+            <span class="tip-text">신선한 물 여러 곳에 비치</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-emoji">🚗</span>
+            <span class="tip-text">차 안에 혼자 두지 않기</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-emoji">🦟</span>
+            <span class="tip-text">야외 활동 후 진드기 확인</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-emoji">🍖</span>
+            <span class="tip-text">사료는 서늘하고 건조한 곳에 밀폐 보관</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-emoji">🐾</span>
+            <span class="tip-text">산책 전 바닥 온도 5초 확인</span>
+          </div>
+        </div>
+      </section>
       <SajuResult v-if="result" :result="result" @reset="reset" />
     </main>
     <footer class="footer" role="contentinfo">
@@ -386,5 +423,93 @@ input, select {
 .game-hub-arrow {
   font-size: 1.2rem;
   opacity: 0.7;
+}
+
+/* 여름철 건강관리 팁 카드 */
+.seasonal-tip-card {
+  margin: 20px 0;
+  background: linear-gradient(135deg, #FFF8F0, #FFF5F5);
+  border: 1px solid #FFE0D0;
+  border-radius: 16px;
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+html.dark .seasonal-tip-card {
+  background: linear-gradient(135deg, #2A1810, #2A1A14);
+  border-color: #3A2820;
+}
+
+.seasonal-tip-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #FF6B35, #FFA500, #FFD700);
+}
+
+.seasonal-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.seasonal-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.seasonal-header h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #E85D2C;
+  margin-bottom: 2px;
+}
+
+html.dark .seasonal-header h3 {
+  color: #FF8855;
+}
+
+.seasonal-header p {
+  font-size: 0.82rem;
+  color: var(--text-sub);
+}
+
+.seasonal-tips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.tip-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-bg);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  font-size: 0.8rem;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.tip-emoji {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.tip-text {
+  flex: 1;
+}
+
+@media (max-width: 400px) {
+  .seasonal-tips-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

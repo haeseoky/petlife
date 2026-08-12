@@ -12,6 +12,7 @@ import PetLuckyFood from './PetLuckyFood.vue'
 import PetFortuneGacha from './PetFortuneGacha.vue'
 import PetMoodTracker from './PetMoodTracker.vue'
 import PetBalanceGame from './PetBalanceGame.vue'
+import SummerCareGuide from './SummerCareGuide.vue'
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
@@ -64,7 +65,8 @@ const navSections = [
   { id: 'section-fengshui', label: '풍수' },
   { id: 'section-age', label: '나이환산' },
   { id: 'section-lucky-item', label: '럭키아이템' },
-  { id: 'section-care-tip', label: '케어팁' }
+  { id: 'section-care-tip', label: '케어팁' },
+  { id: 'section-summer-care', label: '여름건강' }
 ]
 
 function handleScroll() {
@@ -544,6 +546,9 @@ async function saveAsImage() {
       </div>
       <p class="name-tip">{{ luckyNames.tip }}</p>
     </div>
+
+    <!-- 여름철 반려동물 건강 관리 -->
+    <SummerCareGuide id="section-summer-care" class="reveal" :petType="result.petType" />
 
     <!-- 맞춤 케어 팁 -->
     <div id="section-care-tip" class="tips-card reveal">

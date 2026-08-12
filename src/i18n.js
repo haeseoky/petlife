@@ -174,6 +174,13 @@ const messages = {
     moodHungry: '배고픔',
     moodAnxious: '불안',
     moodNotLogged: '미기록',
+    summerCareTitle: '☀️ 여름철 반려동물 건강 관리',
+    summerCareDesc: '폭염 속 우리 아이를 지키는 필수 수칙',
+    summerHeatstroke: '열사병 예방',
+    summerHydration: '수분 및 체온 관리',
+    summerTick: '참진드기 · 기생충 예방',
+    summerFood: '식중독 예방 & 사료 보관',
+    summerEmergency: '🚨 응급 상황 대처법',
     dailyMission: {
       title: '🐾 오늘의 반려동물 미션',
       desc: '오늘 우리 아이에게 필요한 오행 기운을 채워주세요!',
