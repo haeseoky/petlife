@@ -117,36 +117,36 @@ function reset() {
       <!-- 여름철 반려동물 건강관리 팁 카드 -->
       <section v-if="!result && !showHistory" class="seasonal-tip-card">
         <div class="seasonal-header">
-          <span class="seasonal-icon">☀️</span>
+          <span class="seasonal-icon">🍂</span>
           <div>
-            <h3>여름철 반려동물 건강 관리</h3>
-            <p>폭염 속 우리 아이를 지키는 필수 수칙을 확인하세요!</p>
+            <h3>가을철 반려동물 건강 관리</h3>
+            <p>계절 변화기 우리 아이를 위한 필수 수칙을 확인하세요!</p>
           </div>
         </div>
         <div class="seasonal-tips-grid">
           <div class="tip-item">
-            <span class="tip-emoji">🌡️</span>
-            <span class="tip-text">한낮 산책 금지, 아침·저녁 산책</span>
+            <span class="tip-emoji">🌬️</span>
+            <span class="tip-text">일교차 클 때 옷차림 조절</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-emoji">🐕</span>
+            <span class="tip-text">털갈이 시기 빗질 필수</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-emoji">🦠</span>
+            <span class="tip-text">알레르기 비염 주의</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-emoji">👀</span>
+            <span class="tip-text">눈 건조 예방</span>
           </div>
           <div class="tip-item">
             <span class="tip-emoji">💧</span>
-            <span class="tip-text">신선한 물 여러 곳에 비치</span>
+            <span class="tip-text">수분 섭취 꾸준히 유지</span>
           </div>
           <div class="tip-item">
-            <span class="tip-emoji">🚗</span>
-            <span class="tip-text">차 안에 혼자 두지 않기</span>
-          </div>
-          <div class="tip-item">
-            <span class="tip-emoji">🦟</span>
-            <span class="tip-text">야외 활동 후 진드기 확인</span>
-          </div>
-          <div class="tip-item">
-            <span class="tip-emoji">🍖</span>
-            <span class="tip-text">사료는 서늘하고 건조한 곳에 밀폐 보관</span>
-          </div>
-          <div class="tip-item">
-            <span class="tip-emoji">🐾</span>
-            <span class="tip-text">산책 전 바닥 온도 5초 확인</span>
+            <span class="tip-emoji">🚶</span>
+            <span class="tip-text">서늘한 시간 산책 즐기기</span>
           </div>
         </div>
       </section>
@@ -425,11 +425,11 @@ input, select {
   opacity: 0.7;
 }
 
-/* 여름철 건강관리 팁 카드 */
+/* 가을철 건강관리 팁 카드 */
 .seasonal-tip-card {
   margin: 20px 0;
-  background: linear-gradient(135deg, #FFF8F0, #FFF5F5);
-  border: 1px solid #FFE0D0;
+  background: linear-gradient(135deg, #FFF8F0, #FFF0F8);
+  border: 1px solid #FFD0E0;
   border-radius: 16px;
   padding: 24px 20px;
   position: relative;
@@ -437,8 +437,8 @@ input, select {
 }
 
 html.dark .seasonal-tip-card {
-  background: linear-gradient(135deg, #2A1810, #2A1A14);
-  border-color: #3A2820;
+  background: linear-gradient(135deg, #2A1A14, #2A1418);
+  border-color: #3A2018;
 }
 
 .seasonal-tip-card::before {
@@ -448,7 +448,7 @@ html.dark .seasonal-tip-card {
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, #FF6B35, #FFA500, #FFD700);
+  background: linear-gradient(90deg, #E85D2C, #D4AF37, #8B4513);
 }
 
 .seasonal-header {
@@ -466,12 +466,12 @@ html.dark .seasonal-tip-card {
 .seasonal-header h3 {
   font-size: 1.05rem;
   font-weight: 800;
-  color: #E85D2C;
+  color: #8B4513;
   margin-bottom: 2px;
 }
 
 html.dark .seasonal-header h3 {
-  color: #FF8855;
+  color: #D4AF37;
 }
 
 .seasonal-header p {

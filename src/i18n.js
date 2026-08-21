@@ -194,6 +194,22 @@ const messages = {
     summerEmergencySymptoms: '헐떡임·구토·비틀거림·침 흘림·의식 저하',
     summerEmergencyAction: '시원한 곳으로 이동 → 미지근한 물로 몸 식히기 → 즉시 병원 이동',
     summerWildMushroom: '야생 버섯 섭취 금지 (독버섯 위험)',
+    fallCareTitle: '🍂 가을철 반려동물 건강 관리',
+    fallCareDesc: '계절 변화기 우리 아이를 위한 필수 수칙',
+    fallTempChange: '일교차 대응',
+    fallShedding: '털갈이 관리',
+    fallAllergy: '알레르기 주의',
+    fallEyeCare: '눈 건강 관리',
+    fallHydration: '수분 섭취',
+    fallWalk: '산책 관리',
+    fallTip1: '일교차가 큰 시간대에는 반려동물 옷차림 조절',
+    fallTip2: '햇볕이 따뜻할 때는 얇은 옷, 밤에는 보온 의류 착용',
+    fallTip3: '매일 빗질로 털갈이 관리, 하루 1~2회 빗질',
+    fallTip4: '집 먼지 제거 및 침구 청소로 알레르기 비염 예방',
+    fallTip5: '눈물 자국 제거 및 인공눈물로 건조 예방',
+    fallTip6: '여름처럼 많이 마시지 않지만 수분 섭취 꾸준히 유지',
+    fallTip7: '서늘한 아침·저녁 시간대에 산책 즐기기',
+    fallTip8: '풀이 마르면서 들개풀 등 알레르기 유발 식물 주의',
     dailyMission: {
       title: '🐾 오늘의 반려동물 미션',
       desc: '오늘 우리 아이에게 필요한 오행 기운을 채워주세요!',
@@ -398,7 +414,23 @@ const messages = {
           cat: { title: 'Flowing Water', desc: 'Stimulate curiosity with a water fountain or tap.', time: '10m' }
         }
       }
-    }
+    },
+    fallCareTitle: '🍂 Fall Pet Health Care',
+    fallCareDesc: 'Essential care during seasonal transition',
+    fallTempChange: 'Temperature Fluctuation',
+    fallShedding: 'Shedding Management',
+    fallAllergy: 'Allergy Awareness',
+    fallEyeCare: 'Eye Health',
+    fallHydration: 'Hydration',
+    fallWalk: 'Walk Management',
+    fallTip1: 'Adjust clothing for temperature fluctuations',
+    fallTip2: 'Light clothes when sunny, warm layers at night',
+    fallTip3: 'Daily brushing for shedding management, 1-2 times/day',
+    fallTip4: 'Dust removal and bedding cleaning to prevent allergic rhinitis',
+    fallTip5: 'Remove tear stains and use artificial tears for dry eyes',
+    fallTip6: 'Maintain consistent hydration even without summer thirst',
+    fallTip7: 'Enjoy walks during cool morning and evening hours',
+    fallTip8: 'Watch for allergy-triggering plants like mugwort as grass dries'
   }
 }
 
