@@ -28,6 +28,14 @@ const careTips = [
     ]
   },
   {
+    category: t('summerSFTSWarning'),
+    icon: '🦠',
+    tips: [
+      t('summerSFTSDesc') + ': ' + t('summerSFTSSymptoms'),
+      t('summerSFTSAction')
+    ]
+  },
+  {
     category: t('summerFood'),
     icon: '🍽️',
     tips: [
