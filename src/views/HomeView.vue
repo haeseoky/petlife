@@ -104,7 +104,7 @@ function reset() {
       <!-- 게임 섹션 -->
       <section v-if="!result && !showHistory" class="game-section">
         <a href="https://game.nutalk.co.kr" target="_blank" rel="noopener" class="game-hub-card" aria-label="반려동물 미니게임 센터 열기 (새 창)">
-          <div class="game-hub-icon">🎮</div>
+          <svg class="game-hub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
           <div class="game-hub-info">
             <div class="game-hub-title">반려동물 미니게임</div>
             <div class="game-hub-desc">모양 따라그리기, 짝 맞추기, 색깔 맞추기, 반응속도 테스트!</div>
@@ -125,27 +125,27 @@ function reset() {
         </div>
         <div class="seasonal-tips-grid">
           <div class="tip-item">
-            <span class="tip-emoji">🌡️</span>
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z"/></svg></span>
             <span class="tip-text">손등 바닥에 5초 대고 뜨겁다면 산책 자제</span>
           </div>
           <div class="tip-item">
-            <span class="tip-emoji">💧</span>
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s6 6.3 6 11.3a6 6 0 0 1-12 0c0-5 6-11.3 6-11.3z"/></svg></span>
             <span class="tip-text">항상 신선한 물 여러 곳에 배치</span>
           </div>
           <div class="tip-item">
-            <span class="tip-emoji">🕷️</span>
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="6" width="8" height="14" rx="4"/><path d="M12 6v-3"/><path d="M19 7l-2 2"/><circle cx="5" cy="9" r="2"/><circle cx="7" cy="13" r="2"/></svg></span>
             <span class="tip-text">진드기 예방약 정기 사용</span>
           </div>
           <div class="tip-item">
-            <span class="tip-emoji">🦠</span>
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></span>
             <span class="tip-text">SFTS 진드기 매개 바이러스 주의</span>
           </div>
           <div class="tip-item">
-            <span class="tip-emoji">🍽️</span>
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3z"/></svg></span>
             <span class="tip-text">남은 사료 바로 치우기</span>
           </div>
           <div class="tip-item emergency-tip">
-            <span class="tip-emoji">🚨</span>
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
             <span class="tip-text">헐떡임·구토 시 즉시 병원</span>
           </div>
         </div>
@@ -395,7 +395,7 @@ input, select {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: linear-gradient(135deg, #1B355A, #4D9BC6);
+  background: var(--primary);
   border-radius: 16px;
   padding: 18px 20px;
   text-decoration: none;
@@ -404,10 +404,12 @@ input, select {
 }
 .game-hub-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(77, 155, 198, 0.3);
+  box-shadow: 0 6px 20px rgba(123, 94, 77, 0.35);
+  background: #6A4F3F;
 }
 .game-hub-icon {
-  font-size: 36px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
 }
 .game-hub-info { flex: 1; }
@@ -428,27 +430,16 @@ input, select {
 /* 여름철 건강관리 팁 카드 */
 .seasonal-tip-card {
   margin: 20px 0;
-  background: linear-gradient(135deg, #FFF8E6, #FFF0E6);
-  border: 1px solid #FFB347;
+  background: var(--primary-light);
+  border: 1px solid var(--border-light);
   border-radius: 16px;
   padding: 24px 20px;
   position: relative;
-  overflow: hidden;
 }
 
 html.dark .seasonal-tip-card {
-  background: linear-gradient(135deg, #2A2214, #2A1A18);
-  border-color: #3A2A18;
-}
-
-.seasonal-tip-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #FF6B35, #FFB347, #FF8C42);
+  background: #262019;
+  border-color: #3A3028;
 }
 
 .emergency-tip {
@@ -475,13 +466,13 @@ html.dark .emergency-tip {
 
 .seasonal-header h3 {
   font-size: 1.05rem;
-  font-weight: 800;
-  color: #E65100;
+  font-weight: 700;
+  color: var(--primary);
   margin-bottom: 2px;
 }
 
 html.dark .seasonal-header h3 {
-  color: #FFB74D;
+  color: #C9A98F;
 }
 
 .seasonal-header p {
@@ -508,9 +499,19 @@ html.dark .seasonal-header h3 {
   line-height: 1.4;
 }
 
-.tip-emoji {
-  font-size: 1.1rem;
+.tip-icon {
+  display: inline-flex;
   flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+}
+.tip-icon svg {
+  width: 100%;
+  height: 100%;
+}
+.emergency-tip .tip-icon {
+  color: #D32F2F;
 }
 
 .tip-text {
