@@ -17,12 +17,12 @@ const fortunes = {
   '木': [
     { emoji: '🌿', title: { ko: '성장의 하루', en: 'Day of Growth' }, msg: { ko: '새로운 호기심이 생겨나는 날이에요. 평소보다 더 활기차게 주변을 탐색할 거예요. 나무처럼 쑥쑥 자라나는 기운이 넘칩니다.', en: 'A day of growing curiosity. Your pet will explore more actively than usual. Energy like a growing tree is overflowing.' } },
     { emoji: '🌳', title: { ko: '든든한 기운', en: 'Sturdy Energy' }, msg: { ko: '뿌리 깊은 나무처럼 안정감이 느껴지는 날입니다. 보호자와의 신뢰가 더욱 두터워질 거예요. 평온한 휴식을 즐기기 좋습니다.', en: 'A day of stability like a deep-rooted tree. Trust with the owner will deepen. Good for enjoying peaceful rest.' } },
-    { emoji: '🍃', title: { ko: '싱그러운 산책', en: 'Fresh Walk' }, msg: { ko: '풀냄새를 맡으며 산책하기 아주 좋은 날이에요. 자연의 기운이 아이에게 큰 활력을 줄 것입니다. 가벼운 발걸음으로 즐거운 시간을 보내세요.', en: 'A great day for a walk smelling the grass. Nature\'s energy will give your pet great vitality. Have a fun time with light steps.' } }
+    { emoji: '🍃', title: { ko: '싱그러운 산책', en: 'Fresh Walk' }, msg: { ko: '풀냄새 가득한 날이니 산책 나들이하기 좋아요. 풀 냄새를 맡으며 아이가 기분 좋게 걸을 수 있을 거예요.', en: 'A great day for a walk smelling the grass. Nature\'s energy will give your pet great vitality. Have a fun time with light steps.' } }
   ],
   '火': [
     { emoji: '☀️', title: { ko: '태양의 열정', en: 'Solar Passion' }, msg: { ko: '에너지가 최고조에 달하는 날입니다! 신나게 뛰어놀며 스트레스를 해소하기 딱 좋아요. 밝은 미소가 끊이지 않는 하루가 될 거예요.', en: 'Energy is at its peak! Perfect for running around and relieving stress. It will be a day full of bright smiles.' } },
     { emoji: '🔥', title: { ko: '뜨거운 우다다', en: 'Fiery Zoomies' }, msg: { ko: '사냥 본능이 깨어나는 활발한 날입니다. 낚시대나 공놀이로 넘치는 힘을 발산하게 해주세요. 밤에는 꿀잠을 자게 될 거예요.', en: 'A lively day when hunting instincts awaken. Let them release their power with wand toys or ball games. They will sleep soundly at night.' } },
-    { emoji: '🕯️', title: { ko: '따뜻한 온기', en: 'Warm Glow' }, msg: { ko: '촛불처럼 부드럽고 따뜻한 사랑이 넘치는 날이에요. 스킨십을 통해 서로의 온기를 나누어보세요. 마음이 편안해지는 하루입니다.', en: 'A day full of soft and warm love like a candle. Share each other\'s warmth through physical contact. A heart-warming day.' } }
+    { emoji: '🕯️', title: { ko: '따뜻한 온기', en: 'Warm Glow' }, msg: { ko: '촛불처럼 부드러운 기운이 감도는 날이에요. 스킨십을 나누면 아이도 마음이 편안해질 거예요.', en: 'A day full of soft and warm love like a candle. Share each other\'s warmth through physical contact. A heart-warming day.' } }
   ],
   '土': [
     { emoji: '⛰️', title: { ko: '태산 같은 편안함', en: 'Mountainous Comfort' }, msg: { ko: '느긋하고 평화로운 하루가 예상됩니다. 서두르지 않고 자신만의 속도로 시간을 보낼 거예요. 안정적인 환경이 큰 위로가 됩니다.', en: 'A relaxed and peaceful day is expected. They will spend time at their own pace without rushing. A stable environment is a great comfort.' } },
