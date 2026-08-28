@@ -134,19 +134,19 @@ function reset() {
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="6" width="8" height="14" rx="4"/><path d="M12 6v-3"/><path d="M19 7l-2 2"/><circle cx="5" cy="9" r="2"/><circle cx="7" cy="13" r="2"/></svg></span>
-            <span class="tip-text">진드기 예방약 정기 사용</span>
+            <span class="tip-text">진드기 예방약 정기 사용, 산책 후 털·피부 꼼꼼히 확인</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></span>
-            <span class="tip-text">SFTS 진드기 매개 바이러스 주의</span>
+            <span class="tip-text">SFTS: 예방백신 없음, 고열(38℃+)·식욕부진 시 즉시 병원</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3z"/></svg></span>
-            <span class="tip-text">남은 사료 바로 치우기</span>
+            <span class="tip-text">남은 사료 바로 치우기, 그릇 매일 세척</span>
           </div>
           <div class="tip-item emergency-tip">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
-            <span class="tip-text">헐떡임·구토 시 즉시 병원</span>
+            <span class="tip-text">헐떡임·구토·비틀거림 시 시원한 곳 이동 후 즉시 병원</span>
           </div>
         </div>
       </section>
