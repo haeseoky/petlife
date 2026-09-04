@@ -149,6 +149,10 @@ function reset() {
             <span class="tip-text">물 마시는 양 갑자기 늘거나 줄면 신장질환 의심 — 노령묘는 조기 검진 필수</span>
           </div>
           <div class="tip-item">
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/><path d="M8 12H4"/><path d="M20 12h-4"/></svg></span>
+            <span class="tip-text">노령견은 환절기 관절염 악화 주의 — 미끄럼 매트 깔고 산책 후 온찜질</span>
+          </div>
+          <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9 9.5h.01"/><path d="M15 9.5h.01"/><path d="M9 15c1 1 5 1 6 0"/></svg></span>
             <span class="tip-text">고양이는 아픔을 숨기는 생존본능 — 연 1회 정기건강검진 권장</span>
           </div>
