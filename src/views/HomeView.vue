@@ -134,7 +134,7 @@ function reset() {
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s6 6.3 6 11.3a6 6 0 0 1-12 0c0-5 6-11.3 6-11.3z"/></svg></span>
-            <span class="tip-text">건조한 공기, 실내 가습 및 충분한 물 섭취</span>
+            <span class="tip-text">반려묘는 음수량 부족이 신장병 지름길 — 습식 사료·급수기로 수분 섭취 늘리기</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
