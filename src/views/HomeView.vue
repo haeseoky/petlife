@@ -156,6 +156,10 @@ function reset() {
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9 9.5h.01"/><path d="M15 9.5h.01"/><path d="M9 15c1 1 5 1 6 0"/></svg></span>
             <span class="tip-text">고양이는 아픔을 숨기는 생존본능 — 연 1회 정기건강검진 권장</span>
           </div>
+          <div class="tip-item">
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6"/><path d="M9 16h6"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+            <span class="tip-text">동물등록 미등록 반려견, 10월 31일까지 자진신고 시 과태료 면제</span>
+          </div>
           <div class="tip-item emergency-tip">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
             <span class="tip-text">기침·무기력·식욕감퇴 2일 이상 지속 시 병원 진료</span>
