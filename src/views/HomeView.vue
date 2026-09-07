@@ -120,7 +120,7 @@ function reset() {
           <span class="seasonal-icon">🍂</span>
           <div>
             <h3>가을철 반려동물 건강 관리</h3>
-            <p>환절기 건강하게 우리 아이 지키는 필수 수칙!</p>
+            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (9월 둘째주 갱신)</p>
           </div>
         </div>
         <div class="seasonal-tips-grid">
@@ -157,8 +157,12 @@ function reset() {
             <span class="tip-text">고양이는 아픔을 숨기는 생존본능 — 연 1회 정기건강검진 권장</span>
           </div>
           <div class="tip-item">
-            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6"/><path d="M9 16h6"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
-            <span class="tip-text">동물등록 미등록 반려견, 10월 31일까지 자진신고 시 과태료 면제</span>
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
+            <span class="tip-text">여름 피부병은 가을에도 이어짐 — 털 사이·귀 꼼꼼히 확인하고 가려움·비듬 보이면 조기 진료</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span>
+            <span class="tip-text">동물등록 미등록 반려동물 자진신고 기간(9/1~10/31, 경기도 등) — 기간 내 신고 시 과태료 면제</span>
           </div>
           <div class="tip-item emergency-tip">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
