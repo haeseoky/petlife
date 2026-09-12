@@ -120,7 +120,7 @@ function reset() {
           <span class="seasonal-icon">🍂</span>
           <div>
             <h3>가을철 반려동물 건강 관리</h3>
-            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (9/12 갱신)</p>
+            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (9/13 갱신)</p>
           </div>
         </div>
         <div class="seasonal-tips-grid">
@@ -159,6 +159,10 @@ function reset() {
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
             <span class="tip-text">동물병원 진료 분쟁 급증(소비자원 상반기 피해구제) — 수술 전 마취 검사·비용·치료 동의 꼭 확인</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/><path d="M8 12H4"/><path d="M20 12h-4"/></svg></span>
+            <span class="tip-text">여름이 지나도 피부병은 끝나지 않음 — 귀·피부 꼼꼼 점검하고 가을 건강 준비</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
