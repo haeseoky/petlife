@@ -120,7 +120,7 @@ function reset() {
           <span class="seasonal-icon">🍂</span>
           <div>
             <h3>가을철 반려동물 건강 관리</h3>
-            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (9/13 갱신)</p>
+            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (9/14 갱신)</p>
           </div>
         </div>
         <div class="seasonal-tips-grid">
@@ -175,6 +175,10 @@ function reset() {
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span>
             <span class="tip-text">동물보호법 개정안 — 반려동물 방치·애견 카페 무단유기 등 과태료 최대 100만원 상향 추진 중</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 17.5 4c-1.8 0-3.4 1-4.5 2.5C11.9 5 10.3 4 8.5 4A4.5 4.5 0 0 0 4 8.5c0 2.2 1.5 4 3 5.5l5 5z"/></svg></span>
+            <span class="tip-text">말 못하는 아이 건강은 바이탈 사인으로 — 체온(38~39℃)·호흡·잇몸 색 매일 체크 습관화</span>
           </div>
           <div class="tip-item emergency-tip">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
