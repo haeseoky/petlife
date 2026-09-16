@@ -120,7 +120,7 @@ function reset() {
           <span class="seasonal-icon">🍂</span>
           <div>
             <h3>가을철 반려동물 건강 관리</h3>
-            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (9/16 갱신)</p>
+            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (9/17 갱신)</p>
           </div>
         </div>
         <div class="seasonal-tips-grid">
@@ -166,7 +166,7 @@ function reset() {
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
-            <span class="tip-text">일본 연구진 발표 — 고령자가 반려견과 살면 치매 위험 최대 48% 낮아져</span>
+            <span class="tip-text">2328명 추적 연구 — 반려동물을 키워도 삶의 만족도는 큰 차이 없음, '기대효과'보다 책임감 갖고 시작을</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
@@ -174,7 +174,7 @@ function reset() {
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span>
-            <span class="tip-text">반려동물 장수화 그늘 — 반려인 고령화로 '사후 돌봄' 대책 필요, 미리 계약·협약 준비를</span>
+            <span class="tip-text">추석 연휴 주의 — 명절 음식(양념·나물·떡) 급여 금지, 손님·폭죽 소리 스트레스 받는 아이는 조용한 방 준비</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 17.5 4c-1.8 0-3.4 1-4.5 2.5C11.9 5 10.3 4 8.5 4A4.5 4.5 0 0 0 4 8.5c0 2.2 1.5 4 3 5.5l5 5z"/></svg></span>
