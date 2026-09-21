@@ -120,7 +120,7 @@ function reset() {
           <span class="seasonal-icon">🍂</span>
           <div>
             <h3>가을철 반려동물 건강 관리</h3>
-            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (9/21 갱신)</p>
+            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (9/22 갱신)</p>
           </div>
         </div>
         <div class="seasonal-tips-grid">
@@ -174,7 +174,7 @@ function reset() {
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span>
-            <span class="tip-text">네이버 '펫수첩' 베타 출시 — 흩어진 진료 이력 한곳에서 모아보고 AI 요약, 건강 기록 관리 부담 덜기</span>
+            <span class="tip-text">추석 연휴 펫호텔·위탁 예약 성수기 — 야간 관리 인력·CCTV·제휴 동물병원 유무 확인, 낯선 환경 스트레스 큰 아이는 방문 펫시터 우선 고려</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 17.5 4c-1.8 0-3.4 1-4.5 2.5C11.9 5 10.3 4 8.5 4A4.5 4.5 0 0 0 4 8.5c0 2.2 1.5 4 3 5.5l5 5z"/></svg></span>
