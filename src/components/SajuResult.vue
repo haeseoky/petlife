@@ -12,7 +12,7 @@ import PetLuckyFood from './PetLuckyFood.vue'
 import PetFortuneGacha from './PetFortuneGacha.vue'
 import PetMoodTracker from './PetMoodTracker.vue'
 import PetBalanceGame from './PetBalanceGame.vue'
-import SummerCareGuide from './SummerCareGuide.vue'
+import AutumnCareGuide from './AutumnCareGuide.vue'
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
@@ -547,8 +547,8 @@ async function saveAsImage() {
       <p class="name-tip">{{ luckyNames.tip }}</p>
     </div>
 
-    <!-- 여름철 반려동물 건강 관리 -->
-    <SummerCareGuide id="section-summer-care" class="reveal" :petType="result.petType" />
+    <!-- 가을철 반려동물 건강 관리 -->
+    <AutumnCareGuide id="section-summer-care" class="reveal" :petType="result.petType" />
 
     <!-- 맞춤 케어 팁 -->
     <div id="section-care-tip" class="tips-card reveal">
