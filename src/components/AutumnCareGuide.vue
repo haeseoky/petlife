@@ -26,7 +26,8 @@ const careTips = [
     tips: [
       t('autumnDrySkin'),
       t('autumnBrushing'),
-      t('autumnSkinCare')
+      t('autumnSkinCare'),
+      t('autumnAllergy')
     ]
   },
   {
