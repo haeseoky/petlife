@@ -37,7 +37,8 @@ const careTips = [
     tips: [
       t('autumnNutrition'),
       t('autumnWeightManage'),
-      t('autumnApples')
+      t('autumnApples'),
+      t('autumnHygiene')
     ]
   },
   {
