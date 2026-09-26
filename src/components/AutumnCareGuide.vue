@@ -38,6 +38,7 @@ const careTips = [
       t('autumnNutrition'),
       t('autumnWeightManage'),
       t('autumnApples'),
+      t('autumnCompleteFeed'),
       t('autumnHygiene')
     ]
   },
