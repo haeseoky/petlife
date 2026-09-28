@@ -237,6 +237,7 @@ const messages = {
     autumnCompleteFeed: "'반려동물 완전사료' 표시 확인 — 영양 기준 충족 제품만 표시 허용(2026 개정), 라벨의 '연어 함유'는 3%, '연어'는 25% 함유 의미",
     autumnHygiene: '반려동물 항생제 내성균이 사람에게 전파될 수 있어 접촉 후 손 씻기, 특히 아이·노인 가정은 위생 수칙 준수',
     autumnCheckup: '정기 건강검진 권장 — 성견·성묘는 연 1회, 7세 이상은 반년 1회 혈액검사 포함. 환절기 진료 때 기초 검진 병행하면 부담이 적음',
+    autumnSupplement: '유산균·홍삼 등 반려동물 건강기능식품 인기 — 사람용 제품은 성분·용량이 맞지 않을 수 있으니 반려동물 전용 제품만 급여',
     autumnExercise: '산책·놀이',
     autumnWalkTime: '쾌적한 가을 날씨, 산책 시간을 조금씩 늘려 체력 충전',
     autumnIndoorPlay: '비 오는 날엔 실내 노즈워크·퍼즐 장난감으로 대체',
@@ -487,7 +488,7 @@ const messages = {
     autumnWeightManage: 'Adjust portions to match changing activity levels',
     autumnApples: 'Fruits like apples: remove seeds and core, feed small amounts',
     autumnCompleteFeed: "Look for the 'complete pet food' label — only products meeting nutrient standards may use it (2026 revision); 'salmon with' means 3% vs 'salmon' 25% content",
-    autumnHygiene: 'Antimicrobial-resistant bacteria can pass from pets to people — wash hands after contact, especiallyally in homes with children or seniors',
+    autumnHygiene: 'Antimicrobial-resistant bacteria can pass from pets to people — wash hands after contact, especially in homes with children or seniors',
     autumnExercise: 'Walks & Play',
     autumnWalkTime: 'Gradually extend walk time in pleasant fall weather',
     autumnIndoorPlay: 'On rainy days, swap in nose work and puzzle toys',
@@ -496,7 +497,8 @@ const messages = {
     autumnEmergencyTitle: 'Suspected tick-borne SFTS',
     autumnEmergencySymptoms: 'Fever, lethargy, loss of appetite, petechiae',
     autumnEmergencyAction: 'Check fur and skin after outdoor activity; see a vet immediately if symptomatic',
-    autumnCheckup: 'Regular health checkups recommended — once a year for adults, twice a year (with bloodwork) for pets 7+. Pair basic screening with seasonal vet visits'
+    autumnCheckup: 'Regular health checkups recommended — once a year for adults, twice a year (with bloodwork) for pets 7+. Pair basic screening with seasonal vet visits',
+    autumnSupplement: 'Pet probiotics and supplements are trending — human products may have wrong doses or ingredients; use pet-only formulations'
   }
 }
 
