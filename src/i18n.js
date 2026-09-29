@@ -238,6 +238,8 @@ const messages = {
     autumnHygiene: '반려동물 항생제 내성균이 사람에게 전파될 수 있어 접촉 후 손 씻기, 특히 아이·노인 가정은 위생 수칙 준수',
     autumnCheckup: '정기 건강검진 권장 — 성견·성묘는 연 1회, 7세 이상은 반년 1회 혈액검사 포함. 환절기 진료 때 기초 검진 병행하면 부담이 적음',
     autumnSupplement: '유산균·홍삼 등 반려동물 건강기능식품 인기 — 사람용 제품은 성분·용량이 맞지 않을 수 있으니 반려동물 전용 제품만 급여',
+    autumnSkinship: '산책만큼 스킨십도 효과적 — 쓰다듬기와 부드러운 접촉이 반려견 스트레스 호르몬을 낮춘다는 연구 결과, 비 오는 날은 실내 스킨십으로 대체',
+    autumnLeafCaution: '낙엽 쌓인 산책로 주의 — 젖은 낙엽은 미끄럽고 아래 유리·돌 조각이 숨어 있음. 낙엽 주워 먹지 않게 감시하고 산책 후 털과 발을 닦아주기',
     autumnExercise: '산책·놀이',
     autumnWalkTime: '쾌적한 가을 날씨, 산책 시간을 조금씩 늘려 체력 충전',
     autumnIndoorPlay: '비 오는 날엔 실내 노즈워크·퍼즐 장난감으로 대체',
@@ -498,7 +500,9 @@ const messages = {
     autumnEmergencySymptoms: 'Fever, lethargy, loss of appetite, petechiae',
     autumnEmergencyAction: 'Check fur and skin after outdoor activity; see a vet immediately if symptomatic',
     autumnCheckup: 'Regular health checkups recommended — once a year for adults, twice a year (with bloodwork) for pets 7+. Pair basic screening with seasonal vet visits',
-    autumnSupplement: 'Pet probiotics and supplements are trending — human products may have wrong doses or ingredients; use pet-only formulations'
+    autumnSupplement: 'Pet probiotics and supplements are trending — human products may have wrong doses or ingredients; use pet-only formulations',
+    autumnSkinship: 'Petting works as well as walks — studies show gentle touch lowers stress hormones in dogs, a good substitute on rainy days',
+    autumnLeafCaution: 'Watch out for leaf-covered paths — wet leaves are slippery and hide glass or stones. Prevent scavenging and wipe paws and coat after walks',
   }
 }
 

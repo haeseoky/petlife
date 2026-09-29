@@ -17,7 +17,8 @@ const careTips = [
     tips: [
       t('autumnTickPrevent'),
       t('autumnFleaPrevent'),
-      t('autumnRegularCheck')
+      t('autumnRegularCheck'),
+      t('autumnLeafCaution')
     ]
   },
   {
@@ -50,7 +51,8 @@ const careTips = [
     tips: [
       t('autumnWalkTime'),
       t('autumnIndoorPlay'),
-      t('autumnWeatherCheck')
+      t('autumnWeatherCheck'),
+      t('autumnSkinship')
     ]
   },
   {
