@@ -19,7 +19,8 @@ const careTips = [
       t('autumnFleaPrevent'),
       t('autumnRegularCheck'),
       t('autumnLeafCaution'),
-      t('autumnAcorn')
+      t('autumnAcorn'),
+      t('autumnRabies')
     ]
   },
   {
@@ -64,7 +65,8 @@ const careTips = [
     isEmergency: true,
     tips: [
       t('autumnEmergencyTitle') + ': ' + t('autumnEmergencySymptoms'),
-      t('autumnEmergencyAction')
+      t('autumnEmergencyAction'),
+      t('autumnNightEmergency')
     ]
   }
 ]
