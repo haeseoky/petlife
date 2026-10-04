@@ -120,7 +120,7 @@ function reset() {
           <span class="seasonal-icon">🍂</span>
           <div>
             <h3>가을철 반려동물 건강 관리</h3>
-            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (9/22 갱신)</p>
+            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (10/5 갱신)</p>
           </div>
         </div>
         <div class="seasonal-tips-grid">
@@ -162,11 +162,11 @@ function reset() {
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/><path d="M8 12H4"/><path d="M20 12h-4"/></svg></span>
-            <span class="tip-text">반려묘 맞춤 영양 관리 주목 — 연령·질환별 전용 영양제 출시 추세, 급여 전 수의사 상담 권장</span>
+            <span class="tip-text">예방 건강관리 시대 — 질환 발생 전 생애주기 초기부터 영양 관리하는 수요 확대, 노령·회복기엔 유동식도 고려</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
-            <span class="tip-text">광견병 예방접종 시즌 — 지자체 무료 백신 지원 사업(세종 등) 진행 중, 3개월령 이상 견·묘는 매년 1회 접종 필수</span>
+            <span class="tip-text">초미세먼지·꽃가루 지속되는 가을 — 산책 후 발·몸 닦아주고 알레르기성 피부염 가려움 주시</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
@@ -174,7 +174,7 @@ function reset() {
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span>
-            <span class="tip-text">추석 연휴 펫호텔·위탁 예약 성수기 — 야간 관리 인력·CCTV·제휴 동물병원 유무 확인, 낯선 환경 스트레스 큰 아이는 방문 펫시터 우선 고려</span>
+            <span class="tip-text">기능성 사료 시장 확대 — 면역·관절·피모·장 건강별 전용 사료 출시 잇따름, 아이 건강 상태에 맞는 선택이 중요</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 17.5 4c-1.8 0-3.4 1-4.5 2.5C11.9 5 10.3 4 8.5 4A4.5 4.5 0 0 0 4 8.5c0 2.2 1.5 4 3 5.5l5 5z"/></svg></span>
