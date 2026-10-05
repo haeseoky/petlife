@@ -46,7 +46,9 @@ const careTips = [
       t('autumnCompleteFeed'),
       t('autumnHygiene'),
       t('autumnCheckup'),
-      t('autumnSupplement')
+      t('autumnSupplement'),
+      t('autumnGeneticTest'),
+      t('autumnPetMeds')
     ]
   },
   {
