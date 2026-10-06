@@ -58,6 +58,7 @@ const careTips = [
       t('autumnWalkTime'),
       t('autumnIndoorPlay'),
       t('autumnWeatherCheck'),
+      t('autumnTerrain'),
       t('autumnSkinship')
     ]
   },
