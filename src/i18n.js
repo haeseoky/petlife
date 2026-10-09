@@ -1,4 +1,4 @@
-import { ref, watch } from 'vue'
+﻿import { ref, watch } from 'vue'
 
 const messages = {
   ko: {
@@ -244,6 +244,9 @@ const messages = {
     autumnPetMeds: '제약사들이 반려동물 의약품 확대 출시 중 — 사람용 약을 반려견 용량으로 재구성한 전용 의약품 늘어남. 사람용 약 임의 복용은 절대 금지, 수의사 처방으로',
     autumnDementia: '노령견 치매(CD) 신호 체크 — 밤에 헤매거나 낯선 곳에서 울고, 가족을 알아보지 못하면 인지기능저하 의심. 행동 변화는 통증·시청각 저하 같은 다른 질환일 수도 있으니 수의사 진단 먼저',
     autumnGutHealth: '장 건강이 면역·피부·노화의 핵심 — 최근 해외 연구들도 반려동물 장내 미생물과 건강수명의 연관성 강조. 유산균 급여 시 반려동물 전용 프로바이오틱스 사용하고, 설사·변비가 지속되면 먼저 식단 점검',
+    autumnJoint: '환절기 쌀쌀한 아침저녁, 노령견·관절 약한 견은 관절염 악화 주의 — 보온 매트 깔아주고, 미끄러운 마루엔 러그 설치. 계단 오르내리기 과다도 피하고, 절뚝거림·일어나기 힘들어하면 진료',
+    autumnHeartworm: '기온이 내려가도 모기가 늦가을까지 활동 — 심장사상충 예방약은 1년 내내 중단 없이. 한 달 라운드 놓쳤다면 수의사 상담 후 재개',
+    autumnFestival: '가을 반려동물 행사 성수기 — 10월 17~18일 서울동물행복페스타(여의도한강공원) 등 입양·상담 행사 많음. 다인원 모임 전 반려견 예방접종·사회화 상태 확인',
     autumnTerrain: '산책 강도는 기온·체격·노면을 함께 고려 — 비 온 뒤 젖은 노면은 미끄러워 부상 위험이 있으니 잔디 위주로',
   autumnSkinship: '산책만큼 스킨십도 효과적 — 쓰다듬기와 부드러운 접촉이 반려견 스트레스 호르몬을 낮춘다는 연구 결과, 비 오는 날은 실내 스킨십으로 대체',
     autumnLeafCaution: '낙엽 쌓인 산책로 주의 — 젖은 낙엽은 미끄럽고 아래 유리·돌 조각이 숨어 있음. 낙엽 주워 먹지 않게 감시하고 산책 후 털과 발을 닦아주기',
@@ -516,6 +519,9 @@ const messages = {
     autumnPetMeds: 'Pharma companies are expanding pet-only medicines — drugs reformulated for dogs at proper doses. Never give human medication to pets without a vet prescription',
     autumnDementia: 'Watch for senior dog dementia (CCD) signs — pacing at night, whining in unfamiliar places, or not recognizing family may indicate cognitive decline. Behavior changes can also stem from pain or vision/hearing loss, so get a vet diagnosis first',
     autumnGutHealth: 'Gut health drives immunity, skin, and aging — recent studies link canine gut microbiome to healthy lifespan. Use pet-only probiotics, and check diet first if diarrhea or constipation persists',
+    autumnJoint: 'Chilly fall mornings can worsen arthritis in senior or joint-sensitive dogs — use a warming mat and rugs on slippery floors, limit stairs, and see a vet if your dog limps or struggles to stand',
+    autumnHeartworm: 'Mosquitoes stay active until late fall — keep heartworm prevention year-round without gaps. If you missed a monthly dose, consult your vet before resuming',
+    autumnFestival: 'Fall is pet festival season — events like the Seoul Animal Happiness Festival (Oct 17-18, Yeouido Hangang Park) offer adoption and health consulting. Check vaccinations and socialization before bringing your dog',
     autumnTerrain: 'Factor temperature, body size, and surface into walk intensity — wet pavement is slippery after rain, favor grassy paths',
   autumnSkinship: 'Petting works as well as walks — studies show gentle touch lowers stress hormones in dogs, a good substitute on rainy days',
     autumnLeafCaution: 'Watch out for leaf-covered paths — wet leaves are slippery and hide glass or stones. Prevent scavenging and wipe paws and coat after walks',

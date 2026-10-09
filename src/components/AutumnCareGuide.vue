@@ -20,7 +20,8 @@ const careTips = [
       t('autumnRegularCheck'),
       t('autumnLeafCaution'),
       t('autumnAcorn'),
-      t('autumnRabies')
+      t('autumnRabies'),
+      t('autumnHeartworm')
     ]
   },
   {
@@ -43,6 +44,7 @@ const careTips = [
       t('autumnAppetite'),
       t('autumnSeniorMuscle'),
       t('autumnDementia'),
+      t('autumnJoint'),
       t('autumnApples'),
       t('autumnCompleteFeed'),
       t('autumnHygiene'),
@@ -61,7 +63,8 @@ const careTips = [
       t('autumnIndoorPlay'),
       t('autumnWeatherCheck'),
       t('autumnTerrain'),
-      t('autumnSkinship')
+      t('autumnSkinship'),
+      t('autumnFestival')
     ]
   },
   {
