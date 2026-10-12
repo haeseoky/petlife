@@ -53,7 +53,9 @@ const careTips = [
       t('autumnGeneticTest'),
       t('autumnPetMeds'),
       t('autumnGutHealth'),
-      t('autumnCatBileDuct')
+      t('autumnCatBileDuct'),
+      t('autumnObesity'),
+      t('autumnPetRecord')
     ]
   },
   {
