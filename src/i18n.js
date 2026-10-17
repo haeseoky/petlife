@@ -256,7 +256,9 @@ const messages = {
   autumnSkinship: '산책만큼 스킨십도 효과적 — 쓰다듬기와 부드러운 접촉이 반려견 스트레스 호르몬을 낮춘다는 연구 결과, 비 오는 날은 실내 스킨십으로 대체',
     autumnLeafCaution: '낙엽 쌓인 산책로 주의 — 젖은 낙엽은 미끄럽고 아래 유리·돌 조각이 숨어 있음. 낙엽 주워 먹지 않게 감시하고 산책 후 털과 발을 닦아주기',
     autumnAcorn: '가을 산책로 도토리 주의 — 도토리·도토리묵은 탄닌 성분으로 구토·설사 유발 가능. 도토리 주워 먹지 않게 주의하고, 양념된 도토리묵은 염분·조미료까지 위험',
-    autumnRabies: '가을 광견병 예방접종 시즌 — 광견병은 법정 의무접종(3개월 이상 반려견 연 1회). 지자체 집단접종 기간이면 수천 원에 접종 가능하니 해당 지역 일정 확인',
+    autumnRabies: '가을 광견병 예방접종 시즌 — 광견병은 법정 의무접종(3개월 이상 반려견 연 1회). 지자체 집단접종 기간이면 수천 원에 접종 가능하니 해당 지역 일정 확인. 서울 강남구는 10월 16일부터 반려견·반려묘 광견병 예방접종비 지원 실시',
+    autumnSafetyAccident: '반려동물 안전사고 증가 — 2023년 이후 올해 8월까지 601건·피해자 603명(국감 자료). 목줄·하네스 미착용, 미등록 견과의 접촉이 주요 원인. 외출 시 목줄 필수, 맹견은 입마개와 동물등록 확인',
+    autumnBehaviorIssue: '질병보다 행동문제가 이별 사유 1위 — 분리불안·짖음·공격성은 조기 교정이 핵심. 펫보험업계도 치료비 보상을 넘어 생애주기 행동 관리를 강조 중. 문제 행동이 보이면 수의행동전문의 상담 권장',
     autumnNightEmergency: '밤에 갑자기 아플 때 판단 기준 — 호흡 곤란·경련·대량 출혈·복부 팽만·생식기 출혈은 즉시 응급병원. 가벼운 구토·식욕 부진은 새벽까지 관찰 후 오전 진료도 가능',
     autumnExercise: '산책·놀이',
     autumnWalkTime: '쾌적한 가을 날씨, 산책 시간을 조금씩 늘려 체력 충전',
@@ -536,7 +538,9 @@ const messages = {
   autumnSkinship: 'Petting works as well as walks — studies show gentle touch lowers stress hormones in dogs, a good substitute on rainy days',
     autumnLeafCaution: 'Watch out for leaf-covered paths — wet leaves are slippery and hide glass or stones. Prevent scavenging and wipe paws and coat after walks',
     autumnAcorn: 'Watch for acorns on fall trails — tannins in acorns and acorn jelly can cause vomiting and diarrhea; seasoned acorn jelly adds salt and seasoning risks',
-    autumnRabies: 'Fall rabies vaccination season — rabies vaccination is legally required (dogs 3 months and older, annually). Local government group vaccination programs offer it at low cost; check your area\'s schedule',
+    autumnRabies: 'Fall rabies vaccination season — rabies vaccination is legally required (dogs 3 months and older, annually). Local government group vaccination programs offer it at low cost; check your area\'s schedule. Seoul Gangnam-gu subsidizes dog and cat rabies shots from Oct 16',
+    autumnSafetyAccident: 'Pet safety incidents are rising — 601 cases and 603 victims since 2023 through August (parliamentary audit data). Unleashed walks and unregistered dogs are major causes; always use a leash and register aggressive breeds',
+    autumnBehaviorIssue: 'Behavioral issues now top the list of pet-owner breakups — separation anxiety, barking, and aggression need early correction. Insurers also stress lifecycle behavior management beyond treatment coverage; consult a veterinary behaviorist early',
     autumnNightEmergency: 'When your pet suddenly gets sick at night — labored breathing, seizures, heavy bleeding, bloated abdomen, or genital bleeding means go to an emergency vet now. Mild vomiting or appetite loss can be observed until morning',
   }
 }

@@ -21,6 +21,8 @@ const careTips = [
       t('autumnLeafCaution'),
       t('autumnAcorn'),
       t('autumnRabies'),
+      t('autumnSafetyAccident'),
+      t('autumnBehaviorIssue'),
       t('autumnHeartworm')
     ]
   },
