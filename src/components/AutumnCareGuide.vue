@@ -58,6 +58,7 @@ const careTips = [
       t('autumnCatBileDuct'),
       t('autumnObesity'),
       t('autumnPetRecord'),
+      t('autumnWinterWeight'),
       t('autumnSeniorSigns')
     ]
   },
