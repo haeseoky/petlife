@@ -59,7 +59,8 @@ const careTips = [
       t('autumnObesity'),
       t('autumnPetRecord'),
       t('autumnWinterWeight'),
-      t('autumnSeniorSigns')
+      t('autumnSeniorSigns'),
+      t('autumnMoodChange')
     ]
   },
   {
