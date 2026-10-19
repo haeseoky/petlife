@@ -23,7 +23,8 @@ const careTips = [
       t('autumnRabies'),
       t('autumnSafetyAccident'),
       t('autumnBehaviorIssue'),
-      t('autumnHeartworm')
+      t('autumnHeartworm'),
+      t('autumnCatSpotOn')
     ]
   },
   {
@@ -60,7 +61,8 @@ const careTips = [
       t('autumnPetRecord'),
       t('autumnWinterWeight'),
       t('autumnSeniorSigns'),
-      t('autumnMoodChange')
+      t('autumnMoodChange'),
+      t('autumnHeartB2')
     ]
   },
   {
