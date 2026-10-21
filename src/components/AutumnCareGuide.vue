@@ -49,6 +49,7 @@ const careTips = [
       t('autumnSeniorMuscle'),
       t('autumnDementia'),
       t('autumnJoint'),
+      t('autumnJointMorning'),
       t('autumnApples'),
       t('autumnCompleteFeed'),
       t('autumnHygiene'),
@@ -77,7 +78,8 @@ const careTips = [
       t('autumnTerrain'),
       t('autumnSkinship'),
       t('autumnFestival'),
-      t('autumnMafraTip')
+      t('autumnMafraTip'),
+      t('autumnExerciseStop')
     ]
   },
   {
