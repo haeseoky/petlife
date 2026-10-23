@@ -26,7 +26,9 @@ const careTips = [
       t('autumnHeartworm'),
       t('autumnCatSpotOn'),
       t('autumnRabiesGangseo'),
-      t('autumnSfts')
+      t('autumnSfts'),
+      t('autumnGaitAnalysis'),
+      t('autumnProbioticLabel')
     ]
   },
   {
