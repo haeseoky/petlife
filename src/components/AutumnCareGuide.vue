@@ -28,7 +28,8 @@ const careTips = [
       t('autumnRabiesGangseo'),
       t('autumnSfts'),
       t('autumnGaitAnalysis'),
-      t('autumnProbioticLabel')
+      t('autumnProbioticLabel'),
+      t('autumnHalloween')
     ]
   },
   {
@@ -70,7 +71,8 @@ const careTips = [
       t('autumnMoodChange'),
       t('autumnHeartB2'),
       t('autumnObesityDiet'),
-      t('autumnWinterLifespan')
+      t('autumnWinterLifespan'),
+      t('autumnHeating')
     ]
   },
   {
