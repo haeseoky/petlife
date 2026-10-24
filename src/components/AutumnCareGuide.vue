@@ -39,6 +39,7 @@ const careTips = [
       t('autumnBrushing'),
       t('autumnSkinCare'),
       t('autumnAllergy'),
+      t('autumnCatGrooming'),
       t('autumnNose')
     ]
   },
