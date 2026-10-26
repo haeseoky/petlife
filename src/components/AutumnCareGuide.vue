@@ -72,7 +72,8 @@ const careTips = [
       t('autumnHeartB2'),
       t('autumnObesityDiet'),
       t('autumnWinterLifespan'),
-      t('autumnHeating')
+      t('autumnHeating'),
+      t('autumnCatAutumnAppetite')
     ]
   },
   {
