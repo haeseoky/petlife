@@ -88,6 +88,7 @@ const careTips = [
       t('autumnSkinship'),
       t('autumnFestival'),
       t('autumnMafraTip'),
+      t('autumnSeniorWalk'),
       t('autumnExerciseStop')
     ]
   },
