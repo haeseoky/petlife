@@ -25,6 +25,8 @@ const careTips = [
       t('autumnBehaviorIssue'),
       t('autumnHeartworm'),
       t('autumnCatSpotOn'),
+      t('autumnAiHomecare'),
+      t('autumnMorningCold'),
       t('autumnRabiesGangseo'),
       t('autumnSfts'),
       t('autumnGaitAnalysis'),
