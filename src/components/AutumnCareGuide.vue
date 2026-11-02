@@ -82,6 +82,8 @@ const careTips = [
       t('autumnWinterWater'),
       t('autumnWinterJointBed'),
       t('autumnKennelCough'),
+      t('autumnPneumonia'),
+      t('autumnPuppyCheckup'),
       t('autumnTempSwing')
     ]
   },
