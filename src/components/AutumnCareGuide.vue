@@ -31,7 +31,9 @@ const careTips = [
       t('autumnSfts'),
       t('autumnGaitAnalysis'),
       t('autumnProbioticLabel'),
-      t('autumnHalloween')
+      t('autumnHalloween'),
+      t('autumnVitDKit'),
+      t('autumnSeniorNutrition')
     ]
   },
   {
