@@ -91,7 +91,10 @@ const careTips = [
       t('autumnPuppyCheckup'),
       t('autumnTempSwing'),
       t('autumnRabiesAb'),
-      t('autumnCatCkd')
+      t('autumnCatCkd'),
+      t('winterObesityRisk'),
+      t('winterObesityLifespan'),
+      t('winterWellnessClass')
     ]
   },
   {
