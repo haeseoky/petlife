@@ -117,56 +117,56 @@ function reset() {
       <!-- 가을철 반려동물 건강관리 팁 카드 -->
       <section v-if="!result && !showHistory" class="seasonal-tip-card">
         <div class="seasonal-header">
-          <span class="seasonal-icon">🍂</span>
+          <span class="seasonal-icon">❄️</span>
           <div>
-            <h3>가을철 반려동물 건강 관리</h3>
-            <p>환절기 건강하게 우리 아이 지키는 필수 수칙! (10/5 갱신)</p>
+            <h3>겨울철 반려동물 건강 관리</h3>
+            <p>본격적인 추위가 오기 전, 우리 아이 지키는 필수 수칙! (11/11 갱신)</p>
           </div>
         </div>
         <div class="seasonal-tips-grid">
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z"/></svg></span>
-            <span class="tip-text">아침저녁 한낮 10℃ 이상 차이, 산책 시간 신축 조정</span>
+            <span class="tip-text">제설제·염화칼슘은 발패드 자극 원인 — 산책 후 발과 배를 씻고 완전히 말려주기</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="6" width="8" height="14" rx="4"/><path d="M12 6v-3"/><path d="M19 7l-2 2"/><circle cx="5" cy="9" r="2"/><circle cx="7" cy="13" r="2"/></svg></span>
-            <span class="tip-text">진드기·벼룩 제어약 1개월마다 정기 투여</span>
+            <span class="tip-text">발바닥 갈라짐·발가락 사이 붉어짐 확인 — 외출 전 보호 크림이나 신발도 도움</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s6 6.3 6 11.3a6 6 0 0 1-12 0c0-5 6-11.3 6-11.3z"/></svg></span>
-            <span class="tip-text">반려묘는 음수량 부족이 신장병 지름길 — 습식 사료·급수기로 수분 섭취 늘리기</span>
+            <span class="tip-text">난방 실내 건조로 피부 각질·가려움 증가 — 가습기 활용, 수분 섭취 챙기기</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
-            <span class="tip-text">매일 5분 브러싱, 털갈이 돕고 피부 건강 유지</span>
+            <span class="tip-text">기온 5℃ 이하 장거리 산책은 노령견·소형견 심장에 부담 — 시간을 나눠 짧게</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3z"/></svg></span>
-            <span class="tip-text">활동량 줄어들면 체중 감시, 사료 양 조절</span>
+            <span class="tip-text">활동량 감소 + 간식 증가 = 겨울 비만 — 체중 주 1회 측정으로 감시</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v6.5L4.5 19a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8.5V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></svg></span>
-            <span class="tip-text">물 마시는 양 갑자기 늘거나 줄면 신장질환 의심 — 노령묘는 조기 검진 필수</span>
+            <span class="tip-text">난방기·전기장판 화상 주의 — 반려동물이 밟거나 씹지 못하게 정리</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/><path d="M8 12H4"/><path d="M20 12h-4"/></svg></span>
-            <span class="tip-text">노령견은 환절기 관절염 악화 주의 — 미끄럼 매트 깔고 산책 후 온찜질</span>
+            <span class="tip-text">냉기로 관절염·기관지 협착(기관지 허탈) 악화 가능 — 미끄럼 매트·보온 의류 활용</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9 9.5h.01"/><path d="M15 9.5h.01"/><path d="M9 15c1 1 5 1 6 0"/></svg></span>
-            <span class="tip-text">고양이는 아픔을 숨기는 생존본능 — 연 1회 정기건강검진 권장</span>
+            <span class="tip-text">펫푸드 업계-수의계 협업 확대 — 의료·건강 전용 기능성 사료 선택지 다양화</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
-            <span class="tip-text">반려동물 건강검진 지원 확대 — 대구에서 15개 동물병원 시범 운영 후 전역 확대(검진·처방사료 지원), 거주 지자체·수의사회 지원 사업 확인해보기</span>
+            <span class="tip-text">반려견 비타민D 검사, 국산 진단키트 품목허가 — 병원 현장에서 바로 확인 가능해짐</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/><path d="M8 12H4"/><path d="M20 12h-4"/></svg></span>
-            <span class="tip-text">예방 건강관리 시대 — 질환 발생 전 생애주기 초기부터 영양 관리하는 수요 확대, 노령·회복기엔 유동식도 고려</span>
+            <span class="tip-text">겨울철 건강검진 시즌 — 지자체 반려동물 검진 지원 사업 여부 확인해보기</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
-            <span class="tip-text">초미세먼지·꽃가루 지속되는 가을 — 산책 후 발·몸 닦아주고 알레르기성 피부염 가려움 주시</span>
+            <span class="tip-text">꽁꽁 언 호수·계곡 근처 산책 금물 — 결빙 깨질 위험, 미끄럼 사고 주의</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
@@ -174,11 +174,11 @@ function reset() {
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span>
-            <span class="tip-text">기능성 사료 시장 확대 — 면역·관절·피모·장 건강별 전용 사료 출시 잇따름, 아이 건강 상태에 맞는 선택이 중요</span>
+            <span class="tip-text">말 못하는 아이 건강은 바이탈 사인으로 — 체온(38~39℃)·호흡·잇몸 색 매일 체크 습관화</span>
           </div>
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 17.5 4c-1.8 0-3.4 1-4.5 2.5C11.9 5 10.3 4 8.5 4A4.5 4.5 0 0 0 4 8.5c0 2.2 1.5 4 3 5.5l5 5z"/></svg></span>
-            <span class="tip-text">말 못하는 아이 건강은 바이탈 사인으로 — 체온(38~39℃)·호흡·잇몸 색 매일 체크 습관화</span>
+            <span class="tip-text">떨림·무기력·몸을 웅크리면 저체온 신호 — 즉시 실내로, 노령아이는 보온에 신경 쓸 것</span>
           </div>
           <div class="tip-item emergency-tip">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
