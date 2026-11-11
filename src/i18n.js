@@ -1,4 +1,4 @@
-﻿import { ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 
 const messages = {
   ko: {
@@ -259,6 +259,7 @@ const messages = {
     winterObesityRisk: '겨울 산책 줄면 뱃살 불어난다 — 대한수의사회에 따르면 추위와 짧은 낮으로 야외활동이 줄어도 먹는 양은 그대로라 체중이 증가하기 쉽고, 과체중은 관절질환·당뇨병 위험을 높임. 활동량이 줄면 급여량을 10% 내외 줄이고 실내 놀이로 활동량을 보충할 것',
     winterObesityLifespan: '반려동물 겨울 비만, 수명 단축 — 과체중인 개는 정상 체중보다 수명이 최대 2년 6개월 짧다는 연구 결과도 있음. 매주 같은 시간대에 체중을 기록하고, 갈비뼈가 살짝 만져지는 정도가 건강한 체형 기준',
     winterWellnessClass: '지자체 펫 웰니스 교육 활용 — 여러 지자체가 가을·겨울학기에 반려견 체중 관리와 신체 활동에 초점을 맞춘 무료 교육 프로그램을 운영 중. 거주 지역 동·구 홈페이지의 반려동물 프로그램 공고를 확인해볼 것',
+    winterHeatingTimer: '전기장판 타이머 필수 — 한국소비자원·소방청이 11월 동절기 전열기기 주의보 발령(최근 3년간 전열기 화재·화상의 68%가 11~2월 집중). 반려동물은 피부가 얇아 사람보다 저온화상에 취약하고, 통증을 표현 못 해 방치되기 쉬움. 취침 시엔 타이머 설정 또는 전원 차단, 노후 제품(10년 이상)은 교체',
     autumnHeating: '난방 시작 시기, 반려동물 화상·질식 사고 주의 — 전기장판·온수매트는 저온화상 위험이 있어 담요 한 겹을 덮고, 전기 코드 씹는 습관 있는 아이는 코드 정리 필수. 가습기 사용 시 실내 습도 40~60% 유지하면 호흡기·피부 건조 예방에 도움',
     autumnBoilerOut: '겨울철 외출 시 보일러 완전 OFF 주의 — 본인은 짧다고 끄면 반려동물이 혼자 남은 집이 급격히 식어 저체온 위험. 짧은 외출은 외출모드, 장기 외출에도 최저 온도(18~20도) 유지로 두는 것이 안전',
     autumnWinterWater: '물 섭취량 급감 체크 — 난방으로 실내가 건조해지면 탈수가 조용히 진행됨. 물그릇을 2곳 이상에 두고, 거동이 줄든 말든 하루 마시는 양이 평소 절반 이하로 뚝 떨어지면 신장·요로 문제 의심하고 병원 상담',
@@ -588,6 +589,7 @@ const messages = {
     winterObesityRisk: 'Less winter walking means more belly fat — per the Korean Veterinary Association, outdoor activity drops in cold weather and shorter days while food intake stays the same, making weight gain easy; overweight pets face higher risks of joint disease and diabetes. When activity drops, cut portions by about 10% and add indoor play',
     winterObesityLifespan: 'Winter obesity shortens lifespan — studies show overweight dogs live up to 2 years and 6 months less than dogs at a healthy weight. Weigh your pet weekly at the same time; ribs should be lightly palpable as the healthy body-condition benchmark',
     winterWellnessClass: 'Use local government pet-wellness classes — many districts run free fall/winter education programs focused on dog weight management and physical activity. Check your local district office website for pet program announcements',
+    winterHeatingTimer: 'Always use a timer with electric blankets — the Korea Consumer Agency and fire authorities issued a winter heating-device alert in November (68% of heating-related fires and burns over the past 3 years occurred Nov-Feb). Pets have thinner skin, making them more prone to low-temperature burns than humans, and they cannot report the pain. Use a timer or switch off at bedtime, and replace devices older than 10 years',
     autumnHeating: "When the heating season starts, guard against burns and chewing accidents — electric blankets and heating mats can cause low-temperature burns, so add a blanket layer, and tidy cords for pets that like to chew. A humidifier set to 40-60% humidity helps prevent dry airway and skin issues",
     autumnBoilerOut: "Don't switch the boiler fully off when you go out — the house cools fast with a pet left inside, risking hypothermia. Use the outing mode for short trips, and keep the lowest setting (18-20C) even for longer absences",
     autumnWinterWater: "Watch for a sharp drop in water intake — heated indoor air causes quiet dehydration. Place bowls in two or more spots, and if daily intake falls below half the usual, consider kidney or urinary issues and consult a vet",

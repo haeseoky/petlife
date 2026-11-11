@@ -94,7 +94,8 @@ const careTips = [
       t('autumnCatCkd'),
       t('winterObesityRisk'),
       t('winterObesityLifespan'),
-      t('winterWellnessClass')
+      t('winterWellnessClass'),
+      t('winterHeatingTimer')
     ]
   },
   {
