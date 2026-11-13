@@ -98,7 +98,9 @@ const careTips = [
       t('winterHeatingTimer'),
       t('winterColdSigns'),
       t('winterPawSalt'),
-      t('winterStrayCatShelter')
+      t('winterStrayCatShelter'),
+      t('winterSkinDry'),
+      t('winterSeniorExercise')
     ]
   },
   {
@@ -113,7 +115,8 @@ const careTips = [
       t('autumnFestival'),
       t('autumnMafraTip'),
       t('autumnSeniorWalk'),
-      t('autumnExerciseStop')
+      t('autumnExerciseStop'),
+      t('winterWalkMinus4')
     ]
   },
   {
