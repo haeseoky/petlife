@@ -100,6 +100,7 @@ const careTips = [
       t('winterPawSalt'),
       t('winterStrayCatShelter'),
       t('winterSkinDry'),
+      t('winterSkinMarket'),
       t('winterSeniorExercise')
     ]
   },
@@ -116,7 +117,8 @@ const careTips = [
       t('autumnMafraTip'),
       t('autumnSeniorWalk'),
       t('autumnExerciseStop'),
-      t('winterWalkMinus4')
+      t('winterWalkMinus4'),
+      t('winterWalkBreed')
     ]
   },
   {

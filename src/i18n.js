@@ -1,4 +1,4 @@
-import { ref, watch } from 'vue'
+﻿import { ref, watch } from 'vue'
 
 const messages = {
   ko: {
@@ -266,6 +266,8 @@ const messages = {
     winterSkinDry: '겨울철 실내 난방으로 털 밑 피부까지 건조해짐 — 각질·가려움·털뭉치가 늘면 보습 관리 시작. 목욕은 주 1회 이하 미지근한 물로 짧게, 목욕 후 완전 건조 후 반려동물 전용 보습제·스킨코트 사용. 히터 바람 직사는 피부 건조 악화 요인',
     winterWalkMinus4: '기온 영하 4도 이하에서는 산책 건너뛰기 — 저체온증·동상 위험과 발바닥·코 갈라짐이 커지는 온도. 짧은 배변 산책만 허용하고 실내 놀이로 운동량 대체. 노령견·단모종·소형견은 영하 4도 전부터 복장과 산책 단축 적용',
     winterSeniorExercise: '노령 반려동물 장수 비결은 규칙적 운동과 식단 관리 — 매일 일정 시간 산책(20~30분)과 나이에 맞는 사료 전환이 건강수명 연장 핵심. 노화가 걱정되면 관절·치아·체중부터 점검',
+    winterSkinMarket: '겨울철 펫 스킨케어 수요 급증(연합뉴스 11/12) — 반려동물 피부관리가 위생을 넘어 개별 건강고민 관리로 진화. 피부 상태별 전용 샴푸·미스트·영양간식(피모 관리) 선택 시 목적과 성분 확인 후 사용',
+    winterWalkBreed: '털 길이·체구별 맞춤 방한이 겨울 산책 핵심 — 단모종·소형견·노령견은 옷과 짧은 산책, 이중모견은 과보온 시 오히려 발한·피부 트러블. 제설제 접촉 발바닥은 산책 후 미지근한 물로 세척, 보행 중 떨거 멈추면 즉시 실내 복귀',
     autumnHeating: '난방 시작 시기, 반려동물 화상·질식 사고 주의 — 전기장판·온수매트는 저온화상 위험이 있어 담요 한 겹을 덮고, 전기 코드 씹는 습관 있는 아이는 코드 정리 필수. 가습기 사용 시 실내 습도 40~60% 유지하면 호흡기·피부 건조 예방에 도움',
     autumnBoilerOut: '겨울철 외출 시 보일러 완전 OFF 주의 — 본인은 짧다고 끄면 반려동물이 혼자 남은 집이 급격히 식어 저체온 위험. 짧은 외출은 외출모드, 장기 외출에도 최저 온도(18~20도) 유지로 두는 것이 안전',
     autumnWinterWater: '물 섭취량 급감 체크 — 난방으로 실내가 건조해지면 탈수가 조용히 진행됨. 물그릇을 2곳 이상에 두고, 거동이 줄든 말든 하루 마시는 양이 평소 절반 이하로 뚝 떨어지면 신장·요로 문제 의심하고 병원 상담',
@@ -602,6 +604,8 @@ const messages = {
     winterSkinDry: 'Winter indoor heating dries skin under the coat — start moisturizing if dandruff, itching, or loose fur tufts increase. Bathe at most once a week with lukewarm water, dry completely, then apply pet-only moisturizers or skin coats. Direct heater airflow worsens skin dryness',
     winterWalkMinus4: 'Skip walks below -4°C — risk of hypothermia, frostbite, and cracked paw pads and nose rises sharply. Allow only short bathroom breaks and replace exercise with indoor play. Seniors, short-coats, and small breeds need coats and shorter walks even before -4°C',
     winterSeniorExercise: 'Longevity secrets of senior pets: regular daily exercise and diet management — consistent 20–30 minute walks and age-appropriate food transitions extend healthspan. Worried about aging? Check joints, teeth, and weight first',
+    winterSkinMarket: 'Pet skincare demand surges in winter (Yonhap, Nov 12) — pet skin care now addresses individual health concerns beyond hygiene. Choose shampoos, mists, and coat-care treats by purpose and ingredients',
+    winterWalkBreed: 'Breed-tailored winter protection is key to safe walks — short-coats, small breeds, and seniors need coats and shorter walks; double-coated dogs may develop skin issues from over-warming. Rinse paws with lukewarm water after salted roads, and head indoors immediately if your dog stops and lifts a paw',
     autumnHeating: "When the heating season starts, guard against burns and chewing accidents — electric blankets and heating mats can cause low-temperature burns, so add a blanket layer, and tidy cords for pets that like to chew. A humidifier set to 40-60% humidity helps prevent dry airway and skin issues",
     autumnBoilerOut: "Don't switch the boiler fully off when you go out — the house cools fast with a pet left inside, risking hypothermia. Use the outing mode for short trips, and keep the lowest setting (18-20C) even for longer absences",
     autumnWinterWater: "Watch for a sharp drop in water intake — heated indoor air causes quiet dehydration. Place bowls in two or more spots, and if daily intake falls below half the usual, consider kidney or urinary issues and consult a vet",
