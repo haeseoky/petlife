@@ -101,7 +101,8 @@ const careTips = [
       t('winterStrayCatShelter'),
       t('winterSkinDry'),
       t('winterSkinMarket'),
-      t('winterSeniorExercise')
+      t('winterSeniorExercise'),
+      t('winterTailoredHealth')
     ]
   },
   {
