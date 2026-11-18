@@ -102,7 +102,9 @@ const careTips = [
       t('winterSkinDry'),
       t('winterSkinMarket'),
       t('winterSeniorExercise'),
-      t('winterTailoredHealth')
+      t('winterTailoredHealth'),
+      t('winterColdSignals'),
+      t('winterCareLineup')
     ]
   },
   {
