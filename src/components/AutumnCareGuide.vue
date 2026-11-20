@@ -108,7 +108,9 @@ const careTips = [
       t('winterCatHeartworm'),
       t('winterCatDewormer'),
       t('winterPetObesity'),
-      t('winterAiCare')
+      t('winterAiCare'),
+      t('winterStaticFur'),
+      t('winterProbioticCie')
     ]
   },
   {
