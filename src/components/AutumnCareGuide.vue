@@ -104,7 +104,11 @@ const careTips = [
       t('winterSeniorExercise'),
       t('winterTailoredHealth'),
       t('winterColdSignals'),
-      t('winterCareLineup')
+      t('winterCareLineup'),
+      t('winterCatHeartworm'),
+      t('winterCatDewormer'),
+      t('winterPetObesity'),
+      t('winterAiCare')
     ]
   },
   {
