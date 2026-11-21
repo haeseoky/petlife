@@ -110,7 +110,10 @@ const careTips = [
       t('winterPetObesity'),
       t('winterAiCare'),
       t('winterStaticFur'),
-      t('winterProbioticCie')
+      t('winterProbioticCie'),
+      t('winterSeniorDogCds'),
+      t('winterIvddRisk'),
+      t('winterCatSleepMore')
     ]
   },
   {
