@@ -112,6 +112,10 @@ const careTips = [
       t('winterStaticFur'),
       t('winterProbioticCie'),
       t('winterSeniorDogCds'),
+      t('winterObesityTrial'),
+      t('winterSeniorRoutine'),
+      t('winterDentalSpray'),
+      t('winterPetPharma'),
       t('winterIvddRisk'),
       t('winterCatSleepMore')
     ]
