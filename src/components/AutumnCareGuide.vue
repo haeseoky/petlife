@@ -134,7 +134,9 @@ const careTips = [
       t('autumnSeniorWalk'),
       t('autumnExerciseStop'),
       t('winterWalkMinus4'),
-      t('winterWalkBreed')
+      t('winterWalkBreed'),
+      t('winterPettingBp'),
+      t('winterObesityDrug')
     ]
   },
   {
