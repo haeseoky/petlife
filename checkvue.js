@@ -1,1 +1,0 @@
-const {parse}=require('@vue/compiler-sfc');const fs=require('fs');const src=fs.readFileSync('src/views/HomeView.vue','utf8');const {errors}=parse(src,{filename:'HomeView.vue'});console.log(JSON.stringify(errors.map(e=>({msg:e.message,loc:e.loc&&{start:e.loc.start}}))));

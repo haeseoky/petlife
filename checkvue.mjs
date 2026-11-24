@@ -1,1 +1,0 @@
-import {parse} from '@vue/compiler-sfc';import fs from 'fs';const src=fs.readFileSync('src/views/HomeView.vue','utf8');const {errors}=parse(src,{filename:'HomeView.vue'});console.log(JSON.stringify(errors.map(e=>({msg:e.message,loc:e.loc&&{start:e.loc.start,line:e.loc.start&&e.loc.start.line}}))));
