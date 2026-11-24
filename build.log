@@ -1,0 +1,57 @@
+
+> petlife@1.0.0 build
+> vite-ssg build && node postbuild.mjs
+
+
+[vite-ssg] Build for client...
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 113 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32m.vite/ssr-manifest.json           [39m[1m[2m  6.92 kB[22m[1m[22m[2m │ gzip:   1.22 kB[22m
+[2mdist/[22m[32mindex.html                        [39m[1m[2m  8.37 kB[22m[1m[22m[2m │ gzip:   3.97 kB[22m
+[2mdist/[22m[35massets/Leaderboard-DjDUOdWf.css   [39m[1m[2m  2.27 kB[22m[1m[22m[2m │ gzip:   0.78 kB[22m
+[2mdist/[22m[35massets/ReactionView-B057GxOH.css  [39m[1m[2m  2.72 kB[22m[1m[22m[2m │ gzip:   0.79 kB[22m
+[2mdist/[22m[35massets/MemoryView-CWJ2xzLL.css    [39m[1m[2m  2.96 kB[22m[1m[22m[2m │ gzip:   0.89 kB[22m
+[2mdist/[22m[35massets/ColorView-BoekqpjM.css     [39m[1m[2m  3.04 kB[22m[1m[22m[2m │ gzip:   0.96 kB[22m
+[2mdist/[22m[35massets/DrawView-BiZp9dTd.css      [39m[1m[2m  4.45 kB[22m[1m[22m[2m │ gzip:   1.25 kB[22m
+[2mdist/[22m[35massets/app-DvY1prsZ.css           [39m[1m[2m 61.44 kB[22m[1m[22m[2m │ gzip:  10.70 kB[22m
+[2mdist/[22m[36massets/utils-Direv13U.js          [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:   0.14 kB[22m
+[2mdist/[22m[36massets/ColorView-Cpk3FNs4.js      [39m[1m[2m  4.01 kB[22m[1m[22m[2m │ gzip:   1.99 kB[22m
+[2mdist/[22m[36massets/ReactionView-0E7rZf30.js   [39m[1m[2m  4.25 kB[22m[1m[22m[2m │ gzip:   2.06 kB[22m
+[2mdist/[22m[36massets/Leaderboard-D1l3x6c3.js    [39m[1m[2m  4.30 kB[22m[1m[22m[2m │ gzip:   2.17 kB[22m
+[2mdist/[22m[36massets/MemoryView-rHNQ5p3m.js     [39m[1m[2m  4.51 kB[22m[1m[22m[2m │ gzip:   2.20 kB[22m
+[2mdist/[22m[36massets/DrawView-DfVtQih_.js       [39m[1m[2m 16.45 kB[22m[1m[22m[2m │ gzip:   6.10 kB[22m
+[2mdist/[22m[36massets/app-BuZYGx20.js            [39m[1m[2m301.50 kB[22m[1m[22m[2m │ gzip: 143.12 kB[22m
+[32m✓ built in 1.52s[39m
+
+[vite-ssg] Build for server...
+[36mvite v5.4.21 [32mbuilding SSR bundle for production...[36m[39m
+transforming...
+[32m✓[39m 71 modules transformed.
+rendering chunks...
+[2m.vite-ssg-temp/dhvalap2tq/[22m[35massets/style-DOpEJdGe.css        [39m[1m[2m 96.41 kB[22m[1m[22m
+[2m.vite-ssg-temp/dhvalap2tq/[22m[36massets/ColorView-lmFCJnTt.js     [39m[1m[2m  5.56 kB[22m[1m[22m
+[2m.vite-ssg-temp/dhvalap2tq/[22m[36massets/Leaderboard-BAJv0hs4.js   [39m[1m[2m  5.94 kB[22m[1m[22m
+[2m.vite-ssg-temp/dhvalap2tq/[22m[36massets/MemoryView-erZg4QRG.js    [39m[1m[2m  5.97 kB[22m[1m[22m
+[2m.vite-ssg-temp/dhvalap2tq/[22m[36massets/ReactionView-i1PA7wW2.js  [39m[1m[2m  6.71 kB[22m[1m[22m
+[2m.vite-ssg-temp/dhvalap2tq/[22m[36massets/DrawView-DL346bDL.js      [39m[1m[2m 24.06 kB[22m[1m[22m
+[2m.vite-ssg-temp/dhvalap2tq/[22m[36mmain.mjs                         [39m[1m[2m234.60 kB[22m[1m[22m
+[32m✓ built in 419ms[39m
+
+[vite-ssg] Rendering Pages... (5)
+(node:2984) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+dist/reaction.html    9.11 KiB
+dist/draw.html        9.73 KiB
+dist/index.html       25.78 KiB
+dist/memory.html      9.41 KiB
+dist/color.html       9.20 KiB
+
+[vite-ssg] Build finished.
+Fixed lang attribute: color.html
+Fixed lang attribute: draw.html
+Fixed lang attribute: index.html
+Fixed lang attribute: memory.html
+Fixed lang attribute: reaction.html

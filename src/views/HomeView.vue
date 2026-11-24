@@ -120,7 +120,7 @@ function reset() {
           <span class="seasonal-icon">❄️</span>
           <div>
             <h3>겨울철 반려동물 건강 관리</h3>
-            <p>본격적인 추위가 오기 전, 우리 아이 지키는 필수 수칙! (11/11 갱신)</p>
+            <p>본격적인 추위가 오기 전, 우리 아이 지키는 필수 수칙! (11/25 갱신)</p>
           </div>
         </div>
         <div class="seasonal-tips-grid">
@@ -180,7 +180,19 @@ function reset() {
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 17.5 4c-1.8 0-3.4 1-4.5 2.5C11.9 5 10.3 4 8.5 4A4.5 4.5 0 0 0 4 8.5c0 2.2 1.5 4 3 5.5l5 5z"/></svg></span>
             <span class="tip-text">떨림·무기력·몸을 웅크리면 저체온 신호 — 즉시 실내로, 노령아이는 보온에 신경 쓸 것</span>
           </div>
-          <div class="tip-item emergency-tip">
+          <div class="tip-item">
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8A3 3 0 0 0 8 20h1a3 3 0 0 0 3 1 3 3 0 0 0 3-1h1a3 3 0 0 0 3-5.2 3 3 0 0 0-1-5.8 3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M12 7v10"/></svg></span>
+            <span class="tip-text">실내 난방 온도는 20~24도 적정 — 과도한 난방은 탈모·피부 트러블 유발</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <span class="tip-text">추워도 산책은 하루 20~30분 유지 — 활동량 급감은 스트레스·비만으로 이어짐</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span>
+            <span class="tip-text">급격한 기온 변화에 면역력 저하 — 켄넬코프·호흡기 증상 초기 대응 중요</span>
+          </div>
+        <div class="tip-item emergency-tip">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
             <span class="tip-text">기침·무기력·식욕감퇴 2일 이상 지속 시 병원 진료</span>
           </div>
