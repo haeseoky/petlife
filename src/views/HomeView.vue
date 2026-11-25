@@ -120,7 +120,7 @@ function reset() {
           <span class="seasonal-icon">❄️</span>
           <div>
             <h3>겨울철 반려동물 건강 관리</h3>
-            <p>본격적인 추위가 오기 전, 우리 아이 지키는 필수 수칙! (11/25 갱신)</p>
+            <p>본격적인 추위가 오기 전, 우리 아이 지키는 필수 수칙! (11/26 갱신)</p>
           </div>
         </div>
         <div class="seasonal-tips-grid">
@@ -191,6 +191,14 @@ function reset() {
           <div class="tip-item">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span>
             <span class="tip-text">급격한 기온 변화에 면역력 저하 — 켄넬코프·호흡기 증상 초기 대응 중요</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg></span>
+            <span class="tip-text">환절기 설사·구토 3주 이상 반복되면 만성장병증 의심 — 원인 규명과 장 건강 식이 관리 필요 (11/25 수의학 뉴스)</span>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 2.4 1.2 4.5 3 5.7V17h8v-2.3c1.8-1.2 3-3.3 3-5.7a7 7 0 0 0-7-7z"/><path d="M9 21h6"/></svg></span>
+            <span class="tip-text">입냄새는 구강 건강 적신호 — 양치 습관·덴탈 간식·구강 케어 제품으로 관리 (11월 펫케어 트렌드)</span>
           </div>
         <div class="tip-item emergency-tip">
             <span class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
