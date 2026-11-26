@@ -13,6 +13,9 @@ import PetFortuneGacha from './PetFortuneGacha.vue'
 import PetMoodTracker from './PetMoodTracker.vue'
 import PetBalanceGame from './PetBalanceGame.vue'
 import AutumnCareGuide from './AutumnCareGuide.vue'
+import WinterCareGuide from './WinterCareGuide.vue'
+
+const careGuide = new Date().getMonth() === 11 || new Date().getMonth() <= 1 ? WinterCareGuide : AutumnCareGuide
 import { t } from '../i18n.js'
 import { getLuckyNames } from '../saju.js'
 
@@ -548,7 +551,7 @@ async function saveAsImage() {
     </div>
 
     <!-- 가을철 반려동물 건강 관리 -->
-    <AutumnCareGuide id="section-summer-care" class="reveal" :petType="result.petType" />
+    <component :is="careGuide" id="section-summer-care" class="reveal" :petType="result.petType" />
 
     <!-- 맞춤 케어 팁 -->
     <div id="section-care-tip" class="tips-card reveal">
