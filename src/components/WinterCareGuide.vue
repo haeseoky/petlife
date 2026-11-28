@@ -121,7 +121,9 @@ const careTips = [
       t('winterBurnGuard'),
       t('winterSaltPaw'),
       t('winterRespVaccine'),
-      t('winterIndoorNosework')
+      t('winterIndoorNosework'),
+      t('winterIndoorClimate'),
+      t('winterKennelCoughVax')
     ]
   },
   {
